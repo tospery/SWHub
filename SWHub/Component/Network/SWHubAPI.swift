@@ -8,7 +8,7 @@
 import Foundation
 
 enum SWHubAPI {
-    case siteInfo
+    case login(token: String)
 }
 
 extension SWHubAPI: TargetType {
@@ -19,18 +19,23 @@ extension SWHubAPI: TargetType {
 
     var path: String {
         switch self {
-        case .siteInfo: return "/api/site/info.json"
+        case .login: return "/user"
         }
     }
 
     var method: Moya.Method { .get }
 
-    var headers: [String: String]? { nil }
+    var headers: [String: String]? {
+        switch self {
+        case let .login(token):
+            return ["Authorization": "token \(token)"]
+        }
+    }
 
     var task: Task { .requestPlain }
 
     var validationType: ValidationType { .none }
 
-    var sampleData: Data { Data.init() }
+    var sampleData: Data { Data.init() } // YJX_TODO 示例
 
 }

@@ -10,11 +10,11 @@ import Foundation
 extension UIApplication {
 
     @objc var myBaseApiUrl: String {
-        return "https://api.swhub.com"
+        return "https://api.github.com"
     }
 
     @objc var myBaseWebUrl: String {
-        return "https://m.swhub.com"
+        return "https://m.github.com"
     }
 
 }

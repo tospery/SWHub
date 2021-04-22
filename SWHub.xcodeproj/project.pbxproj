@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79B609812631BD9D00F8D087 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B609802631BD9D00F8D087 /* Plan.swift */; };
 		79CD6B28260E3F3500420300 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD6B27260E3F3500420300 /* AppDelegate.swift */; };
 		79CD6B31260E3F3600420300 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CD6B30260E3F3600420300 /* Assets.xcassets */; };
 		79CD6B34260E3F3600420300 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CD6B32260E3F3600420300 /* LaunchScreen.storyboard */; };
@@ -39,7 +40,7 @@
 		79CE3BAF260E402800BB918B /* BaseViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B7B260E402700BB918B /* BaseViewControllerExt.swift */; };
 		79CE3BB0260E402800BB918B /* SWHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B7D260E402700BB918B /* SWHubAPI.swift */; };
 		79CE3BB1260E402800BB918B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B7E260E402700BB918B /* Networking.swift */; };
-		79CE3BB2260E402800BB918B /* ProviderType+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B7F260E402700BB918B /* ProviderType+Networking.swift */; };
+		79CE3BB2260E402800BB918B /* ProviderType+SWHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B7F260E402700BB918B /* ProviderType+SWHubAPI.swift */; };
 		79CE3BB3260E402800BB918B /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B81260E402700BB918B /* Library.swift */; };
 		79CE3BB4260E402800BB918B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B82260E402700BB918B /* Error.swift */; };
 		79CE3BB5260E402800BB918B /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3B83260E402700BB918B /* Runtime.swift */; };
@@ -64,6 +65,8 @@
 		1E5D62AC14B493A13BF0D38A /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 		61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F130F17256E2A17D445683C /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		79B609802631BD9D00F8D087 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		79B609832631C44400F8D087 /* error1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = error1.json; sourceTree = "<group>"; };
 		79CD6B24260E3F3500420300 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CD6B27260E3F3500420300 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CD6B30260E3F3600420300 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,7 +102,7 @@
 		79CE3B7B260E402700BB918B /* BaseViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerExt.swift; sourceTree = "<group>"; };
 		79CE3B7D260E402700BB918B /* SWHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHubAPI.swift; sourceTree = "<group>"; };
 		79CE3B7E260E402700BB918B /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		79CE3B7F260E402700BB918B /* ProviderType+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProviderType+Networking.swift"; sourceTree = "<group>"; };
+		79CE3B7F260E402700BB918B /* ProviderType+SWHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProviderType+SWHubAPI.swift"; sourceTree = "<group>"; };
 		79CE3B81260E402700BB918B /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		79CE3B82260E402700BB918B /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		79CE3B83260E402700BB918B /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		79CE3BCB260E42B900BB918B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		79CE3BFD260E42EE00BB918B /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		79CE3C2E260E443600BB918B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		79E9FF8D2631BAFB0082ECB9 /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		9ED09F55CD7A6A69F5C89F53 /* Pods-SwiftPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.release.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.release.xcconfig"; sourceTree = "<group>"; };
 		E07E624452188CDBDC17BFE4 /* Pods-SwiftPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.debug.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +173,7 @@
 		79CE3B52260E3FC600BB918B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				79E9FF8D2631BAFB0082ECB9 /* SWHub.entitlements */,
 				79CE3BC6260E415800BB918B /* .swiftlint.yml */,
 				79CD6B27260E3F3500420300 /* AppDelegate.swift */,
 				79CE3BC7260E418500BB918B /* AppDependency.swift */,
@@ -238,6 +243,7 @@
 				79CE3B65260E402700BB918B /* User.swift */,
 				79CE3B66260E402700BB918B /* SiteInfo.swift */,
 				79CE3B67260E402700BB918B /* Preference.swift */,
+				79B609802631BD9D00F8D087 /* Plan.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,7 +303,7 @@
 			children = (
 				79CE3B7D260E402700BB918B /* SWHubAPI.swift */,
 				79CE3B7E260E402700BB918B /* Networking.swift */,
-				79CE3B7F260E402700BB918B /* ProviderType+Networking.swift */,
+				79CE3B7F260E402700BB918B /* ProviderType+SWHubAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				79CE3B94260E402700BB918B /* user.json */,
+				79B609832631C44400F8D087 /* error1.json */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -547,7 +554,7 @@
 				79CE3BB9260E402800BB918B /* Appearance.swift in Sources */,
 				79CE3BBC260E402800BB918B /* Router+Web.swift in Sources */,
 				79CE3B9A260E402800BB918B /* TabBarController.swift in Sources */,
-				79CE3BB2260E402800BB918B /* ProviderType+Networking.swift in Sources */,
+				79CE3BB2260E402800BB918B /* ProviderType+SWHubAPI.swift in Sources */,
 				79CE3BB8260E402800BB918B /* Function.swift in Sources */,
 				79CE3BAC260E402800BB918B /* UIColorExt.swift in Sources */,
 				79CE3BA7260E402800BB918B /* CollectionItem.swift in Sources */,
@@ -556,6 +563,7 @@
 				79CE3BBB260E402800BB918B /* QMUIConfigurationTemplate.m in Sources */,
 				79CE3B97260E402800BB918B /* GeneralViewController.swift in Sources */,
 				79CE3BA5260E402800BB918B /* CollectionCell.swift in Sources */,
+				79B609812631BD9D00F8D087 /* Plan.swift in Sources */,
 				79CE3BAB260E402800BB918B /* StorableExt.swift in Sources */,
 				79CE3BB1260E402800BB918B /* Networking.swift in Sources */,
 				79CE3BA4260E402800BB918B /* TabBarReactor.swift in Sources */,
@@ -713,8 +721,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SWHub/SWHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WDE622528T;
+				DEVELOPMENT_TEAM = Y5LG6VC6HL;
 				INFOPLIST_FILE = "$(SRCROOT)/SWHub/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -736,8 +745,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SWHub/SWHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WDE622528T;
+				DEVELOPMENT_TEAM = Y5LG6VC6HL;
 				INFOPLIST_FILE = "$(SRCROOT)/SWHub/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

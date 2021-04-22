@@ -7,10 +7,34 @@
 
 import Foundation
 
+let networking = Networking(
+    provider: MoyaProvider<MultiTarget>(
+        endpointClosure: Networking.endpointClosure,
+        requestClosure: Networking.requestClosure,
+        stubClosure: Networking.stubClosure,
+        callbackQueue: Networking.callbackQueue,
+        session: Networking.session,
+        plugins: Networking.plugins,
+        trackInflights: Networking.trackInflights
+    )
+)
+
 struct Networking: NetworkingType {
 
     typealias Target = MultiTarget
     let provider: MoyaProvider<MultiTarget>
+    
+    func request<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<Model> {
+        self.requestJSON(target).flatMap { json -> Single<Model> in
+            guard let json = json as? [String: Any] else {
+                return .error(SystemError.dataFormat)
+            }
+            guard let model = Model.init(JSON: json), model.isValid else {
+                return .error(SWError.server(0, json["message"] as? String))
+            }
+            return .just(model)
+        }
+    }
     
 //    static var stubClosure: MoyaProvider<Target>.StubClosure {
 //        return { target in

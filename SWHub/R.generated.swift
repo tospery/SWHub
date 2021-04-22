@@ -122,6 +122,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
+  struct entitlements {
+    struct keychainAccessGroups {
+      static let appIdentifierPrefixComTosperySwhub = infoPlistString(path: ["keychain-access-groups"], key: "$(AppIdentifierPrefix)com.tospery.swhub") ?? "$(AppIdentifierPrefix)com.tospery.swhub"
+      static let appIdentifierPrefixShared = infoPlistString(path: ["keychain-access-groups"], key: "$(AppIdentifierPrefix)shared") ?? "$(AppIdentifierPrefix)shared"
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
   /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
     /// Resource file `user.json`.
