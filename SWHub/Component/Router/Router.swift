@@ -18,9 +18,19 @@ enum Router: String {
     enum Web: String {
         case agreement      = "about"
         case privacy        = "mission"
+        case oauth
         
         var urlString: String {
-            "\(UIApplication.shared.baseWebUrl)/\(self.rawValue)"
+            switch self {
+            case .oauth:
+                return """
+                    http://github.com/login/oauth/authorize?\
+                    client_id=\(Platform.github.appId)&\
+                    scope=user+repo+notifications+read:org
+                    """
+            default:
+                return "\(UIApplication.shared.baseWebUrl)/\(self.rawValue)"
+            }
         }
     }
     
