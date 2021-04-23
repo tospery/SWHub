@@ -17,6 +17,7 @@
 "Token" = "私钥";
 /* 登录 */
 "Login.Expression" = "登录即表示同意";
+"Login.Placeholder.Token" = "请输入您的个人访问密钥";
 /* 操作 */
 "Action.FiveMinutes" = "5分钟后";
 "Action.HalfAnHour" = "半小时后";

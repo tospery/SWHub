@@ -10,37 +10,53 @@ import Foundation
 class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Action {
-        case load
+        case token(String?)
+        case login
     }
 
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
-        case setTitle(String?)
+        case setToken(String?)
         case setUser(User?)
     }
 
     struct State {
         var isLoading = false
         var error: Error?
-        var title: String?
+        var token: String?
         var user: User?
-        var sections = [Section].init()
     }
 
     var initialState = State()
 
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        self.initialState = State(
-            title: self.title ?? R.string.localizable.login()
-        )
+//        self.initialState = State(
+//            title: self.title ?? R.string.localizable.login()
+//        )
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .load:
-            return .empty()
+        case let .token(token):
+            return Observable.concat([
+                .just(.setError(nil)),
+                .just(.setToken(token))
+            ])
+        case .login:
+            guard let token = self.currentState.token, !token.isEmpty else { return .empty() }
+            return Observable.concat([
+                .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.login(token).map(Mutation.setUser),
+                .just(.setLoading(false))
+            ]).catchError({
+                Observable.concat([
+                    .just(.setLoading(false)),
+                    .just(.setError($0))
+                ])
+            })
         }
     }
     
@@ -50,12 +66,9 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
         case let .setError(error):
-            if error != nil && state.isLoading {
-                newState.isLoading = false
-            }
             newState.error = error
-        case let .setTitle(title):
-            newState.title = title
+        case let .setToken(token):
+            newState.token = token
         case let .setUser(user):
             newState.user = user
         }
@@ -67,12 +80,17 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
-        return .merge(mutation, user)
+//        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
+//        return .merge(mutation, user)
+        mutation
     }
     
     func transform(state: Observable<State>) -> Observable<State> {
         state
     }
 
+    func login(_ token: String) -> Observable<User> {
+        self.provider.login(token: token).asObservable()
+    }
+    
 }

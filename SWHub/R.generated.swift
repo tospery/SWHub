@@ -210,7 +210,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 31 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 32 localization keys.
     struct localizable {
       /// Value: 1小时后
       static let actionOneHour = Rswift.StringResource(key: "Action.OneHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -266,6 +266,8 @@ struct R: Rswift.Validatable {
       static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
       static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 请输入您的个人访问密钥
+      static let loginPlaceholderToken = Rswift.StringResource(key: "Login.Placeholder.Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 重试
       static let errorRetry = Rswift.StringResource(key: "Error.Retry", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 非法操作
@@ -624,6 +626,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Network.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 请输入您的个人访问密钥
+      static func loginPlaceholderToken(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Login.Placeholder.Token", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Login.Placeholder.Token"
+        }
+
+        return NSLocalizedString("Login.Placeholder.Token", bundle: bundle, comment: "")
       }
 
       /// Value: 重试

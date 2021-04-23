@@ -11,7 +11,6 @@ extension LoginViewController {
     
     func handle(user: User) {
         User.update(user)
-        self.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -24,6 +24,15 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         return imageView
     }()
     
+    lazy var tokenTextField: UITextField = {
+        let textField = UITextField.init()
+        textField.borderStyle = .roundedRect
+        textField.font = .systemFont(ofSize: 16)
+        textField.placeholder = R.string.localizable.loginPlaceholderToken()
+        textField.sizeToFit()
+        return textField
+    }()
+    
     lazy var loginButton: SWButton = {
         let button = SWButton.init(type: .custom)
         button.cornerRadius = 4
@@ -50,17 +59,17 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.scrollView.addSubview(self.tokenLabel)
         self.scrollView.addSubview(self.loginButton)
         self.scrollView.addSubview(self.logoImageView)
-        
-        self.loginButton.rx.tap
-            .subscribeNext(weak: self, type(of: self).login)
-            .disposed(by: self.disposeBag)
+        self.scrollView.addSubview(self.tokenTextField)
         
         let buttonSize = CGSize.init(
             width: UIScreen.width - 20 * 2,
             height: 44.f
         )
         themeService.rx
-            .bind({ $0.titleColor }, to: self.tokenLabel.rx.textColor)
+            .bind({ $0.titleColor }, to: [
+                self.tokenLabel.rx.textColor,
+                self.tokenTextField.rx.textColor
+            ])
             .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
             .bind({ UIImage.init(color: $0.primaryColor, size: buttonSize) },
                   to: self.loginButton.rx.backgroundImage(for: .normal))
@@ -71,47 +80,18 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        self.tokenLabel.top = self.tokenLabel.topWhenCenter
-//        self.tokenLabel.left = 20
-//        self.logoImageView.left = self.logoImageView.leftWhenCenter
-//        self.logoImageView.bottom = self.tokenLabel.top - 50
         self.logoImageView.left = self.logoImageView.leftWhenCenter
-        self.logoImageView.top = (self.logoImageView.topWhenCenter - self.logoImageView.height).flat
+        self.logoImageView.top = (self.logoImageView.topWhenCenter * 0.8).flat
         self.tokenLabel.left = 20
-        self.tokenLabel.top = self.logoImageView.bottom + 20
+        self.tokenLabel.top = self.logoImageView.bottom + 50
         self.loginButton.width = self.scrollView.width - 20 * 2
         self.loginButton.height = 44
         self.loginButton.left = self.tokenLabel.left
         self.loginButton.top = self.tokenLabel.bottom + 50
-        // self.logoImageView.top = (self.logoImageView.top - self.logoImageView.height / 2.0).flat
+        self.tokenTextField.height = 40
+        self.tokenTextField.left = self.tokenLabel.right + 10
+        self.tokenTextField.extendToRight = self.scrollView.width - 20
+        self.tokenTextField.centerY = self.tokenLabel.centerY
     }
-    
-    func login(event: ControlEvent<Void>.Element) {
-        var user = User.init()
-        user.id = 1
-        user.login = "abc"
-        User.update(user)
-        // self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
-    }
-    
-//    func bind(reactor: LoginViewReactor) {
-//        super.bind(reactor: reactor)
-//        // action
-//        Observable.merge([
-//            self.rx.viewDidLoad.map { Reactor.Action.load },
-//            self.rx.emptyDataSet.map { Reactor.Action.load }
-//        ])
-//        .bind(to: reactor.action)
-//        .disposed(by: self.disposeBag)
-//        // state
-//        reactor.state.map { $0.title }
-//            .distinctUntilChanged()
-//            .bind(to: self.navigationBar.titleLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.isLoading }
-//            .distinctUntilChanged()
-//            .bind(to: self.rx.loading())
-//            .disposed(by: self.disposeBag)
-//    }
 
 }
