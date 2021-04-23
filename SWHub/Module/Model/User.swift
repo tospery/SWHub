@@ -57,13 +57,13 @@ struct User: ModelType, Subjective, Eventable {
             self.login?.isEmpty ?? true == false
     }
     
-    var isLogined: Bool {
-        if self.id ?? 0 == 0 ||
-            self.login?.isEmpty ?? true == true {
-            return false
-        }
-        return true
-    }
+//    var isLogined: Bool {
+//        if self.id ?? 0 == 0 ||
+//            self.login?.isEmpty ?? true == true {
+//            return false
+//        }
+//        return true
+//    }
     
     init() { }
 

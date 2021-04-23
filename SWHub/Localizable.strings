@@ -14,6 +14,7 @@
 "Home" = "首页";
 "Mine" = "我的";
 "Login" = "登录";
+"Token" = "私钥";
 /* 登录 */
 "Login.Expression" = "登录即表示同意";
 /* 操作 */

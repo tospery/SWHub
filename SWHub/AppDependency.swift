@@ -52,22 +52,45 @@ final class AppDependency: AppDependencyType {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         self.window = window
-
-        let reactor = TabBarReactor(self.provider, nil)
-        let controller = TabBarController(self.navigator, reactor)
-        self.window.rootViewController = controller
+        var rootViewController: UIViewController?
+        if User.current?.isValid ?? false {
+            let reactor = TabBarReactor(self.provider, nil)
+            rootViewController = TabBarController(self.navigator, reactor)
+        } else {
+            let reactor = LoginViewReactor.init(self.provider, nil)
+            let controller = LoginViewController.init(self.navigator, reactor)
+            rootViewController = NavigationController.init(rootViewController: controller)
+        }
+        self.window.rootViewController = rootViewController
         self.window.makeKeyAndVisible()
+    }
+    
+    func handle(user: User?) {
+        var rootViewController: UIViewController?
+        if user?.isValid ?? false {
+            let reactor = TabBarReactor(self.provider, nil)
+            rootViewController = TabBarController(self.navigator, reactor)
+        } else {
+            let reactor = LoginViewReactor.init(self.provider, nil)
+            let controller = LoginViewController.init(self.navigator, reactor)
+            rootViewController = NavigationController.init(rootViewController: controller)
+        }
+        let transtition = CATransition.init()
+        transtition.duration = 0.5
+        transtition.timingFunction = .init(name: .easeOut)
+        self.window.layer.add(transtition, forKey: "animation")
+        self.window.rootViewController = rootViewController
     }
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        self.provider.login(token: "").subscribe { user in
-            let aaa = user
-            log("a")
-        } onError: { error in
-            let bbb = error
-            log("b")
-        }.disposed(by: self.disposeBag)
+//        self.provider.login(token: "").subscribe { user in
+//            let aaa = user
+//            log("a")
+//        } onError: { error in
+//            let bbb = error
+//            log("b")
+//        }.disposed(by: self.disposeBag)
     }
     
     // MARK: - Lifecycle
@@ -80,6 +103,13 @@ final class AppDependency: AppDependencyType {
         Library.setup()
         Appearance.config()
         Router.initialize(self.provider, self.navigator)
+        // 绑定
+        Subjection.for(User.self).asObservable()
+            .skip(1)
+            .distinctUntilChanged { $0?.isValid ?? false != $1?.isValid ?? false }
+            .observeOn(MainScheduler.instance)
+            .subscribeNext(weak: self, type(of: self).handle)
+            .disposed(by: self.disposeBag)
     }
 
     func application(

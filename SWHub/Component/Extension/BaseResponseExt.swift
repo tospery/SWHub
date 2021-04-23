@@ -13,7 +13,7 @@ extension BaseResponse: ResponseCompatible {
         var code: Int!
         code        <- map["code"]
         code = code == nil ? -1 : code
-        return code == 0 ? successCode : code
+        return code == 0 ? HTTPStatusCode.Success.ok.rawValue : code
     }
     
     public func message(map: Map) -> String {

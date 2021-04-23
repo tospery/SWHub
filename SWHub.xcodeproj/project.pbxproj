@@ -58,6 +58,9 @@
 		79CE3BC8260E418500BB918B /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3BC7260E418500BB918B /* AppDependency.swift */; };
 		79CE3BCC260E42B900BB918B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79CE3BCB260E42B900BB918B /* Localizable.strings */; };
 		79CE3C2F260E443600BB918B /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3C2E260E443600BB918B /* R.generated.swift */; };
+		8C1869312632748300659FBC /* LoginViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1869302632748300659FBC /* LoginViewController+Bind.swift */; };
+		8C1869342632749800659FBC /* LoginViewController+Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1869332632749800659FBC /* LoginViewController+Handle.swift */; };
+		8C186937263274A400659FBC /* LoginViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C186936263274A400659FBC /* LoginViewController+Rx.swift */; };
 		D866100FCC4AF37A08B70089 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +128,9 @@
 		79CE3BFD260E42EE00BB918B /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		79CE3C2E260E443600BB918B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		79E9FF8D2631BAFB0082ECB9 /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
+		8C1869302632748300659FBC /* LoginViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Bind.swift"; sourceTree = "<group>"; };
+		8C1869332632749800659FBC /* LoginViewController+Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Handle.swift"; sourceTree = "<group>"; };
+		8C186936263274A400659FBC /* LoginViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Rx.swift"; sourceTree = "<group>"; };
 		9ED09F55CD7A6A69F5C89F53 /* Pods-SwiftPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.release.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.release.xcconfig"; sourceTree = "<group>"; };
 		E07E624452188CDBDC17BFE4 /* Pods-SwiftPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.debug.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +223,9 @@
 				79CE3B5D260E402700BB918B /* MineViewController.swift */,
 				79CE3B5E260E402700BB918B /* LoginViewController.swift */,
 				79CE3B5F260E402700BB918B /* TabBarController.swift */,
+				8C1869302632748300659FBC /* LoginViewController+Bind.swift */,
+				8C1869332632749800659FBC /* LoginViewController+Handle.swift */,
+				8C186936263274A400659FBC /* LoginViewController+Rx.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -544,6 +553,7 @@
 				79CE3BC8260E418500BB918B /* AppDependency.swift in Sources */,
 				79CE3BAD260E402800BB918B /* BaseResponseExt.swift in Sources */,
 				79CD6B28260E3F3500420300 /* AppDelegate.swift in Sources */,
+				8C1869312632748300659FBC /* LoginViewController+Bind.swift in Sources */,
 				79CE3BA3260E402800BB918B /* HomeViewReactor.swift in Sources */,
 				79CE3BB7260E402800BB918B /* Theme.swift in Sources */,
 				79CE3B95260E402800BB918B /* Section.swift in Sources */,
@@ -558,6 +568,7 @@
 				79CE3BB8260E402800BB918B /* Function.swift in Sources */,
 				79CE3BAC260E402800BB918B /* UIColorExt.swift in Sources */,
 				79CE3BA7260E402800BB918B /* CollectionItem.swift in Sources */,
+				8C1869342632749800659FBC /* LoginViewController+Handle.swift in Sources */,
 				79CE3B9B260E402800BB918B /* SimpleCell.swift in Sources */,
 				79CE3BBD260E402800BB918B /* Router+Page.swift in Sources */,
 				79CE3BBB260E402800BB918B /* QMUIConfigurationTemplate.m in Sources */,
@@ -567,6 +578,7 @@
 				79CE3BAB260E402800BB918B /* StorableExt.swift in Sources */,
 				79CE3BB1260E402800BB918B /* Networking.swift in Sources */,
 				79CE3BA4260E402800BB918B /* TabBarReactor.swift in Sources */,
+				8C186937263274A400659FBC /* LoginViewController+Rx.swift in Sources */,
 				79CE3BBE260E402800BB918B /* Router.swift in Sources */,
 				79CE3BAF260E402800BB918B /* BaseViewControllerExt.swift in Sources */,
 				79CE3BB6260E402800BB918B /* Type.swift in Sources */,

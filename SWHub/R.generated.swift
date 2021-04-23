@@ -152,8 +152,8 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
-    /// Image `app_logo`.
-    static let app_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_logo")
+    /// Image `AppLogo`.
+    static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLogo")
     /// Image `tabbar_home_normal`.
     static let tabbar_home_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_home_normal")
     /// Image `tabbar_home_selected`.
@@ -171,9 +171,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "app_logo", bundle: ..., traitCollection: ...)`
-    static func app_logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.app_logo, compatibleWith: traitCollection)
+    /// `UIImage(named: "AppLogo", bundle: ..., traitCollection: ...)`
+    static func appLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.appLogo, compatibleWith: traitCollection)
     }
     #endif
 
@@ -210,7 +210,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 32 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 31 localization keys.
     struct localizable {
       /// Value: 1小时后
       static let actionOneHour = Rswift.StringResource(key: "Action.OneHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -247,13 +247,9 @@ struct R: Rswift.Validatable {
       /// Value: 未知错误
       static let errorSystemUnknownTitle = Rswift.StringResource(key: "Error.System.Unknown.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户未登录
-      static let errorUserNotLoggedInMessage = Rswift.StringResource(key: "Error.User.NotLoggedIn.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorUnloginMessage = Rswift.StringResource(key: "Error.Unlogin.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户未登录
-      static let errorUserNotLoggedInTitle = Rswift.StringResource(key: "Error.User.NotLoggedIn.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 用户登录过期
-      static let errorUserLoginExpiredMessage = Rswift.StringResource(key: "Error.User.LoginExpired.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 用户登录过期
-      static let errorUserLoginExpiredTitle = Rswift.StringResource(key: "Error.User.LoginExpired.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorUnloginTitle = Rswift.StringResource(key: "Error.Unlogin.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录即表示同意
@@ -264,6 +260,8 @@ struct R: Rswift.Validatable {
       static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确定
       static let sure = Rswift.StringResource(key: "Sure", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 私钥
+      static let token = Rswift.StringResource(key: "Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
       static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
@@ -499,55 +497,29 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 用户未登录
-      static func errorUserNotLoggedInMessage(preferredLanguages: [String]? = nil) -> String {
+      static func errorUnloginMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.User.NotLoggedIn.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.Unlogin.Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.User.NotLoggedIn.Message"
+          return "Error.Unlogin.Message"
         }
 
-        return NSLocalizedString("Error.User.NotLoggedIn.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.Unlogin.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 用户未登录
-      static func errorUserNotLoggedInTitle(preferredLanguages: [String]? = nil) -> String {
+      static func errorUnloginTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.User.NotLoggedIn.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.Unlogin.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.User.NotLoggedIn.Title"
+          return "Error.Unlogin.Title"
         }
 
-        return NSLocalizedString("Error.User.NotLoggedIn.Title", bundle: bundle, comment: "")
-      }
-
-      /// Value: 用户登录过期
-      static func errorUserLoginExpiredMessage(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.User.LoginExpired.Message", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.User.LoginExpired.Message"
-        }
-
-        return NSLocalizedString("Error.User.LoginExpired.Message", bundle: bundle, comment: "")
-      }
-
-      /// Value: 用户登录过期
-      static func errorUserLoginExpiredTitle(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.User.LoginExpired.Title", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.User.LoginExpired.Title"
-        }
-
-        return NSLocalizedString("Error.User.LoginExpired.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.Unlogin.Title", bundle: bundle, comment: "")
       }
 
       /// Value: 登录
@@ -613,6 +585,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Sure", bundle: bundle, comment: "")
+      }
+
+      /// Value: 私钥
+      static func token(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Token", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Token"
+        }
+
+        return NSLocalizedString("Token", bundle: bundle, comment: "")
       }
 
       /// Value: 网络错误
@@ -735,6 +720,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "AppLaunch", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'AppLaunch' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
