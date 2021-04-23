@@ -148,12 +148,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 7 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
     /// Image `AppLogo`.
     static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLogo")
+    /// Image `github`.
+    static let github = Rswift.ImageResource(bundle: R.hostingBundle, name: "github")
     /// Image `tabbar_home_normal`.
     static let tabbar_home_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_home_normal")
     /// Image `tabbar_home_selected`.
@@ -174,6 +176,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "AppLogo", bundle: ..., traitCollection: ...)`
     static func appLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.appLogo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "github", bundle: ..., traitCollection: ...)`
+    static func github(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.github, compatibleWith: traitCollection)
     }
     #endif
 
@@ -210,8 +219,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 32 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 35 localization keys.
     struct localizable {
+      /// Value: %@ For GitHub
+      static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: -----GitHub官方授权登录-----
+      static let loginAuth = Rswift.StringResource(key: "Login.Auth", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 1小时后
       static let actionOneHour = Rswift.StringResource(key: "Action.OneHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 5分钟后
@@ -270,12 +283,42 @@ struct R: Rswift.Validatable {
       static let loginPlaceholderToken = Rswift.StringResource(key: "Login.Placeholder.Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 重试
       static let errorRetry = Rswift.StringResource(key: "Error.Retry", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。
+      static let loginPrivacy = Rswift.StringResource(key: "Login.Privacy", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 非法操作
       static let errorAppMessage = Rswift.StringResource(key: "Error.App.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 非法操作
       static let errorAppTitle = Rswift.StringResource(key: "Error.App.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首页
       static let home = Rswift.StringResource(key: "Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: %@ For GitHub
+      static func loginSlogan(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("Login.Slogan", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Login.Slogan"
+        }
+
+        let format = NSLocalizedString("Login.Slogan", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: -----GitHub官方授权登录-----
+      static func loginAuth(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Login.Auth", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Login.Auth"
+        }
+
+        return NSLocalizedString("Login.Auth", bundle: bundle, comment: "")
+      }
 
       /// Value: 1小时后
       static func actionOneHour(preferredLanguages: [String]? = nil) -> String {
@@ -652,6 +695,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Retry", bundle: bundle, comment: "")
+      }
+
+      /// Value: 隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。
+      static func loginPrivacy(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("Login.Privacy", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Login.Privacy"
+        }
+
+        let format = NSLocalizedString("Login.Privacy", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       /// Value: 非法操作

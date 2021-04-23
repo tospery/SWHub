@@ -16,6 +16,9 @@
 "Login" = "登录";
 "Token" = "私钥";
 /* 登录 */
+"Login.Auth" = "-----GitHub官方授权登录-----";
+"Login.Slogan" = "%@ For GitHub";
+"Login.Privacy" = "隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。";
 "Login.Expression" = "登录即表示同意";
 "Login.Placeholder.Token" = "请输入您的个人访问密钥";
 /* 操作 */

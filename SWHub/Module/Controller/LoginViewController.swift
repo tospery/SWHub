@@ -9,10 +9,33 @@ import UIKit
 
 class LoginViewController: ScrollViewController, ReactorKit.View {
     
-    lazy var tokenLabel: SWLabel = {
+    lazy var sloganLabel: SWLabel = {
         let label = SWLabel.init()
         label.font = .systemFont(ofSize: 18)
-        label.text = R.string.localizable.token()
+        label.text = R.string.localizable.loginSlogan(UIApplication.shared.name)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var privacyLabel: SWLabel = {
+        let label = SWLabel.init()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 12)
+        label.text = R.string.localizable.loginPrivacy(UIApplication.shared.name)
+        label.qmui_lineHeight = (label.qmui_lineHeight + 2).flat
+        label.size = label.sizeThatFits(
+            .init(
+                width: UIScreen.width - 20 * 2,
+                height: .greatestFiniteMagnitude
+            )
+        )
+        return label
+    }()
+    
+    lazy var authLabel: SWLabel = {
+        let label = SWLabel.init()
+        label.font = .systemFont(ofSize: 12)
+        label.text = R.string.localizable.loginAuth()
         label.sizeToFit()
         return label
     }()
@@ -27,7 +50,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     lazy var tokenTextField: UITextField = {
         let textField = UITextField.init()
         textField.borderStyle = .roundedRect
-        textField.font = .systemFont(ofSize: 16)
+        textField.font = .systemFont(ofSize: 15)
         textField.placeholder = R.string.localizable.loginPlaceholderToken()
         textField.sizeToFit()
         return textField
@@ -38,6 +61,13 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         button.cornerRadius = 4
         button.titleLabel?.font = .systemFont(ofSize: 18)
         button.setTitle(R.string.localizable.login(), for: .normal)
+        button.sizeToFit()
+        return button
+    }()
+    
+    lazy var authButton: SWButton = {
+        let button = SWButton.init(type: .custom)
+        button.setImage(R.image.github(), for: .normal)
         button.sizeToFit()
         return button
     }()
@@ -56,8 +86,11 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView.addSubview(self.tokenLabel)
+        self.scrollView.addSubview(self.sloganLabel)
+        self.scrollView.addSubview(self.privacyLabel)
+        self.scrollView.addSubview(self.authLabel)
         self.scrollView.addSubview(self.loginButton)
+        self.scrollView.addSubview(self.authButton)
         self.scrollView.addSubview(self.logoImageView)
         self.scrollView.addSubview(self.tokenTextField)
         
@@ -66,8 +99,12 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             height: 44.f
         )
         themeService.rx
+            .bind({ $0.captionColor }, to: [
+                self.privacyLabel.rx.textColor,
+                self.authLabel.rx.textColor
+            ])
             .bind({ $0.titleColor }, to: [
-                self.tokenLabel.rx.textColor,
+                self.sloganLabel.rx.textColor,
                 self.tokenTextField.rx.textColor
             ])
             .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
@@ -80,18 +117,24 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        self.sloganLabel.left = self.sloganLabel.leftWhenCenter
+        self.sloganLabel.top = (self.sloganLabel.topWhenCenter * 0.8).flat
         self.logoImageView.left = self.logoImageView.leftWhenCenter
-        self.logoImageView.top = (self.logoImageView.topWhenCenter * 0.8).flat
-        self.tokenLabel.left = 20
-        self.tokenLabel.top = self.logoImageView.bottom + 50
-        self.loginButton.width = self.scrollView.width - 20 * 2
+        self.logoImageView.bottom = self.sloganLabel.top - 5
+        self.tokenTextField.height = 44
+        self.tokenTextField.width = self.scrollView.width - 20 * 2
+        self.tokenTextField.left = self.tokenTextField.leftWhenCenter
+        self.tokenTextField.top = self.sloganLabel.bottom + 30
+        self.privacyLabel.left = self.tokenTextField.left
+        self.privacyLabel.top = self.tokenTextField.bottom + 5
         self.loginButton.height = 44
-        self.loginButton.left = self.tokenLabel.left
-        self.loginButton.top = self.tokenLabel.bottom + 50
-        self.tokenTextField.height = 40
-        self.tokenTextField.left = self.tokenLabel.right + 10
-        self.tokenTextField.extendToRight = self.scrollView.width - 20
-        self.tokenTextField.centerY = self.tokenLabel.centerY
+        self.loginButton.width = self.tokenTextField.width
+        self.loginButton.left = self.loginButton.leftWhenCenter
+        self.loginButton.top = self.privacyLabel.bottom + 20
+        self.authLabel.left = self.authLabel.leftWhenCenter
+        self.authLabel.bottom = (self.scrollView.height - 30 - UIScreen.safeBottom).flat
+        self.authButton.left = self.authButton.leftWhenCenter
+        self.authButton.bottom = self.authLabel.top - 15
     }
 
 }

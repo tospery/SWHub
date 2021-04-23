@@ -28,6 +28,7 @@ import UIKit
 @_exported import SwifterSwift
 @_exported import SwiftEntryKit
 @_exported import CocoaLumberjack
+@_exported import TTTAttributedLabel
 @_exported import IQKeyboardManagerSwift
 @_exported import Toast_Swift
 @_exported import Umbrella
