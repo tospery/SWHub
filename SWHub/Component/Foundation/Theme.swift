@@ -53,7 +53,7 @@ struct LightTheme: Theme {
     let borderColor = UIColor.Material.grey300
     let separatorColor = UIColor(hex: 0xF2F2F2)!
     let indicatorColor = UIColor.Material.grey600
-    let special1Color = UIColor(hex: 0xF0F0F0)!
+    let special1Color = UIColor(hex: 0xE82220)!
     let special2Color = UIColor(hex: 0xFF6161)!
     let special3Color = UIColor(hex: 0xE3E3E3)!
     let barStyle = UIBarStyle.default

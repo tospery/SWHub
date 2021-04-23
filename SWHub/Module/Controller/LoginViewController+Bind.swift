@@ -29,6 +29,10 @@ extension LoginViewController {
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.error }
+            .distinctUntilChanged({ $0?.asSWError == $1?.asSWError })
+            .bind(to: self.rx.error)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.user }
             .distinctUntilChanged()
             .skip(1)

@@ -232,23 +232,23 @@ struct R: Rswift.Validatable {
       /// Value: 停止
       static let actionStop = Rswift.StringResource(key: "Action.Stop", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
-      static let errorSystemListIsEmptyMessage = Rswift.StringResource(key: "Error.System.ListIsEmpty.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorListIsEmptyMessage = Rswift.StringResource(key: "Error.ListIsEmpty.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
-      static let errorSystemListIsEmptyTitle = Rswift.StringResource(key: "Error.System.ListIsEmpty.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorListIsEmptyTitle = Rswift.StringResource(key: "Error.ListIsEmpty.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 半小时后
       static let actionHalfAnHour = Rswift.StringResource(key: "Action.HalfAnHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 导航错误
-      static let errorSystemNavigationMessage = Rswift.StringResource(key: "Error.System.Navigation.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorNavigationMessage = Rswift.StringResource(key: "Error.Navigation.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 导航错误
-      static let errorSystemNavigationTitle = Rswift.StringResource(key: "Error.System.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorNavigationTitle = Rswift.StringResource(key: "Error.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的
       static let mine = Rswift.StringResource(key: "Mine", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 数据解析异常
-      static let errorSystemDataFormatMessage = Rswift.StringResource(key: "Error.System.DataFormat.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorDataFormatMessage = Rswift.StringResource(key: "Error.DataFormat.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 数据解析异常
-      static let errorSystemDataFormatTitle = Rswift.StringResource(key: "Error.System.DataFormat.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorDataFormatTitle = Rswift.StringResource(key: "Error.DataFormat.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let yes = Rswift.StringResource(key: "Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 服务异常
@@ -256,13 +256,13 @@ struct R: Rswift.Validatable {
       /// Value: 服务异常
       static let errorServerTitle = Rswift.StringResource(key: "Error.Server.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 未知错误
-      static let errorSystemUnknownMessage = Rswift.StringResource(key: "Error.System.Unknown.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorUnknownMessage = Rswift.StringResource(key: "Error.Unknown.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 未知错误
-      static let errorSystemUnknownTitle = Rswift.StringResource(key: "Error.System.Unknown.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorUnknownTitle = Rswift.StringResource(key: "Error.Unknown.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户未登录
-      static let errorUnloginMessage = Rswift.StringResource(key: "Error.Unlogin.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorNotLoginedInMessage = Rswift.StringResource(key: "Error.NotLoginedIn.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户未登录
-      static let errorUnloginTitle = Rswift.StringResource(key: "Error.Unlogin.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let errorNotLoginedInTitle = Rswift.StringResource(key: "Error.NotLoginedIn.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录即表示同意
@@ -360,29 +360,29 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 列表为空
-      static func errorSystemListIsEmptyMessage(preferredLanguages: [String]? = nil) -> String {
+      static func errorListIsEmptyMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.ListIsEmpty.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.ListIsEmpty.Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.ListIsEmpty.Message"
+          return "Error.ListIsEmpty.Message"
         }
 
-        return NSLocalizedString("Error.System.ListIsEmpty.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.ListIsEmpty.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 列表为空
-      static func errorSystemListIsEmptyTitle(preferredLanguages: [String]? = nil) -> String {
+      static func errorListIsEmptyTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.ListIsEmpty.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.ListIsEmpty.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.ListIsEmpty.Title"
+          return "Error.ListIsEmpty.Title"
         }
 
-        return NSLocalizedString("Error.System.ListIsEmpty.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.ListIsEmpty.Title", bundle: bundle, comment: "")
       }
 
       /// Value: 半小时后
@@ -412,29 +412,29 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 导航错误
-      static func errorSystemNavigationMessage(preferredLanguages: [String]? = nil) -> String {
+      static func errorNavigationMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.Navigation.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.Navigation.Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.Navigation.Message"
+          return "Error.Navigation.Message"
         }
 
-        return NSLocalizedString("Error.System.Navigation.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.Navigation.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 导航错误
-      static func errorSystemNavigationTitle(preferredLanguages: [String]? = nil) -> String {
+      static func errorNavigationTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.Navigation.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.Navigation.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.Navigation.Title"
+          return "Error.Navigation.Title"
         }
 
-        return NSLocalizedString("Error.System.Navigation.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.Navigation.Title", bundle: bundle, comment: "")
       }
 
       /// Value: 我的
@@ -451,29 +451,29 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 数据解析异常
-      static func errorSystemDataFormatMessage(preferredLanguages: [String]? = nil) -> String {
+      static func errorDataFormatMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.DataFormat.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.DataFormat.Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.DataFormat.Message"
+          return "Error.DataFormat.Message"
         }
 
-        return NSLocalizedString("Error.System.DataFormat.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.DataFormat.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 数据解析异常
-      static func errorSystemDataFormatTitle(preferredLanguages: [String]? = nil) -> String {
+      static func errorDataFormatTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.DataFormat.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.DataFormat.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.DataFormat.Title"
+          return "Error.DataFormat.Title"
         }
 
-        return NSLocalizedString("Error.System.DataFormat.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.DataFormat.Title", bundle: bundle, comment: "")
       }
 
       /// Value: 是
@@ -516,55 +516,55 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 未知错误
-      static func errorSystemUnknownMessage(preferredLanguages: [String]? = nil) -> String {
+      static func errorUnknownMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.Unknown.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.Unknown.Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.Unknown.Message"
+          return "Error.Unknown.Message"
         }
 
-        return NSLocalizedString("Error.System.Unknown.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.Unknown.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 未知错误
-      static func errorSystemUnknownTitle(preferredLanguages: [String]? = nil) -> String {
+      static func errorUnknownTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.System.Unknown.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.Unknown.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.System.Unknown.Title"
+          return "Error.Unknown.Title"
         }
 
-        return NSLocalizedString("Error.System.Unknown.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.Unknown.Title", bundle: bundle, comment: "")
       }
 
       /// Value: 用户未登录
-      static func errorUnloginMessage(preferredLanguages: [String]? = nil) -> String {
+      static func errorNotLoginedInMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.Unlogin.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.NotLoginedIn.Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.Unlogin.Message"
+          return "Error.NotLoginedIn.Message"
         }
 
-        return NSLocalizedString("Error.Unlogin.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.NotLoginedIn.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 用户未登录
-      static func errorUnloginTitle(preferredLanguages: [String]? = nil) -> String {
+      static func errorNotLoginedInTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error.Unlogin.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.NotLoginedIn.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error.Unlogin.Title"
+          return "Error.NotLoginedIn.Title"
         }
 
-        return NSLocalizedString("Error.Unlogin.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.NotLoginedIn.Title", bundle: bundle, comment: "")
       }
 
       /// Value: 登录

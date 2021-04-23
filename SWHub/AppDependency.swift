@@ -85,13 +85,7 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        self.provider.login(token: "").subscribe { user in
-//            let aaa = user
-//            log("a")
-//        } onError: { error in
-//            let bbb = error
-//            log("b")
-//        }.disposed(by: self.disposeBag)
+        
     }
     
     // MARK: - Lifecycle

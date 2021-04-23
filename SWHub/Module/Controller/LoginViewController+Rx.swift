@@ -17,4 +17,14 @@ extension Reactive where Base: LoginViewController {
         self.base.loginButton.rx.tap
     }
     
+    var error: Binder<Error?> {
+        return Binder(self.base) { viewController, error in
+            viewController.error = error
+            guard viewController.isViewLoaded else {
+                return
+            }
+            viewController.errorLabel.text = error?.localizedDescription
+        }
+    }
+    
 }

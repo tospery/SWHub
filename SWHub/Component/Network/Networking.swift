@@ -27,7 +27,7 @@ struct Networking: NetworkingType {
     func request<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<Model> {
         self.requestJSON(target).flatMap { json -> Single<Model> in
             guard let json = json as? [String: Any] else {
-                return .error(SystemError.dataFormat)
+                return .error(SWError.dataFormat)
             }
             guard let model = Model.init(JSON: json), model.isValid else {
                 return .error(SWError.server(0, json["message"] as? String))
