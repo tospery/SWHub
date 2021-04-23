@@ -26,6 +26,8 @@
 "Error.Retry" = "重试";
 "Error.Network.Title" = "网络错误";
 "Error.Network.Message" = "网络错误";
+"Error.Unlogin.Title" = "用户未登录";
+"Error.Unlogin.Message" = "用户未登录";
 "Error.Server.Title" = "服务异常";
 "Error.Server.Message" = "服务异常";
 "Error.App.Title" = "非法操作";
@@ -38,7 +40,3 @@
 "Error.System.DataFormat.Message" = "数据解析异常";
 "Error.System.ListIsEmpty.Title" = "列表为空";
 "Error.System.ListIsEmpty.Message" = "列表为空";
-"Error.User.NotLoggedIn.Title" = "用户未登录";
-"Error.User.NotLoggedIn.Message" = "用户未登录";
-"Error.User.LoginExpired.Title" = "用户登录过期";
-"Error.User.LoginExpired.Message" = "用户登录过期";
