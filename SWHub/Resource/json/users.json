@@ -1,0 +1,282 @@
+[
+    {
+        "username": "briansmith",
+        "name": "Brian Smith",
+        "url": "https://github.com/briansmith",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/16816",
+        "repo": {
+            "name": "ring",
+            "description": "Safe, fast, small crypto using Rust",
+            "url": "https://github.com/briansmith/ring"
+        }
+    },
+    {
+        "username": "ritchie46",
+        "name": "Ritchie Vink",
+        "url": "https://github.com/ritchie46",
+        "sponsorUrl": "https://github.com/sponsors/ritchie46",
+        "avatar": "https://avatars.githubusercontent.com/u/3023000",
+        "repo": {
+            "name": "polars",
+            "description": "Fast multi-threaded DataFrame library in Rust and Python",
+            "url": "https://github.com/ritchie46/polars"
+        }
+    },
+    {
+        "username": "PySimpleGUI",
+        "name": "PySimpleGUI",
+        "url": "https://github.com/PySimpleGUI",
+        "sponsorUrl": "https://github.com/sponsors/PySimpleGUI",
+        "avatar": "https://avatars.githubusercontent.com/u/46163555",
+        "repo": {
+            "name": "PySimpleGUI",
+            "description": "Launched in 2018 Actively developed and supported. Supports tkinter, Qt, WxPython, Remi (in browser). Create custom layout GUI's simply. Python 2.7 & 3 Support. 200+ Demo programs & Cookbook for rapid start. Extensive documentation. Examples using Machine Learning(GUI, OpenCV Integration, Chatterbot), Floating Desktop Widgets, Matplotlib + Pyplo…",
+            "url": "https://github.com/PySimpleGUI/PySimpleGUI"
+        }
+    },
+    {
+        "username": "a8m",
+        "name": "Ariel Mashraki",
+        "url": "https://github.com/a8m",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/7413593",
+        "repo": {
+            "name": "golang-cheat-sheet",
+            "description": "An overview of Go syntax and features.",
+            "url": "https://github.com/a8m/golang-cheat-sheet"
+        }
+    },
+    {
+        "username": "imsnif",
+        "name": "Aram Drevekenin",
+        "url": "https://github.com/imsnif",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/795598",
+        "repo": {
+            "name": "bandwhich",
+            "description": "Terminal bandwidth utilization tool",
+            "url": "https://github.com/imsnif/bandwhich"
+        }
+    },
+    {
+        "username": "edenhill",
+        "name": "Magnus Edenhill",
+        "url": "https://github.com/edenhill",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/524990",
+        "repo": {
+            "name": "kafkacat",
+            "description": "Generic command line non-JVM Apache Kafka producer and consumer",
+            "url": "https://github.com/edenhill/kafkacat"
+        }
+    },
+    {
+        "username": "sorrycc",
+        "name": "chencheng (云谦)",
+        "url": "https://github.com/sorrycc",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/35128",
+        "repo": {
+            "name": "awesome-javascript",
+            "description": "🐢 A collection of awesome browser-side JavaScript libraries, resources and shiny things.",
+            "url": "https://github.com/sorrycc/awesome-javascript"
+        }
+    },
+    {
+        "username": "justinfagnani",
+        "name": "Justin Fagnani",
+        "url": "https://github.com/justinfagnani",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/522948",
+        "repo": {
+            "name": "stampino",
+            "description": "A composable DOM template system",
+            "url": "https://github.com/justinfagnani/stampino"
+        }
+    },
+    {
+        "username": "lucasfernog",
+        "name": "Lucas Fernandes Nogueira",
+        "url": "https://github.com/lucasfernog",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/20051258",
+        "repo": {
+            "name": "tauri-sqlite-rs",
+            "description": "Tauri extension with SQLite bindings",
+            "url": "https://github.com/lucasfernog/tauri-sqlite-rs"
+        }
+    },
+    {
+        "username": "clauderic",
+        "name": "Claudéric Demers",
+        "url": "https://github.com/clauderic",
+        "sponsorUrl": "https://github.com/sponsors/clauderic",
+        "avatar": "https://avatars.githubusercontent.com/u/1416436",
+        "repo": {
+            "name": "dnd-kit",
+            "description": "A modern, lightweight, performant, accessible and extensible drag & drop toolkit for React.",
+            "url": "https://github.com/clauderic/dnd-kit"
+        }
+    },
+    {
+        "username": "mcollina",
+        "name": "Matteo Collina",
+        "url": "https://github.com/mcollina",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/52195",
+        "repo": {
+            "name": "autocannon",
+            "description": "fast HTTP/1.1 benchmarking tool written in Node.js",
+            "url": "https://github.com/mcollina/autocannon"
+        }
+    },
+    {
+        "username": "jeremylong",
+        "name": "Jeremy Long",
+        "url": "https://github.com/jeremylong",
+        "sponsorUrl": "https://github.com/sponsors/jeremylong",
+        "avatar": "https://avatars.githubusercontent.com/u/862914",
+        "repo": {
+            "name": "DependencyCheck",
+            "description": "OWASP dependency-check is a software composition analysis utility that detects publicly disclosed vulnerabilities in application dependencies.",
+            "url": "https://github.com/jeremylong/DependencyCheck"
+        }
+    },
+    {
+        "username": "vasturiano",
+        "name": "Vasco Asturiano",
+        "url": "https://github.com/vasturiano",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/6784226",
+        "repo": {
+            "name": "3d-force-graph",
+            "description": "3D force-directed graph component using ThreeJS/WebGL",
+            "url": "https://github.com/vasturiano/3d-force-graph"
+        }
+    },
+    {
+        "username": "buckyroberts",
+        "name": "Bucky Roberts",
+        "url": "https://github.com/buckyroberts",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/8547538",
+        "repo": {
+            "name": "Spider",
+            "description": "Python website crawler.",
+            "url": "https://github.com/buckyroberts/Spider"
+        }
+    },
+    {
+        "username": "sebastianbenz",
+        "name": "Sebastian Benz",
+        "url": "https://github.com/sebastianbenz",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/380472",
+        "repo": null
+    },
+    {
+        "username": "liamdebeasi",
+        "name": "Liam DeBeasi",
+        "url": "https://github.com/liamdebeasi",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/2721089",
+        "repo": null
+    },
+    {
+        "username": "tomayac",
+        "name": "Thomas Steiner",
+        "url": "https://github.com/tomayac",
+        "sponsorUrl": "https://github.com/sponsors/tomayac",
+        "avatar": "https://avatars.githubusercontent.com/u/145676",
+        "repo": {
+            "name": "fugu-paint",
+            "description": null,
+            "url": "https://github.com/tomayac/fugu-paint"
+        }
+    },
+    {
+        "username": "MattIPv4",
+        "name": "Matt (IPv4) Cowley",
+        "url": "https://github.com/MattIPv4",
+        "sponsorUrl": "https://github.com/sponsors/MattIPv4",
+        "avatar": "https://avatars.githubusercontent.com/u/12371363",
+        "repo": {
+            "name": "do_username",
+            "description": "A DigitalOcean-community-themed username generator. Implemented in Ruby, JavaScript and Rust.",
+            "url": "https://github.com/MattIPv4/do_username"
+        }
+    },
+    {
+        "username": "stefanprodan",
+        "name": "Stefan Prodan",
+        "url": "https://github.com/stefanprodan",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/3797675",
+        "repo": {
+            "name": "dockprom",
+            "description": "Docker hosts and containers monitoring with Prometheus, Grafana, cAdvisor, NodeExporter and AlertManager",
+            "url": "https://github.com/stefanprodan/dockprom"
+        }
+    },
+    {
+        "username": "paulb777",
+        "name": "Paul Beusterien",
+        "url": "https://github.com/paulb777",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/73870",
+        "repo": null
+    },
+    {
+        "username": "mperham",
+        "name": "Mike Perham",
+        "url": "https://github.com/mperham",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/2911",
+        "repo": {
+            "name": "sidekiq",
+            "description": "Simple, efficient background processing for Ruby",
+            "url": "https://github.com/mperham/sidekiq"
+        }
+    },
+    {
+        "username": "Shazwazza",
+        "name": "Shannon Deminick",
+        "url": "https://github.com/Shazwazza",
+        "sponsorUrl": "https://github.com/sponsors/Shazwazza",
+        "avatar": "https://avatars.githubusercontent.com/u/1742685",
+        "repo": {
+            "name": "UmbracoIdentity",
+            "description": "ASP.NET Identity implementation for Umbraco's native member data",
+            "url": "https://github.com/Shazwazza/UmbracoIdentity"
+        }
+    },
+    {
+        "username": "jszwedko",
+        "name": "Jesse Szwedko",
+        "url": "https://github.com/jszwedko",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/316880",
+        "repo": null
+    },
+    {
+        "username": "JanDeDobbeleer",
+        "name": "Jan De Dobbeleer",
+        "url": "https://github.com/JanDeDobbeleer",
+        "sponsorUrl": "https://github.com/sponsors/JanDeDobbeleer",
+        "avatar": "https://avatars.githubusercontent.com/u/2492783",
+        "repo": {
+            "name": "oh-my-posh",
+            "description": "A prompt theme engine for any shell.",
+            "url": "https://github.com/JanDeDobbeleer/oh-my-posh"
+        }
+    },
+    {
+        "username": "balazsorban44",
+        "name": "Balázs Orbán",
+        "url": "https://github.com/balazsorban44",
+        "sponsorUrl": "https://github.com/sponsors/balazsorban44",
+        "avatar": "https://avatars.githubusercontent.com/u/18369201",
+        "repo": null
+    }
+]

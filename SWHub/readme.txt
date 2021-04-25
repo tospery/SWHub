@@ -4,7 +4,7 @@
 4、选着info.plist
 5、修改bundle id
 6、修改R.swift配置
-7、重命名SWHubAPI
+7、重命名GithubAPI
 8、修改APP名称Swift工程模板
 9、编译运行
 10、删除SwiftPT的scheme

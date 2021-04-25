@@ -8,13 +8,17 @@
 import Foundation
 
 extension UIApplication {
+    
+    var baseTrendingUrl: String {
+        "https://gtrend.yapie.me"
+    }
 
     @objc var myBaseApiUrl: String {
-        return "https://api.github.com"
+        "https://api.github.com"
     }
 
     @objc var myBaseWebUrl: String {
-        return "https://m.github.com"
+        "https://m.github.com"
     }
 
 }

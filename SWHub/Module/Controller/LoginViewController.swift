@@ -9,8 +9,6 @@ import UIKit
 import SafariServices
 
 class LoginViewController: ScrollViewController, ReactorKit.View {
-    
-    var authSession: SFAuthenticationSession!
         
     lazy var sloganLabel: SWLabel = {
         let label = SWLabel.init()
@@ -158,18 +156,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     }
 
     func oauth(event: ControlEvent<Void>.Element) {
-        log("aaaa")
-        self.authSession = .init(
-            url: Router.Web.oauth.urlString.url!,
-            callbackURLScheme: "swhub",
-            completionHandler: { (callbackURL, error) in
-                let aaa = callbackURL
-                let bbb = error
-                log("cccc")
-            }
-        )
-        self.authSession.start()
-        log("bbbb")
+        
     }
     
 }

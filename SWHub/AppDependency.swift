@@ -85,7 +85,11 @@ final class AppDependency: AppDependencyType {
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        
+//        self.provider.repositories(language: nil, since: nil).subscribe { repos in
+//            log("aaa")
+//        } onError: { error in
+//            log("bbb")
+//        }.disposed(by: self.disposeBag)
     }
     
     // MARK: - Lifecycle

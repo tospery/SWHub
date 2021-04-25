@@ -50,25 +50,22 @@ struct User: ModelType, Subjective, Eventable {
     var url: String?
     var hireable: String?
     var twitterUsername: String?
+    var username: String?
+    var avatar: String?
+    var sponsorUrl: String?
     var plan: Plan?
+    var repos: [Repo]?
     
     var isValid: Bool {
         self.id ?? 0 != 0 &&
             self.login?.isEmpty ?? true == false
     }
     
-//    var isLogined: Bool {
-//        if self.id ?? 0 == 0 ||
-//            self.login?.isEmpty ?? true == true {
-//            return false
-//        }
-//        return true
-//    }
-    
     init() { }
 
     init?(map: Map) { }
 
+    // swiftlint:disable function_body_length
     mutating func mapping(map: Map) {
         id                      <- map["id"]
         avatarUrl               <- map["avatar_url"]
@@ -109,7 +106,12 @@ struct User: ModelType, Subjective, Eventable {
         type                    <- map["type"]
         updatedAt               <- map["updated_at"]
         url                     <- map["url"]
+        username                <- map["username"]
+        avatar                  <- map["avatar"]
+        sponsorUrl              <- map["sponsorUrl"]
+        repos                   <- map["repo"]
     }
+    // swiftlint:enable function_body_length
     
     static func update(_ user: User?) {
         if let old = Self.current {

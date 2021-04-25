@@ -1,5 +1,5 @@
 //
-//  SWHubAPI.swift
+//  GithubAPI.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/11/28.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum SWHubAPI {
+enum GithubAPI {
     case login(token: String)
 }
 
-extension SWHubAPI: TargetType {
+extension GithubAPI: TargetType {
 
     var baseURL: URL {
         return UIApplication.shared.baseApiUrl.url!

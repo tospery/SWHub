@@ -32,3 +32,17 @@ enum Platform {
         }
     }
 }
+
+enum Since {
+    case daily
+    case weekly
+    case montly
+    
+    var paramValue: String {
+        switch self {
+        case .daily: return "daily"
+        case .weekly: return "weekly"
+        case .montly: return "montly"
+        }
+    }
+}
