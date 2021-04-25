@@ -18,6 +18,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setTitle(String?)
         case setUser(User?)
+        case setRepos([Repo])
     }
 
     struct State {
@@ -25,6 +26,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var error: Error?
         var title: String?
         var user: User?
+        var repos = [Repo].init()
         var sections = [Section].init()
     }
 
@@ -40,7 +42,19 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            return .empty()
+            return Observable.concat([
+                .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.provider.repositories(language: nil, since: nil)
+                    .asObservable()
+                    .map(Mutation.setRepos),
+                .just(.setLoading(false))
+            ]).catchError({
+                Observable.concat([
+                    .just(.setLoading(false)),
+                    .just(.setError($0))
+                ])
+            })
         }
     }
     
@@ -50,14 +64,16 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
         case let .setError(error):
-            if error != nil && state.isLoading {
-                newState.isLoading = false
-            }
             newState.error = error
         case let .setTitle(title):
             newState.title = title
         case let .setUser(user):
             newState.user = user
+        case let .setRepos(repos):
+            newState.repos = repos
+            let items = repos.enumerated().map { RepoItem.init($0.element, $0.offset) }
+            let sectionItems = items.map { SectionItem.repo($0) }
+            newState.sections = [.sectionItems(header: "", items: sectionItems)]
         }
         return newState
     }
@@ -67,8 +83,9 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
-        return .merge(mutation, user)
+//        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
+//        return .merge(mutation, user)
+        mutation
     }
     
     func transform(state: Observable<State>) -> Observable<State> {

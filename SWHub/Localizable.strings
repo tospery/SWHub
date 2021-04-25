@@ -15,6 +15,7 @@
 "Mine" = "我的";
 "Login" = "登录";
 "Token" = "私钥";
+"Unknown" = "未知";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";
 "Login.Slogan" = "%@ For GitHub";

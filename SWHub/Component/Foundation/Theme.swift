@@ -50,7 +50,7 @@ struct LightTheme: Theme {
     let captionColor = UIColor(hex: 0x999999)!
     let bodyColor = UIColor(hex: 0x666666)!
     let footnoteColor = UIColor(hex: 0xD2D2D2)!
-    let borderColor = UIColor.Material.grey300
+    let borderColor = UIColor(hex: 0xF4F4F4)!
     let separatorColor = UIColor(hex: 0xF2F2F2)!
     let indicatorColor = UIColor.Material.grey600
     let special1Color = UIColor(hex: 0xE82220)!

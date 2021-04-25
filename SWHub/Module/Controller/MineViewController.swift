@@ -17,9 +17,10 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     
     lazy var testButton: SWButton = {
         let button = SWButton.init(type: .custom)
-        button.backgroundColor = .red
+        button.tintColor = .red
+        button.setImage(R.image.star()?.template, for: .normal)
         button.sizeToFit()
-        button.size = .init(80)
+        // button.size = .init(80)
         return button
     }()
     
@@ -83,6 +84,8 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default:
+                    fatalError()
                 }
             },
             configureSupplementaryView: { _, collectionView, kind, indexPath in
@@ -104,6 +107,8 @@ extension MineViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case .simple(let item):
             return Reusable.simpleCell.class.size(width: width, item: item)
+        default:
+            fatalError()
         }
     }
 

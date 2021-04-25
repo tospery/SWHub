@@ -31,6 +31,22 @@ struct Repo: ModelType, Subjective, Eventable {
             self.url?.isEmpty ?? true == false
     }
     
+    var languageAttrString: NSAttributedString {
+        NSAttributedString.composed(of: [
+            "●".styled(with: .color(self.languageColor?.color ?? .random)),
+            Special.space,
+            (self.language ?? "unknown").styled(with: .color(.title))
+        ]).styled(with: .font(.systemFont(ofSize: 12)))
+    }
+    
+    var starsAttrString: NSAttributedString {
+        NSAttributedString.composed(of: [
+            R.image.star()!.styled(with: .baselineOffset(-3)),
+            Special.space,
+            (self.stars ?? 0).kFormatted.styled(with: .color(.title))
+        ]).styled(with: .font(.systemFont(ofSize: 12)))
+    }
+    
     init() { }
 
     init?(map: Map) { }

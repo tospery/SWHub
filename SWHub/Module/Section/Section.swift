@@ -8,27 +8,27 @@
 import Foundation
 
 enum Section {
-    case simples(header: String, items: [SectionItem])
+    case sectionItems(header: String, items: [SectionItem])
 }
 
 extension Section: AnimatableSectionModelType {
     
     var identity: String {
         switch self {
-        case let .simples(header, _): return header
+        case let .sectionItems(header, _): return header // YJX_TODO header作为identity其实并不合适
         }
     }
 
     var items: [SectionItem] {
         switch self {
-        case let .simples(_, items): return items
+        case let .sectionItems(_, items): return items
         }
     }
 
     init(original: Section, items: [SectionItem]) {
         switch original {
-        case let .simples(header, _):
-            self = .simples(header: header, items: items)
+        case let .sectionItems(header, _):
+            self = .sectionItems(header: header, items: items)
         }
     }
     
@@ -36,10 +36,13 @@ extension Section: AnimatableSectionModelType {
 
 enum SectionItem: IdentifiableType, Equatable {
     case simple(SimpleItem)
+    case repo(RepoItem)
 
     var identity: String {
         switch self {
         case let .simple(item):
+            return item.description
+        case let .repo(item):
             return item.description
         }
     }
@@ -48,6 +51,9 @@ enum SectionItem: IdentifiableType, Equatable {
         switch (lhs, rhs) {
         case let (.simple(left), .simple(right)):
             return left.description == right.description
+        case let (.repo(left), .repo(right)):
+            return left.description == right.description
+        default: return false
         }
     }
     

@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
-        static let simpleCell = ReusableCell<SimpleCell>()
+        static let repoCell = ReusableCell<RepoCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
@@ -30,7 +30,7 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.simpleCell)
+        self.collectionView.register(Reusable.repoCell)
     }
     
     func bind(reactor: HomeViewReactor) {
@@ -61,10 +61,12 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
         return .init(
             configureCell: { _, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case .simple(let item):
-                    let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
+                case .repo(let item):
+                    let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default:
+                    fatalError()
                 }
             },
             configureSupplementaryView: { _, collectionView, kind, indexPath in
@@ -84,8 +86,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case .simple(let item):
-            return Reusable.simpleCell.class.size(width: width, item: item)
+        case .repo(let item):
+            return Reusable.repoCell.class.size(width: width, item: item)
+        default:
+            fatalError()
         }
     }
 
