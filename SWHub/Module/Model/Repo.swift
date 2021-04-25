@@ -17,7 +17,7 @@ struct Repo: ModelType, Subjective, Eventable {
     var author: String?
     var avatar: String?
     var currentPeriodStars: Int?
-    var descriptionField: String?
+    var desc: String?
     var forks: Int?
     var language: String?
     var languageColor: String?
@@ -57,7 +57,7 @@ struct Repo: ModelType, Subjective, Eventable {
         author              <- map["author"]
         avatar              <- map["avatar"]
         currentPeriodStars  <- map["currentPeriodStars"]
-        descriptionField    <- map["description"]
+        desc                <- map["description"]
         forks               <- map["forks"]
         language            <- map["language"]
         languageColor       <- map["languageColor"]

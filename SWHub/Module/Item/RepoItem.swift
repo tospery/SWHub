@@ -34,7 +34,9 @@ class RepoItem: CollectionItem, ReactorKit.Reactor {
             ranking: ranking,
             icon: repo.avatar?.url,
             title: "\(repo.author ?? "")/\(repo.name ?? "")",
-            desc: nil,
+            desc: repo.desc?.styled(with: .font(.systemFont(ofSize: 15)),
+                                    .lineHeightMultiple(1.1),
+                                    .lineBreakMode(.byTruncatingTail)),
             lang: repo.languageAttrString,
             star: repo.starsAttrString
         )
