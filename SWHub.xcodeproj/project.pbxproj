@@ -334,8 +334,8 @@
 				79CE3B7D260E402700BB918B /* GithubAPI.swift */,
 				79CE3B7E260E402700BB918B /* Networking.swift */,
 				79CE3B7F260E402700BB918B /* ProviderType+GithubAPI.swift */,
-				8C531A392635038D00EE101A /* TrendingAPI.swift */,
 				8C531A3C2635039F00EE101A /* ProviderType+TrendingAPI.swift */,
+				8C531A392635038D00EE101A /* TrendingAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

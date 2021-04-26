@@ -15,6 +15,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
+        case setEmptying(Bool)
         case setError(Error?)
         case setTitle(String?)
         case setUser(User?)
@@ -23,6 +24,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     struct State {
         var isLoading = false
+        var isEmptying = false
         var error: Error?
         var title: String?
         var user: User?
@@ -43,16 +45,19 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             return Observable.concat([
+                .just(.setEmptying(true)),
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
                 self.provider.repositories(language: nil, since: nil)
                     .asObservable()
                     .map(Mutation.setRepos),
-                .just(.setLoading(false))
+                .just(.setLoading(false)),
+                .just(.setEmptying(false))
             ]).catchError({
                 Observable.concat([
                     .just(.setLoading(false)),
-                    .just(.setError($0))
+                    .just(.setError($0)),
+                    .just(.setEmptying(false))
                 ])
             })
         }
@@ -63,6 +68,8 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
+        case let .setEmptying(isEmptying):
+            newState.isEmptying = isEmptying
         case let .setError(error):
             newState.error = error
         case let .setTitle(title):

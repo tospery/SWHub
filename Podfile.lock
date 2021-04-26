@@ -88,6 +88,7 @@ PODS:
     - RxGesture (= 3.0.2)
     - RxOptional (= 4.1.0)
     - RxSwiftExt (= 5.2.0)
+    - RxTheme (= 4.1.1)
     - RxViewController (= 1.0.0)
     - SwifterSwift (= 5.2.0)
     - URLNavigator (= 2.3.0)
@@ -133,7 +134,6 @@ DEPENDENCIES:
   - Parchment (= 3.0.0)
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
-  - RxTheme (= 4.1.1)
   - SnapKit (= 5.0.1)
   - SWFrame (from `../SWFrame`)
   - SwiftEntryKit (= 1.2.6)
@@ -221,7 +221,7 @@ SPEC CHECKSUMS:
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: 1a21522acde6e0c808fca184cac3aa2947c636bb
+  SWFrame: c7afa475629164ec84fe8f78a9e7720c16bcfbe6
   SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
@@ -232,6 +232,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 36458c252f14d83b57fc9e37b5f5857611ddd693
+PODFILE CHECKSUM: 1c4c27899d40d3a0ebecba6f07364aed70c36cc7
 
 COCOAPODS: 1.10.1

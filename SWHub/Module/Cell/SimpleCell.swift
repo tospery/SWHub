@@ -57,7 +57,7 @@ class SimpleCell: CollectionCell, ReactorKit.View {
             .bind({ $0.backgroundColor }, to: self.mainView.rx.backgroundColor)
             .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
-            .bind({ $0.captionColor }, to: self.detailLabel.rx.textColor)
+            .bind({ $0.headerColor }, to: self.detailLabel.rx.textColor)
             .bind({ $0.indicatorColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }

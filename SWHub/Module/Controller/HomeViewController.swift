@@ -47,9 +47,17 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.isEmptying }
+            .distinctUntilChanged()
+            .bind(to: self.rx.emptying)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.error }
+            .distinctUntilChanged({ $0?.asSWError == $1?.asSWError })
+            .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))

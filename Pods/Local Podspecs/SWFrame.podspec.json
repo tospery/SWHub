@@ -52,6 +52,9 @@
     "NSObject+Rx": [
       "5.1.0"
     ],
+    "RxTheme": [
+      "4.1.1"
+    ],
     "Moya/RxSwift": [
       "14.0.0"
     ],

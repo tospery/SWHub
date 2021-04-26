@@ -17,10 +17,11 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     
     lazy var testButton: SWButton = {
         let button = SWButton.init(type: .custom)
-        button.tintColor = .red
-        button.setImage(R.image.star()?.template, for: .normal)
+        // button.tintColor = .red
+        // button.setImage(R.image.star()?.template, for: .normal)
+        button.backgroundColor = .red
         button.sizeToFit()
-        // button.size = .init(80)
+        button.size = .init(80)
         return button
     }()
     
@@ -72,7 +73,8 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     }
     
     func tapTest(event: ControlEvent<Void>.Element) {
-        self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
+        themeService.switch(.dark)
+        // self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MineViewReactor)

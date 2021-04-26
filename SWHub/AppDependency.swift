@@ -102,6 +102,7 @@ final class AppDependency: AppDependencyType {
         Library.setup()
         Appearance.config()
         Router.initialize(self.provider, self.navigator)
+        // 主题
         // 绑定
         Subjection.for(User.self).asObservable()
             .skip(1)

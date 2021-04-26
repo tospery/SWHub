@@ -113,7 +113,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             height: 44.f
         )
         themeService.rx
-            .bind({ $0.captionColor }, to: [
+            .bind({ $0.headerColor }, to: [
                 self.privacyLabel.rx.textColor,
                 self.authLabel.rx.textColor
             ])

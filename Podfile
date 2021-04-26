@@ -9,7 +9,6 @@ target 'SWHub' do
   pod 'SWFrame', :path => '../SWFrame'
   # pod 'SWFrame', '1.3.6'
 
-  pod 'RxTheme', '4.1.1'
   pod 'DefaultsKit', '0.2.0'
   pod 'Cache', '6.0.0'
   pod 'SwiftEntryKit', '1.2.6'
