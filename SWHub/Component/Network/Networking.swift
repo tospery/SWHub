@@ -36,34 +36,24 @@ struct Networking: NetworkingType {
         }
     }
     
-    static var endpointClosure: MoyaProvider<Target>.EndpointClosure {
-        return { target in
-            // return MoyaProvider.defaultEndpointMapping(for: target)
-            return Endpoint(
-                url: URL(target: target).absoluteString,
-                // sampleResponseClosure: { .networkResponse(200, target.sampleData) },
-                sampleResponseClosure: { .networkError(NSError(domain: NSURLErrorDomain, code: -1234, userInfo: nil)) },
-                method: target.method,
-                task: target.task,
-                httpHeaderFields: target.headers
-            )
-        }
-    }
-    
-    static var stubClosure: MoyaProvider<Target>.StubClosure {
-        return { target in
-            return .delayed(seconds: 5)
-//            if let tg2 = target.target as? ChargeAPI {
-//                switch tg2 {
-//                case .accelerate:
-//                    return .delayed(seconds: 2)
-//                default:
-//                    return .never
-//                }
-//            }
-//            return .never
-        }
-    }
+//    static var endpointClosure: MoyaProvider<Target>.EndpointClosure {
+//        return { target in
+//            return Endpoint(
+//                url: URL(target: target).absoluteString,
+//                sampleResponseClosure: { .networkError(
+//    NSError(domain: NSURLErrorDomain, code: -1234, userInfo: nil)) },
+//                method: target.method,
+//                task: target.task,
+//                httpHeaderFields: target.headers
+//            )
+//        }
+//    }
+//
+//    static var stubClosure: MoyaProvider<Target>.StubClosure {
+//        return { target in
+//            return .delayed(seconds: 5)
+//        }
+//    }
     
     static var plugins: [PluginType] {
         var plugins: [PluginType] = []

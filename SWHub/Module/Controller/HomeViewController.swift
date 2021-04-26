@@ -21,6 +21,7 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
+        self.shouldRefresh = reactor.parameters[Parameter.shouldRefresh] as? Bool ?? true
         self.tabBarItem.title = reactor.currentState.title
     }
 
@@ -42,6 +43,9 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
         ])
         .bind(to: reactor.action)
         .disposed(by: self.disposeBag)
+        self.rx.refresh.map { Reactor.Action.refresh }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.title }
             .distinctUntilChanged()
@@ -54,6 +58,10 @@ class HomeViewController: CollectionViewController, ReactorKit.View {
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.isRefreshing }
+            .distinctUntilChanged()
+            .bind(to: self.rx.isRefreshing)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.error }
             .distinctUntilChanged({ $0?.asSWError == $1?.asSWError })

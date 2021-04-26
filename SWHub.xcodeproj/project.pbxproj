@@ -68,6 +68,7 @@
 		8C531A4C26350ECB00EE101A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A4B26350ECB00EE101A /* Language.swift */; };
 		8C531A8F2635388100EE101A /* RepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A8E2635388100EE101A /* RepoItem.swift */; };
 		8C531A922635388A00EE101A /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A912635388A00EE101A /* RepoCell.swift */; };
+		8CAFA7A92636BE950027FFB5 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA7A82636BE950027FFB5 /* IntExt.swift */; };
 		D866100FCC4AF37A08B70089 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,7 @@
 		8C531A4B26350ECB00EE101A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		8C531A8E2635388100EE101A /* RepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItem.swift; sourceTree = "<group>"; };
 		8C531A912635388A00EE101A /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		8CAFA7A82636BE950027FFB5 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
 		9ED09F55CD7A6A69F5C89F53 /* Pods-SwiftPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.release.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.release.xcconfig"; sourceTree = "<group>"; };
 		E07E624452188CDBDC17BFE4 /* Pods-SwiftPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.debug.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,6 +326,7 @@
 				79CE3B77260E402700BB918B /* StorableExt.swift */,
 				79CE3B7A260E402700BB918B /* UIApplicationExt.swift */,
 				79CE3B78260E402700BB918B /* UIColorExt.swift */,
+				8CAFA7A82636BE950027FFB5 /* IntExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				79CE3BA5260E402800BB918B /* CollectionCell.swift in Sources */,
 				79B609812631BD9D00F8D087 /* Plan.swift in Sources */,
 				79CE3BAB260E402800BB918B /* StorableExt.swift in Sources */,
+				8CAFA7A92636BE950027FFB5 /* IntExt.swift in Sources */,
 				79CE3BB1260E402800BB918B /* Networking.swift in Sources */,
 				79CE3BA4260E402800BB918B /* TabBarReactor.swift in Sources */,
 				8C531A4826350DBE00EE101A /* Const.swift in Sources */,

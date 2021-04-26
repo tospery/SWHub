@@ -11,10 +11,12 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
+        case refresh
     }
 
     enum Mutation {
         case setLoading(Bool)
+        case setRefreshing(Bool)
         case setEmptying(Bool)
         case setError(Error?)
         case setTitle(String?)
@@ -24,6 +26,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     struct State {
         var isLoading = false
+        var isRefreshing = false
         var isEmptying = false
         var error: Error?
         var title: String?
@@ -44,6 +47,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
+            guard !self.currentState.isLoading else { return .empty() }
             return Observable.concat([
                 .just(.setEmptying(true)),
                 .just(.setError(nil)),
@@ -60,6 +64,24 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                     .just(.setEmptying(false))
                 ])
             })
+        case .refresh:
+            guard !self.currentState.isRefreshing else { return .empty() }
+            return Observable.concat([
+                .just(.setEmptying(true)),
+                .just(.setError(nil)),
+                .just(.setRefreshing(true)),
+                self.provider.repositories(language: nil, since: nil)
+                    .asObservable()
+                    .map(Mutation.setRepos),
+                .just(.setRefreshing(false)),
+                .just(.setEmptying(false))
+            ]).catchError({
+                Observable.concat([
+                    .just(.setRefreshing(false)),
+                    .just(.setError($0)),
+                    .just(.setEmptying(false))
+                ])
+            })
         }
     }
     
@@ -68,6 +90,8 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
+        case let .setRefreshing(isRefreshing):
+            newState.isRefreshing = isRefreshing
         case let .setEmptying(isEmptying):
             newState.isEmptying = isEmptying
         case let .setError(error):

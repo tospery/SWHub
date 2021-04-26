@@ -43,7 +43,7 @@ struct Repo: ModelType, Subjective, Eventable {
         NSAttributedString.composed(of: [
             R.image.star()!.styled(with: .baselineOffset(-3)),
             Special.space,
-            (self.stars ?? 0).kFormatted.styled(with: .color(.title))
+            (self.stars ?? 0).formatted.styled(with: .color(.title))
         ]).styled(with: .font(.systemFont(ofSize: 12)))
     }
     

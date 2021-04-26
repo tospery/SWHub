@@ -48,7 +48,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
     lazy var starLabel: SWLabel = {
         let label = SWLabel()
         label.sizeToFit()
-        label.size = .init(width: 50, height: 25)
+        label.size = .init(width: 60, height: 25)
         return label
     }()
     
