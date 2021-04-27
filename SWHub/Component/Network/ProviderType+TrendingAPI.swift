@@ -20,4 +20,14 @@ extension SWFrame.ProviderType {
         )
     }
     
+    /// 编程语言
+    func languages() -> Single<[Language]> {
+        networking.requestArray(
+            MultiTarget.init(
+                TrendingAPI.languages
+            ),
+            type: Language.self
+        )
+    }
+    
 }

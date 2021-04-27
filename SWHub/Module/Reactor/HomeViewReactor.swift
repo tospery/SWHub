@@ -7,32 +7,26 @@
 
 import Foundation
 
-class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
-        case refresh
     }
 
     enum Mutation {
-        case setLoading(Bool)
-        case setRefreshing(Bool)
         case setEmptying(Bool)
+        case setLoading(Bool)
+        case setLanguages([Language])
         case setError(Error?)
-        case setTitle(String?)
-        case setUser(User?)
-        case setRepos([Repo])
     }
 
     struct State {
-        var isLoading = false
-        var isRefreshing = false
         var isEmptying = false
-        var error: Error?
+        var isLoading = false
         var title: String?
-        var user: User?
-        var repos = [Repo].init()
-        var sections = [Section].init()
+        var languages = [Language].init()
+        var items: [HomeKey] = [.repo, .user]
+        var error: Error?
     }
 
     var initialState = State()
@@ -40,10 +34,10 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: self.title ?? R.string.localizable.home()
+            title: self.title ?? R.string.localizable.trending()
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -52,9 +46,7 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 .just(.setEmptying(true)),
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repositories(language: nil, since: nil)
-                    .asObservable()
-                    .map(Mutation.setRepos),
+                self.provider.languages().asObservable().map(Mutation.setLanguages),
                 .just(.setLoading(false)),
                 .just(.setEmptying(false))
             ]).catchError({
@@ -64,63 +56,42 @@ class HomeViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                     .just(.setEmptying(false))
                 ])
             })
-        case .refresh:
-            guard !self.currentState.isRefreshing else { return .empty() }
-            return Observable.concat([
-                .just(.setEmptying(true)),
-                .just(.setError(nil)),
-                .just(.setRefreshing(true)),
-                self.provider.repositories(language: nil, since: nil)
-                    .asObservable()
-                    .map(Mutation.setRepos),
-                .just(.setRefreshing(false)),
-                .just(.setEmptying(false))
-            ]).catchError({
-                Observable.concat([
-                    .just(.setRefreshing(false)),
-                    .just(.setError($0)),
-                    .just(.setEmptying(false))
-                ])
-            })
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case let .setLoading(isLoading):
-            newState.isLoading = isLoading
-        case let .setRefreshing(isRefreshing):
-            newState.isRefreshing = isRefreshing
         case let .setEmptying(isEmptying):
             newState.isEmptying = isEmptying
+        case let .setLoading(isLoading):
+            newState.isLoading = isLoading
+        case let .setLanguages(languages):
+            newState.languages = languages
         case let .setError(error):
             newState.error = error
-        case let .setTitle(title):
-            newState.title = title
-        case let .setUser(user):
-            newState.user = user
-        case let .setRepos(repos):
-            newState.repos = repos
-            let items = repos.enumerated().map { RepoItem.init($0.element, $0.offset) }
-            let sectionItems = items.map { SectionItem.repo($0) }
-            newState.sections = [.sectionItems(header: "", items: sectionItems)]
+//        case let .setCodes(codes):
+//            state.codes = codes
+//            let realm = Realm.default
+//            realm.beginWrite()
+//            realm.add(codes, update: .modified)
+//            try! realm.commitWrite()
         }
-        return newState
-    }
-    
-    func transform(action: Observable<Action>) -> Observable<Action> {
-        action
-    }
-    
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-//        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
-//        return .merge(mutation, user)
-        mutation
-    }
-    
-    func transform(state: Observable<State>) -> Observable<State> {
-        state
+        return state
     }
 
+}
+
+enum HomeKey {
+    case repo
+    case user
+
+    var title: String {
+        switch self {
+        case .repo:
+            return R.string.localizable.repository()
+        case .user:
+            return R.string.localizable.developer()
+        }
+    }
 }

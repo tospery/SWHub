@@ -228,7 +228,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 36 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 39 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -238,6 +238,10 @@ struct R: Rswift.Validatable {
       static let actionOneHour = Rswift.StringResource(key: "Action.OneHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 5分钟后
       static let actionFiveMinutes = Rswift.StringResource(key: "Action.FiveMinutes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Developer
+      static let developer = Rswift.StringResource(key: "Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Repository
+      static let repository = Rswift.StringResource(key: "Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 停止
       static let actionStop = Rswift.StringResource(key: "Action.Stop", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
@@ -292,6 +296,8 @@ struct R: Rswift.Validatable {
       static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 请输入您的个人访问密钥
       static let loginPlaceholderToken = Rswift.StringResource(key: "Login.Placeholder.Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 趋势
+      static let trending = Rswift.StringResource(key: "Trending", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 重试
       static let errorRetry = Rswift.StringResource(key: "Error.Retry", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。
@@ -355,6 +361,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Action.FiveMinutes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Developer
+      static func developer(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Developer", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Developer"
+        }
+
+        return NSLocalizedString("Developer", bundle: bundle, comment: "")
+      }
+
+      /// Value: Repository
+      static func repository(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Repository", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Repository"
+        }
+
+        return NSLocalizedString("Repository", bundle: bundle, comment: "")
       }
 
       /// Value: 停止
@@ -706,6 +738,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Login.Placeholder.Token", bundle: bundle, comment: "")
+      }
+
+      /// Value: 趋势
+      static func trending(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Trending", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Trending"
+        }
+
+        return NSLocalizedString("Trending", bundle: bundle, comment: "")
       }
 
       /// Value: 重试

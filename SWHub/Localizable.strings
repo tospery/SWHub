@@ -16,6 +16,9 @@
 "Login" = "登录";
 "Token" = "私钥";
 "Unknown" = "未知";
+"Trending" = "趋势";
+"Repository" = "Repository";
+"Developer" = "Developer";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";
 "Login.Slogan" = "%@ For GitHub";

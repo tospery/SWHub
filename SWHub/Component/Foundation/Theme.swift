@@ -7,12 +7,6 @@
 
 import Foundation
 
-// YJX_TODO
-// themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
-//    guard let `self` = self else { return }
-//    self.paging.reloadMenu()
-//}).disposed(by: self.rx.disposeBag)
-
 struct LightTheme: Theme {
     let backgroundColor = UIColor.Material.white
     let foregroundColor = UIColor.Material.black

@@ -24,6 +24,7 @@ import UIKit
 @_exported import URLNavigator
 @_exported import Rswift
 @_exported import Alamofire
+@_exported import SnapKit
 @_exported import Kingfisher
 @_exported import SwifterSwift
 @_exported import SwiftEntryKit

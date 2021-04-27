@@ -59,8 +59,13 @@
 		79CE3BCC260E42B900BB918B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79CE3BCB260E42B900BB918B /* Localizable.strings */; };
 		79CE3C2F260E443600BB918B /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE3C2E260E443600BB918B /* R.generated.swift */; };
 		8C1869312632748300659FBC /* LoginViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1869302632748300659FBC /* LoginViewController+Bind.swift */; };
-		8C1869342632749800659FBC /* LoginViewController+Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1869332632749800659FBC /* LoginViewController+Handle.swift */; };
-		8C186937263274A400659FBC /* LoginViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C186936263274A400659FBC /* LoginViewController+Rx.swift */; };
+		8C40629B2637E7D300584750 /* TrendingReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C40629A2637E7D300584750 /* TrendingReposViewController.swift */; };
+		8C40629E2637E80B00584750 /* TrendingReposViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C40629D2637E80B00584750 /* TrendingReposViewController+Bind.swift */; };
+		8C4062A72637E94300584750 /* TrendingUsersViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4062A62637E94300584750 /* TrendingUsersViewReactor.swift */; };
+		8C4062AA2637E94F00584750 /* TrendingUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4062A92637E94F00584750 /* TrendingUsersViewController.swift */; };
+		8C4062AE2637E96500584750 /* TrendingUsersViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4062AD2637E96500584750 /* TrendingUsersViewController+Bind.swift */; };
+		8C4062B42637EE2100584750 /* PagingViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4062B32637EE2100584750 /* PagingViewController+Rx.swift */; };
+		8C4062B82637EEAB00584750 /* HomeViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4062B72637EEAB00584750 /* HomeViewController+Bind.swift */; };
 		8C531A3A2635038D00EE101A /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A392635038D00EE101A /* TrendingAPI.swift */; };
 		8C531A3D2635039F00EE101A /* ProviderType+TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A3C2635039F00EE101A /* ProviderType+TrendingAPI.swift */; };
 		8C531A402635085C00EE101A /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A3F2635085C00EE101A /* Repo.swift */; };
@@ -69,6 +74,7 @@
 		8C531A8F2635388100EE101A /* RepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A8E2635388100EE101A /* RepoItem.swift */; };
 		8C531A922635388A00EE101A /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A912635388A00EE101A /* RepoCell.swift */; };
 		8CAFA7A92636BE950027FFB5 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA7A82636BE950027FFB5 /* IntExt.swift */; };
+		8CAFA7AC2637E7A70027FFB5 /* TrendingReposViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */; };
 		D866100FCC4AF37A08B70089 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,8 +143,13 @@
 		79CE3C2E260E443600BB918B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		79E9FF8D2631BAFB0082ECB9 /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		8C1869302632748300659FBC /* LoginViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Bind.swift"; sourceTree = "<group>"; };
-		8C1869332632749800659FBC /* LoginViewController+Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Handle.swift"; sourceTree = "<group>"; };
-		8C186936263274A400659FBC /* LoginViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Rx.swift"; sourceTree = "<group>"; };
+		8C40629A2637E7D300584750 /* TrendingReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposViewController.swift; sourceTree = "<group>"; };
+		8C40629D2637E80B00584750 /* TrendingReposViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingReposViewController+Bind.swift"; sourceTree = "<group>"; };
+		8C4062A62637E94300584750 /* TrendingUsersViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUsersViewReactor.swift; sourceTree = "<group>"; };
+		8C4062A92637E94F00584750 /* TrendingUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingUsersViewController.swift; path = SWHub/Module/Reactor/TrendingUsersViewController.swift; sourceTree = SOURCE_ROOT; };
+		8C4062AD2637E96500584750 /* TrendingUsersViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendingUsersViewController+Bind.swift"; sourceTree = "<group>"; };
+		8C4062B32637EE2100584750 /* PagingViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PagingViewController+Rx.swift"; sourceTree = "<group>"; };
+		8C4062B72637EEAB00584750 /* HomeViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Bind.swift"; sourceTree = "<group>"; };
 		8C531A392635038D00EE101A /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		8C531A3C2635039F00EE101A /* ProviderType+TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+TrendingAPI.swift"; sourceTree = "<group>"; };
 		8C531A3F2635085C00EE101A /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
@@ -150,6 +161,7 @@
 		8C531A8E2635388100EE101A /* RepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItem.swift; sourceTree = "<group>"; };
 		8C531A912635388A00EE101A /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		8CAFA7A82636BE950027FFB5 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
+		8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposViewReactor.swift; sourceTree = "<group>"; };
 		9ED09F55CD7A6A69F5C89F53 /* Pods-SwiftPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.release.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.release.xcconfig"; sourceTree = "<group>"; };
 		E07E624452188CDBDC17BFE4 /* Pods-SwiftPT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.debug.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,8 +255,11 @@
 				79CE3B5E260E402700BB918B /* LoginViewController.swift */,
 				79CE3B5F260E402700BB918B /* TabBarController.swift */,
 				8C1869302632748300659FBC /* LoginViewController+Bind.swift */,
-				8C1869332632749800659FBC /* LoginViewController+Handle.swift */,
-				8C186936263274A400659FBC /* LoginViewController+Rx.swift */,
+				8C40629A2637E7D300584750 /* TrendingReposViewController.swift */,
+				8C40629D2637E80B00584750 /* TrendingReposViewController+Bind.swift */,
+				8C4062A92637E94F00584750 /* TrendingUsersViewController.swift */,
+				8C4062AD2637E96500584750 /* TrendingUsersViewController+Bind.swift */,
+				8C4062B72637EEAB00584750 /* HomeViewController+Bind.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -288,6 +303,8 @@
 				79CE3B6B260E402700BB918B /* MineViewReactor.swift */,
 				79CE3B6C260E402700BB918B /* HomeViewReactor.swift */,
 				79CE3B6D260E402700BB918B /* TabBarReactor.swift */,
+				8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */,
+				8C4062A62637E94300584750 /* TrendingUsersViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -295,6 +312,7 @@
 		79CE3B6E260E402700BB918B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				8C4062B22637EE1200584750 /* Reactive */,
 				79CE3B6F260E402700BB918B /* Collection */,
 				79CE3B76260E402700BB918B /* Extension */,
 				79CE3B80260E402700BB918B /* Foundation */,
@@ -398,6 +416,14 @@
 				8C531A4A26350E8000EE101A /* languages.json */,
 			);
 			path = json;
+			sourceTree = "<group>";
+		};
+		8C4062B22637EE1200584750 /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				8C4062B32637EE2100584750 /* PagingViewController+Rx.swift */,
+			);
+			path = Reactive;
 			sourceTree = "<group>";
 		};
 		8F7205CCF5732E45FFFA4897 /* Pods */ = {
@@ -583,6 +609,8 @@
 				8C531A8F2635388100EE101A /* RepoItem.swift in Sources */,
 				79CE3BC8260E418500BB918B /* AppDependency.swift in Sources */,
 				79CE3BAD260E402800BB918B /* BaseResponseExt.swift in Sources */,
+				8C4062B42637EE2100584750 /* PagingViewController+Rx.swift in Sources */,
+				8C4062AA2637E94F00584750 /* TrendingUsersViewController.swift in Sources */,
 				79CD6B28260E3F3500420300 /* AppDelegate.swift in Sources */,
 				8C531A402635085C00EE101A /* Repo.swift in Sources */,
 				8C1869312632748300659FBC /* LoginViewController+Bind.swift in Sources */,
@@ -601,7 +629,6 @@
 				79CE3BB8260E402800BB918B /* Function.swift in Sources */,
 				79CE3BAC260E402800BB918B /* UIColorExt.swift in Sources */,
 				79CE3BA7260E402800BB918B /* CollectionItem.swift in Sources */,
-				8C1869342632749800659FBC /* LoginViewController+Handle.swift in Sources */,
 				79CE3B9B260E402800BB918B /* SimpleCell.swift in Sources */,
 				79CE3BBD260E402800BB918B /* Router+Page.swift in Sources */,
 				79CE3BBB260E402800BB918B /* QMUIConfigurationTemplate.m in Sources */,
@@ -613,15 +640,20 @@
 				79CE3BB1260E402800BB918B /* Networking.swift in Sources */,
 				79CE3BA4260E402800BB918B /* TabBarReactor.swift in Sources */,
 				8C531A4826350DBE00EE101A /* Const.swift in Sources */,
+				8C4062B82637EEAB00584750 /* HomeViewController+Bind.swift in Sources */,
 				8C531A3D2635039F00EE101A /* ProviderType+TrendingAPI.swift in Sources */,
-				8C186937263274A400659FBC /* LoginViewController+Rx.swift in Sources */,
 				79CE3BBE260E402800BB918B /* Router.swift in Sources */,
+				8C40629E2637E80B00584750 /* TrendingReposViewController+Bind.swift in Sources */,
 				79CE3BAF260E402800BB918B /* BaseViewControllerExt.swift in Sources */,
 				79CE3BB6260E402800BB918B /* Type.swift in Sources */,
 				79CE3BB4260E402800BB918B /* Error.swift in Sources */,
 				79CE3C2F260E443600BB918B /* R.generated.swift in Sources */,
+				8C4062A72637E94300584750 /* TrendingUsersViewReactor.swift in Sources */,
 				79CE3BBF260E402800BB918B /* Router+Model.swift in Sources */,
+				8CAFA7AC2637E7A70027FFB5 /* TrendingReposViewReactor.swift in Sources */,
 				79CE3BBA260E402800BB918B /* OCHelper.m in Sources */,
+				8C40629B2637E7D300584750 /* TrendingReposViewController.swift in Sources */,
+				8C4062AE2637E96500584750 /* TrendingUsersViewController+Bind.swift in Sources */,
 				79CE3B9D260E402800BB918B /* User.swift in Sources */,
 				79CE3B9F260E402800BB918B /* Preference.swift in Sources */,
 				79CE3BB5260E402800BB918B /* Runtime.swift in Sources */,

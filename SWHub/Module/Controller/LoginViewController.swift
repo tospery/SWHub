@@ -155,8 +155,34 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.authButton.bottom = self.authLabel.top - 15
     }
 
+    func handle(user: User) {
+        User.update(user)
+    }
+    
     func oauth(event: ControlEvent<Void>.Element) {
         
+    }
+    
+}
+
+extension Reactive where Base: LoginViewController {
+
+    var token: ControlProperty<String?> {
+        self.base.tokenTextField.rx.text
+    }
+    
+    var login: ControlEvent<Void> {
+        self.base.loginButton.rx.tap
+    }
+    
+    var error: Binder<Error?> {
+        return Binder(self.base) { viewController, error in
+            viewController.error = error
+            guard viewController.isViewLoaded else {
+                return
+            }
+            viewController.errorLabel.text = error?.localizedDescription
+        }
     }
     
 }
