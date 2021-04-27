@@ -37,12 +37,15 @@ extension Section: AnimatableSectionModelType {
 enum SectionItem: IdentifiableType, Equatable {
     case simple(SimpleItem)
     case repo(RepoItem)
+    case user(UserItem)
 
     var identity: String {
         switch self {
         case let .simple(item):
             return item.description
         case let .repo(item):
+            return item.description
+        case let .user(item):
             return item.description
         }
     }
@@ -52,6 +55,8 @@ enum SectionItem: IdentifiableType, Equatable {
         case let (.simple(left), .simple(right)):
             return left.description == right.description
         case let (.repo(left), .repo(right)):
+            return left.description == right.description
+        case let (.user(left), .user(right)):
             return left.description == right.description
         default: return false
         }

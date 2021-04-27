@@ -41,21 +41,22 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            guard !self.currentState.isLoading else { return .empty() }
-            return Observable.concat([
-                .just(.setEmptying(true)),
-                .just(.setError(nil)),
-                .just(.setLoading(true)),
-                self.provider.languages().asObservable().map(Mutation.setLanguages),
-                .just(.setLoading(false)),
-                .just(.setEmptying(false))
-            ]).catchError({
-                Observable.concat([
-                    .just(.setLoading(false)),
-                    .just(.setError($0)),
-                    .just(.setEmptying(false))
-                ])
-            })
+            return .empty()
+//            guard !self.currentState.isLoading else { return .empty() }
+//            return Observable.concat([
+//                .just(.setEmptying(true)),
+//                .just(.setError(nil)),
+//                .just(.setLoading(true)),
+//                self.provider.languages().asObservable().map(Mutation.setLanguages),
+//                .just(.setLoading(false)),
+//                .just(.setEmptying(false))
+//            ]).catchError({
+//                Observable.concat([
+//                    .just(.setLoading(false)),
+//                    .just(.setError($0)),
+//                    .just(.setEmptying(false))
+//                ])
+//            })
         }
     }
 
@@ -70,12 +71,6 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             newState.languages = languages
         case let .setError(error):
             newState.error = error
-//        case let .setCodes(codes):
-//            state.codes = codes
-//            let realm = Realm.default
-//            realm.beginWrite()
-//            realm.add(codes, update: .modified)
-//            try! realm.commitWrite()
         }
         return state
     }

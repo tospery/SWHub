@@ -91,6 +91,8 @@ final class AppDependency: AppDependencyType {
 //        } onError: { error in
 //            log("bbb")
 //        }.disposed(by: self.disposeBag)
+//        let langs = Language.cachedArray()
+//        log("")
     }
     
     // MARK: - Lifecycle

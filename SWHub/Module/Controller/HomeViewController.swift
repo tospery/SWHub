@@ -46,7 +46,8 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
 
-//        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .tint)).rx.tap.subscribe(onNext: { [weak self] _ in
+//        self.navigationBar.addButtonToRight(FontAwesomeIcon
+//.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .tint)).rx.tap.subscribe(onNext: { [weak self] _ in
 //            guard let `self` = self else { return }
 //            self.navigator.present(Router.condition.urlString, wrap: NavigationController.self)
 //        }).disposed(by: self.disposeBag)
@@ -59,10 +60,10 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             .bind({ $0.primaryColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
             .bind({ $0.titleColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
-        themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
-            guard let `self` = self else { return }
-            self.paging.reloadMenu()
-        }).disposed(by: self.rx.disposeBag)
+//        themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+//            guard let `self` = self else { return }
+//            self.paging.reloadMenu()
+//        }).disposed(by: self.rx.disposeBag)
     }
 
 //    override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +78,10 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func handle(_ languages: [Language]) {
+        Language.storeArray(languages)
     }
 
 }

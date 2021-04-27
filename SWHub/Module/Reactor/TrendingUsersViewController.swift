@@ -10,7 +10,7 @@ import UIKit
 class TrendingUsersViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
-        static let repoCell = ReusableCell<RepoCell>()
+        static let userCell = ReusableCell<UserCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
@@ -21,8 +21,8 @@ class TrendingUsersViewController: CollectionViewController, ReactorKit.View {
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
+        self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? true
         self.shouldRefresh = reactor.parameters[Parameter.shouldRefresh] as? Bool ?? true
-        self.tabBarItem.title = reactor.currentState.title
     }
 
     required init?(coder: NSCoder) {
@@ -31,7 +31,7 @@ class TrendingUsersViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.repoCell)
+        self.collectionView.register(Reusable.userCell)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingUsersViewReactor)
@@ -39,8 +39,8 @@ class TrendingUsersViewController: CollectionViewController, ReactorKit.View {
         return .init(
             configureCell: { _, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case .repo(let item):
-                    let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
+                case .user(let item):
+                    let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 default:
@@ -64,8 +64,8 @@ extension TrendingUsersViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case .repo(let item):
-            return Reusable.repoCell.class.size(width: width, item: item)
+        case .user(let item):
+            return Reusable.userCell.class.size(width: width, item: item)
         default:
             fatalError()
         }

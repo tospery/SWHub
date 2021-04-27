@@ -20,6 +20,16 @@ extension SWFrame.ProviderType {
         )
     }
     
+    /// 开发者推荐
+    func developers(language: Language?, since: Since?) -> Single<[User]> {
+        networking.requestArray(
+            MultiTarget.init(
+                TrendingAPI.developers(language: language, since: since)
+            ),
+            type: User.self
+        )
+    }
+    
     /// 编程语言
     func languages() -> Single<[Language]> {
         networking.requestArray(

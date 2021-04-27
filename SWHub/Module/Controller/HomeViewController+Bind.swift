@@ -25,6 +25,11 @@ extension HomeViewController {
     }
     
     func fromState(reactor: HomeViewReactor) {
+        reactor.state.map { $0.languages }
+            .distinctUntilChanged()
+            .filterEmpty()
+            .subscribeNext(weak: self, type(of: self).handle)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.items }
             .mapTo(())
             .bind(to: self.paging.rx.reloadData)
@@ -32,4 +37,3 @@ extension HomeViewController {
     }
     
 }
-

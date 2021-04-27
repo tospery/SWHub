@@ -21,8 +21,8 @@ class TrendingReposViewController: CollectionViewController, ReactorKit.View {
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
+        self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? true
         self.shouldRefresh = reactor.parameters[Parameter.shouldRefresh] as? Bool ?? true
-        self.tabBarItem.title = reactor.currentState.title
     }
 
     required init?(coder: NSCoder) {

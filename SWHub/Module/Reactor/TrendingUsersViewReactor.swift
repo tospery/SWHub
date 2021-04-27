@@ -15,24 +15,22 @@ class TrendingUsersViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
 
     enum Mutation {
+        case setEmptying(Bool)
         case setLoading(Bool)
         case setRefreshing(Bool)
-        case setEmptying(Bool)
-        case setError(Error?)
         case setTitle(String?)
-        case setUser(User?)
-        case setRepos([Repo])
+        case setUsers([User])
+        case setError(Error?)
     }
 
     struct State {
+        var isEmptying = false
         var isLoading = false
         var isRefreshing = false
-        var isEmptying = false
-        var error: Error?
         var title: String?
-        var user: User?
-        var repos = [Repo].init()
+        var users = [User].init()
         var sections = [Section].init()
+        var error: Error?
     }
 
     var initialState = State()
@@ -40,7 +38,7 @@ class TrendingUsersViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: self.title ?? R.string.localizable.home()
+            title: self.title ?? R.string.localizable.developer()
         )
     }
     
@@ -60,9 +58,9 @@ class TrendingUsersViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 .just(.setEmptying(true)),
                 .just(.setError(nil)),
                 start,
-                self.provider.repositories(language: nil, since: nil)
+                self.provider.developers(language: nil, since: nil)
                     .asObservable()
-                    .map(Mutation.setRepos),
+                    .map(Mutation.setUsers),
                 end,
                 .just(.setEmptying(false))
             ]).catchError({
@@ -88,12 +86,10 @@ class TrendingUsersViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             newState.error = error
         case let .setTitle(title):
             newState.title = title
-        case let .setUser(user):
-            newState.user = user
-        case let .setRepos(repos):
-            newState.repos = repos
-            let items = repos.enumerated().map { RepoItem.init($0.element, $0.offset) }
-            let sectionItems = items.map { SectionItem.repo($0) }
+        case let .setUsers(users):
+            newState.users = users
+            let items = users.enumerated().map { UserItem.init($0.element, $0.offset) }
+            let sectionItems = items.map { SectionItem.user($0) }
             newState.sections = [.sectionItems(header: "", items: sectionItems)]
         }
         return newState

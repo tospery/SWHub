@@ -134,10 +134,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
+    /// Resource file `Languages.json`.
+    static let languagesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Languages", pathExtension: "json")
     /// Resource file `user.json`.
     static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
+
+    /// `bundle.url(forResource: "Languages", withExtension: "json")`
+    static func languagesJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.languagesJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "user", withExtension: "json")`
     static func userJson(_: Void = ()) -> Foundation.URL? {
@@ -148,7 +156,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 8 images.
+  /// This `R.image` struct is generated, and contains static references to 9 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
@@ -156,6 +164,8 @@ struct R: Rswift.Validatable {
     static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLogo")
     /// Image `github`.
     static let github = Rswift.ImageResource(bundle: R.hostingBundle, name: "github")
+    /// Image `repo`.
+    static let repo = Rswift.ImageResource(bundle: R.hostingBundle, name: "repo")
     /// Image `star`.
     static let star = Rswift.ImageResource(bundle: R.hostingBundle, name: "star")
     /// Image `tabbar_home_normal`.
@@ -185,6 +195,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "github", bundle: ..., traitCollection: ...)`
     static func github(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.github, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "repo", bundle: ..., traitCollection: ...)`
+    static func repo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.repo, compatibleWith: traitCollection)
     }
     #endif
 
