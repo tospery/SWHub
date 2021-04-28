@@ -31,7 +31,9 @@ class UserItem: CollectionItem, ReactorKit.Reactor {
         guard let user = model as? User else { return }
         self.initialState = State(
             ranking: ranking,
-            avatar: user.avatar?.url
+            avatar: user.avatar?.url,
+            username: user.name,
+            reponame: user.repoAttrString
         )
     }
     

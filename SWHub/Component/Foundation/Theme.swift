@@ -17,10 +17,11 @@ struct LightTheme: Theme {
     let primaryColor = UIColor(hex: 0x0277FF)!
     let secondaryColor = UIColor.Material.blue
     let titleColor = UIColor(hex: 0x333333)!
-    let bodyColor = UIColor(hex: 0x666666)!
+    let contentColor = UIColor(hex: 0x666666)!
     let headerColor = UIColor(hex: 0xD2D2D2)!
     let footerColor = UIColor(hex: 0xD2D2D2)!
     let borderColor = UIColor(hex: 0xF4F4F4)!
+    let cornerColor = UIColor(hex: 0xF4F4F4)!
     let separatorColor = UIColor(hex: 0xF2F2F2)!
     let indicatorColor = UIColor.Material.grey600
     let special1Color = UIColor(hex: 0xE82220)!
@@ -28,6 +29,10 @@ struct LightTheme: Theme {
     let special3Color = UIColor(hex: 0xE3E3E3)!
     let special4Color = UIColor(hex: 0xE3E3E3)!
     let special5Color = UIColor(hex: 0xE3E3E3)!
+    let special6Color = UIColor(hex: 0xE3E3E3)!
+    let special7Color = UIColor(hex: 0xE3E3E3)!
+    let special8Color = UIColor(hex: 0xE3E3E3)!
+    let special9Color = UIColor(hex: 0xE3E3E3)!
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
@@ -44,10 +49,11 @@ struct DarkTheme: Theme {
     let primaryColor = UIColor.Material.red
     let secondaryColor = UIColor.Material.red
     let titleColor = UIColor.Material.red
-    let bodyColor = UIColor.Material.red
+    let contentColor = UIColor.Material.red
     let headerColor = UIColor(hex: 0xD2D2D2)!
     let footerColor = UIColor(hex: 0xD2D2D2)!
     let borderColor = UIColor.Material.red
+    let cornerColor = UIColor(hex: 0xF4F4F4)!
     let separatorColor = UIColor.Material.red
     let indicatorColor = UIColor.Material.red
     let special1Color = UIColor.Material.red
@@ -55,6 +61,10 @@ struct DarkTheme: Theme {
     let special3Color = UIColor.Material.red
     let special4Color = UIColor.Material.red
     let special5Color = UIColor.Material.red
+    let special6Color = UIColor(hex: 0xE3E3E3)!
+    let special7Color = UIColor(hex: 0xE3E3E3)!
+    let special8Color = UIColor(hex: 0xE3E3E3)!
+    let special9Color = UIColor(hex: 0xE3E3E3)!
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light

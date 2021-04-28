@@ -54,11 +54,19 @@ struct User: ModelType, Subjective, Eventable {
     var avatar: String?
     var sponsorUrl: String?
     var plan: Plan?
-    var repos: [Repo]?
+    var repo: Repo?
     
     var isValid: Bool {
         self.id ?? 0 != 0 &&
             self.login?.isEmpty ?? true == false
+    }
+    
+    var repoAttrString: NSAttributedString {
+        NSAttributedString.composed(of: [
+            R.image.repo()!.styled(with: .baselineOffset(-3)),
+            Special.space,
+            (self.repo?.name ?? "").styled(with: .color(.title))
+        ]).styled(with: .font(.systemFont(ofSize: 15)))
     }
     
     init() { }
@@ -109,7 +117,7 @@ struct User: ModelType, Subjective, Eventable {
         username                <- map["username"]
         avatar                  <- map["avatar"]
         sponsorUrl              <- map["sponsorUrl"]
-        repos                   <- map["repo"]
+        repo                    <- map["repo"]
     }
     // swiftlint:enable function_body_length
     
