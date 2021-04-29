@@ -10,7 +10,7 @@ import UIKit
 class UserCell: CollectionCell, ReactorKit.View {
 
     struct Metric {
-        static let cellHeight = 100.f
+        static let cellHeight = 105.f
     }
     
     lazy var usernameLabel: SWLabel = {
@@ -35,6 +35,13 @@ class UserCell: CollectionCell, ReactorKit.View {
         return label
     }()
     
+    lazy var repodescLabel: SWLabel = {
+        let label = SWLabel()
+        label.numberOfLines = 2
+        label.sizeToFit()
+        return label
+    }()
+    
     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.cornerRadius = 8
@@ -51,6 +58,7 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.avatarImageView)
         self.contentView.addSubview(self.usernameLabel)
         self.contentView.addSubview(self.reponameLabel)
+        self.contentView.addSubview(self.repodescLabel)
         
         self.avatarImageView.addSubview(self.rankingLabel)
 
@@ -74,6 +82,7 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.rankingLabel.text = nil
         self.usernameLabel.text = nil
         self.reponameLabel.attributedText = nil
+        self.repodescLabel.attributedText = nil
         self.avatarImageView.image = nil
     }
 
@@ -90,6 +99,11 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.reponameLabel.width = self.contentView.width - self.usernameLabel.left
         self.reponameLabel.left = self.usernameLabel.left
         self.reponameLabel.top = self.usernameLabel.bottom + 2
+        self.repodescLabel.sizeToFit()
+        self.repodescLabel.left = self.usernameLabel.left
+        self.repodescLabel.width = self.contentView.width - self.repodescLabel.left - 10
+        self.repodescLabel.height = self.avatarImageView.bottom - self.reponameLabel.bottom - 2
+        self.repodescLabel.top = self.reponameLabel.bottom + 2
     }
 
     func bind(reactor: UserItem) {
@@ -106,6 +120,10 @@ class UserCell: CollectionCell, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.reponameLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.repodesc }
+            .distinctUntilChanged()
+            .bind(to: self.repodescLabel.rx.attributedText)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.avatar }
             .distinctUntilChanged { SWHub.compare($0, $1) }
             .bind(to: self.avatarImageView.rx.imageSource)
@@ -116,19 +134,6 @@ class UserCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-//        guard let item = item as? RepoItem else { return .zero }
-//        var height = UILabel.size(
-//            attributedString: item.currentState.desc,
-//            withConstraints: .init(width: UIScreen.width - 15 - 10, height: .greatestFiniteMagnitude),
-//            limitedToNumberOfLines: 2
-//        ).height
-//        height += 10
-//        height += Metric.iconSize.height
-//        height += 5
-//        height += 5
-//        height += Metric.rankingSize.height
-//        height += 5
-//        return CGSize(width: width, height: height.flat)
         .init(width: width, height: Metric.cellHeight)
     }
 

@@ -33,7 +33,11 @@ class UserItem: CollectionItem, ReactorKit.Reactor {
             ranking: ranking,
             avatar: user.avatar?.url,
             username: user.name,
-            reponame: user.repoAttrString
+            reponame: user.repoAttrString,
+            repodesc: user.repo?.desc?.styled(with: .color(.title),
+                                              .font(.systemFont(ofSize: 13)),
+                                              .lineSpacing(1),
+                                              .lineBreakMode(.byTruncatingTail))
         )
     }
     
