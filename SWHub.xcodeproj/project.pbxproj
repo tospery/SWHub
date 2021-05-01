@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */; };
 		79B609812631BD9D00F8D087 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B609802631BD9D00F8D087 /* Plan.swift */; };
 		79CD6B28260E3F3500420300 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD6B27260E3F3500420300 /* AppDelegate.swift */; };
 		79CD6B31260E3F3600420300 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CD6B30260E3F3600420300 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		1E5D62AC14B493A13BF0D38A /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 		61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F130F17256E2A17D445683C /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		79B609802631BD9D00F8D087 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		79B609832631C44400F8D087 /* error1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = error1.json; sourceTree = "<group>"; };
 		79CD6B24260E3F3500420300 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		797B6F5D263D1E410047CEB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		79CD6B1B260E3F3500420300 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 		79CE3B57260E402700BB918B /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				797B6F5D263D1E410047CEB5 /* View */,
 				79CE3B58260E402700BB918B /* Section */,
 				79CE3B5A260E402700BB918B /* Controller */,
 				79CE3B60260E402700BB918B /* Cell */,
@@ -657,6 +668,7 @@
 				8C0E8CA72637FBDF0078E09E /* UserItem.swift in Sources */,
 				79CE3BB6260E402800BB918B /* Type.swift in Sources */,
 				79CE3BB4260E402800BB918B /* Error.swift in Sources */,
+				797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */,
 				79CE3C2F260E443600BB918B /* R.generated.swift in Sources */,
 				8C4062A72637E94300584750 /* TrendingUsersViewReactor.swift in Sources */,
 				79CE3BBF260E402800BB918B /* Router+Model.swift in Sources */,

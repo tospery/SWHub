@@ -58,6 +58,9 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             newState.title = title
         case let .setUser(user):
             newState.user = user
+            newState.sections = [Section.sectionItems(header: "", items: [
+                .simple(.init(BaseModel.init()))
+            ])]
         }
         return newState
     }

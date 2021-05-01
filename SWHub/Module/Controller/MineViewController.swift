@@ -11,19 +11,10 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let simpleCell = ReusableCell<SimpleCell>()
+        static let headerView = ReusableView<MineHeaderView>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
-    
-    lazy var testButton: SWButton = {
-        let button = SWButton.init(type: .custom)
-        // button.tintColor = .red
-        // button.setImage(R.image.star()?.template, for: .normal)
-        button.backgroundColor = .red
-        button.sizeToFit()
-        button.size = .init(80)
-        return button
-    }()
     
     init(_ navigator: NavigatorType, _ reactor: MineViewReactor) {
         defer {
@@ -31,6 +22,9 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
+        // self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? true
+        self.transparetNavBar = reactor.parameters[Parameter.transparetNavBar] as? Bool ?? true
+        // self.tr = reactor.parameters[Parameter.hideNavLine] as? Bool ?? true
         self.tabBarItem.title = reactor.currentState.title
     }
 
@@ -40,13 +34,17 @@ class MineViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.simpleCell)
-        self.view.addSubview(self.testButton)
-        self.testButton.left = 100
-        self.testButton.top = 100
-        self.testButton.rx.tap
-            .subscribeNext(weak: self, type(of: self).tapTest)
+        self.navigationBar.addButtonToRight(R.image.setting()).rx.tap
+            .subscribeNext(weak: self, type(of: self).tapSetting)
             .disposed(by: self.disposeBag)
+        self.collectionView.register(Reusable.simpleCell)
+        self.collectionView.register(Reusable.headerView, kind: .header)
+//        self.view.addSubview(self.testButton)
+//        self.testButton.left = 100
+//        self.testButton.top = 100
+//        self.testButton.rx.tap
+//            .subscribeNext(weak: self, type(of: self).tapTest)
+//            .disposed(by: self.disposeBag)
     }
     
     func bind(reactor: MineViewReactor) {
@@ -72,7 +70,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
-    func tapTest(event: ControlEvent<Void>.Element) {
+    func tapSetting(event: ControlEvent<Void>.Element) {
         themeService.switch(.dark)
         // self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
     }
@@ -90,8 +88,24 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                     fatalError()
                 }
             },
-            configureSupplementaryView: { _, collectionView, kind, indexPath in
-                return collectionView.emptyView(for: indexPath, kind: kind)
+            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+                switch kind {
+                case UICollectionView.elementKindSectionHeader:
+                    let header = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
+                    reactor.state.map { $0.user }
+                        .bind(to: header.rx.user)
+                        .disposed(by: header.disposeBag)
+//                    header.rx.pay.flatMap { _ -> Observable<Void> in
+//                        return self.loginIfNeed(reactor, navigator, header.disposeBag) ? .empty() : .just(())
+//                    }.subscribe(onNext: { _ in
+//                        navigator.push(Webpage.pay.urlString)
+//                    }).disposed(by: header.disposeBag)
+                    return header
+//                case UICollectionView.elementKindSectionFooter:
+//                    return collectionView.emptyView(for: indexPath, kind: kind)
+                default:
+                    return collectionView.emptyView(for: indexPath, kind: kind)
+                }
             }
         )
     }
@@ -119,7 +133,7 @@ extension MineViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int
     ) -> CGSize {
-        .zero
+        .init(width: collectionView.sectionWidth(at: section), height: 320)
     }
-
+    
 }

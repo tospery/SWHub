@@ -69,6 +69,33 @@ struct User: ModelType, Subjective, Eventable {
         ]).styled(with: .font(.systemFont(ofSize: 15)))
     }
     
+    var repositoriesAttrString: NSAttributedString {
+        let `public` = self.publicRepos ?? 0
+        let `private` = self.totalPrivateRepos ?? 0
+        let total = `public` + `private`
+        return NSAttributedString.composed(of: [
+            total.string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
+            Special.nextLine,
+            R.string.localizable.repositories().styled(with: .color(.content), .font(.systemFont(ofSize: 14)))
+        ]).styled(with: .alignment(.center))
+    }
+    
+    var followersAttrString: NSAttributedString {
+        NSAttributedString.composed(of: [
+            (self.followers ?? 0).string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
+            Special.nextLine,
+            R.string.localizable.followers().styled(with: .color(.content), .font(.systemFont(ofSize: 14)))
+        ]).styled(with: .alignment(.center))
+    }
+    
+    var followingAttrString: NSAttributedString {
+        NSAttributedString.composed(of: [
+            (self.following ?? 0).string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
+            Special.nextLine,
+            R.string.localizable.following().styled(with: .color(.content), .font(.systemFont(ofSize: 14)))
+        ]).styled(with: .alignment(.center))
+    }
+    
     init() { }
 
     init?(map: Map) { }

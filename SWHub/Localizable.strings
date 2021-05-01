@@ -19,6 +19,9 @@
 "Trending" = "趋势";
 "Repository" = "Repository";
 "Developer" = "Developer";
+"Repositories" = "Repositories";
+"Followers" = "Followers";
+"Following" = "Following";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";
 "Login.Slogan" = "%@ For GitHub";

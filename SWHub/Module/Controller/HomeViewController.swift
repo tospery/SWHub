@@ -60,7 +60,8 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             .bind({ $0.primaryColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
             .bind({ $0.titleColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
-//        themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+//        themeService.typeStream.delay(.milliseconds(10),
+        // scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
 //            guard let `self` = self else { return }
 //            self.paging.reloadMenu()
 //        }).disposed(by: self.rx.disposeBag)
@@ -124,7 +125,11 @@ class NavigationBarPagingView: PagingView {
 class NavigationBarPagingViewController: PagingViewController {
 
     override func loadView() {
-        view = NavigationBarPagingView(options: options, collectionView: collectionView, pageView: pageViewController.view)
+        view = NavigationBarPagingView(
+            options: options,
+            collectionView: collectionView,
+            pageView: pageViewController.view
+        )
     }
 
 }
