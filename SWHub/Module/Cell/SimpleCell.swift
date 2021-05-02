@@ -53,7 +53,7 @@ class SimpleCell: CollectionCell, ReactorKit.View {
         themeService.rx
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.headerColor }, to: self.detailLabel.rx.textColor)
-            .bind({ $0.indicatorColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
+            .bind({ $0.primaryColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }
 

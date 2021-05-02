@@ -22,9 +22,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
-        // self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? true
         self.transparetNavBar = reactor.parameters[Parameter.transparetNavBar] as? Bool ?? true
-        // self.tr = reactor.parameters[Parameter.hideNavLine] as? Bool ?? true
         self.tabBarItem.title = reactor.currentState.title
     }
 
@@ -39,6 +37,9 @@ class MineViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
         self.collectionView.register(Reusable.simpleCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource)
+            .subscribeNext(weak: self, type(of: self).tapCell)
+            .disposed(by: self.disposeBag)
 //        self.view.addSubview(self.testButton)
 //        self.testButton.left = 100
 //        self.testButton.top = 100
@@ -68,6 +69,22 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
+    }
+    
+    func tapCell(sectionItem: ControlEvent<SectionItem>.Element) {
+        switch sectionItem {
+        case let .simple(item):
+            guard let simple = item.model as? Simple else { return }
+            guard let portal = Portal.init(rawValue: simple.id) else { return }
+            switch portal {
+            case .feedback:
+                self.navigator.push(Router.feedback.urlString)
+            default:
+                break
+            }
+        default:
+            break
+        }
     }
     
     func tapSetting(event: ControlEvent<Void>.Element) {

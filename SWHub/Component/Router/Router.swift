@@ -13,6 +13,7 @@ enum Router: String {
     case sheet
     case popup
     case login
+    case feedback
     case test
     
     enum Web: String {

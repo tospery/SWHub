@@ -110,7 +110,7 @@ class MineHeaderView: SupplementaryView {
         self.followingButton.centerX = self.width / 2.0 / 2.0 * 3.0 + 15.f
         self.followingButton.top = self.followingButton.topWhenCenter
         self.avatarImageView.left = 30
-        self.avatarImageView.top = UINavigationBar.contentHeightConstant
+        self.avatarImageView.top = UINavigationBar.contentHeightConstant + 10
         self.nameLabel.sizeToFit()
         self.nameLabel.left = self.avatarImageView.right + 10
         self.nameLabel.bottom = self.avatarImageView.centerY - 1

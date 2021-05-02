@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */; };
 		79B609812631BD9D00F8D087 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B609802631BD9D00F8D087 /* Plan.swift */; };
+		79B7F188263E48A000246B41 /* FeedbackViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */; };
+		79B7F18B263E48AE00246B41 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7F18A263E48AE00246B41 /* FeedbackViewController.swift */; };
+		79B7F18E263E49A800246B41 /* FeedbackViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7F18D263E49A800246B41 /* FeedbackViewController+Bind.swift */; };
 		79CD6B28260E3F3500420300 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD6B27260E3F3500420300 /* AppDelegate.swift */; };
 		79CD6B31260E3F3600420300 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CD6B30260E3F3600420300 /* Assets.xcassets */; };
 		79CD6B34260E3F3600420300 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CD6B32260E3F3600420300 /* LaunchScreen.storyboard */; };
@@ -90,6 +93,9 @@
 		797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		79B609802631BD9D00F8D087 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		79B609832631C44400F8D087 /* error1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = error1.json; sourceTree = "<group>"; };
+		79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewReactor.swift; sourceTree = "<group>"; };
+		79B7F18A263E48AE00246B41 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackViewController.swift; path = SWHub/Module/Reactor/FeedbackViewController.swift; sourceTree = SOURCE_ROOT; };
+		79B7F18D263E49A800246B41 /* FeedbackViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedbackViewController+Bind.swift"; sourceTree = "<group>"; };
 		79CD6B24260E3F3500420300 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CD6B27260E3F3500420300 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CD6B30260E3F3600420300 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,6 +284,8 @@
 				8C4062A92637E94F00584750 /* TrendingUsersViewController.swift */,
 				8C4062AD2637E96500584750 /* TrendingUsersViewController+Bind.swift */,
 				8C4062B72637EEAB00584750 /* HomeViewController+Bind.swift */,
+				79B7F18A263E48AE00246B41 /* FeedbackViewController.swift */,
+				79B7F18D263E49A800246B41 /* FeedbackViewController+Bind.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,6 +334,7 @@
 				79CE3B6D260E402700BB918B /* TabBarReactor.swift */,
 				8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */,
 				8C4062A62637E94300584750 /* TrendingUsersViewReactor.swift */,
+				79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -625,6 +634,7 @@
 				79CE3BAA260E402800BB918B /* CollectionViewController.swift in Sources */,
 				79CE3BA2260E402800BB918B /* MineViewReactor.swift in Sources */,
 				79CE3B99260E402800BB918B /* LoginViewController.swift in Sources */,
+				79B7F18B263E48AE00246B41 /* FeedbackViewController.swift in Sources */,
 				79CE3BB0260E402800BB918B /* GithubAPI.swift in Sources */,
 				79CE3BA8260E402800BB918B /* CollectionViewReactor.swift in Sources */,
 				79CE3B9E260E402800BB918B /* SiteInfo.swift in Sources */,
@@ -643,6 +653,7 @@
 				79CE3B9C260E402800BB918B /* SimpleItem.swift in Sources */,
 				79CE3B96260E402800BB918B /* HomeViewController.swift in Sources */,
 				8C0E8CAA2637FBEF0078E09E /* UserCell.swift in Sources */,
+				79B7F18E263E49A800246B41 /* FeedbackViewController+Bind.swift in Sources */,
 				79CE3BA9260E402800BB918B /* SupplementaryReactor.swift in Sources */,
 				79CE3BB9260E402800BB918B /* Appearance.swift in Sources */,
 				79CE3BBC260E402800BB918B /* Router+Web.swift in Sources */,
@@ -676,6 +687,7 @@
 				79CE3C2F260E443600BB918B /* R.generated.swift in Sources */,
 				8C4062A72637E94300584750 /* TrendingUsersViewReactor.swift in Sources */,
 				79CE3BBF260E402800BB918B /* Router+Model.swift in Sources */,
+				79B7F188263E48A000246B41 /* FeedbackViewReactor.swift in Sources */,
 				8CAFA7AC2637E7A70027FFB5 /* TrendingReposViewReactor.swift in Sources */,
 				79CE3BBA260E402800BB918B /* OCHelper.m in Sources */,
 				8C40629B2637E7D300584750 /* TrendingReposViewController.swift in Sources */,
