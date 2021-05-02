@@ -11,10 +11,26 @@ class MineHeaderView: SupplementaryView {
 
     var user: User?
     
+    lazy var nameLabel: SWLabel = {
+        let label = SWLabel.init()
+        label.font = .systemFont(ofSize: 19)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var descLabel: SWLabel = {
+        let label = SWLabel.init()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 15)
+        label.sizeToFit()
+        label.qmui_lineHeight = (label.qmui_lineHeight + 2).flat
+        return label
+    }()
+    
     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.sizeToFit()
-        imageView.size = .init(90)
+        imageView.size = .init(80)
         imageView.cornerRadius = imageView.width / 2.0
         return imageView
     }()
@@ -51,7 +67,7 @@ class MineHeaderView: SupplementaryView {
         view.qmui_borderPosition = .top
         view.qmui_borderWidth = 1
         view.sizeToFit()
-        view.height = 80
+        view.height = 70
         return view
     }()
 
@@ -60,12 +76,14 @@ class MineHeaderView: SupplementaryView {
         self.addSubview(self.topView)
         self.addSubview(self.bottomView)
         self.topView.addSubview(self.avatarImageView)
+        self.topView.addSubview(self.nameLabel)
+        self.topView.addSubview(self.descLabel)
         self.bottomView.addSubview(self.repositoriesButton)
         self.bottomView.addSubview(self.followersButton)
         self.bottomView.addSubview(self.followingButton)
-        self.backgroundColor = .random
         themeService.rx
             .bind({ $0.borderColor }, to: self.bottomView.rx.qmui_borderColor)
+            .bind({ $0.contentColor }, to: self.descLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -92,11 +110,21 @@ class MineHeaderView: SupplementaryView {
         self.followingButton.centerX = self.width / 2.0 / 2.0 * 3.0 + 15.f
         self.followingButton.top = self.followingButton.topWhenCenter
         self.avatarImageView.left = 30
-        self.avatarImageView.top = self.avatarImageView.topWhenCenter + UINavigationBar.contentHeightConstant / 2.0
+        self.avatarImageView.top = UINavigationBar.contentHeightConstant
+        self.nameLabel.sizeToFit()
+        self.nameLabel.left = self.avatarImageView.right + 10
+        self.nameLabel.bottom = self.avatarImageView.centerY - 1
+        self.descLabel.sizeToFit()
+        self.descLabel.left = self.nameLabel.left
+        self.descLabel.width = self.topView.width - self.descLabel.left - 10
+        self.descLabel.height = self.avatarImageView.bottom - self.nameLabel.bottom - 2
+        self.descLabel.top = self.nameLabel.bottom + 2
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.descLabel.text = nil
+        self.nameLabel.attributedText = nil
         self.repositoriesButton.setAttributedTitle(nil, for: .normal)
         self.followersButton.setAttributedTitle(nil, for: .normal)
         self.followingButton.setAttributedTitle(nil, for: .normal)
@@ -110,6 +138,8 @@ extension Reactive where Base: MineHeaderView {
     var user: Binder<User?> {
         return Binder(self.base) { view, user in
             view.user = user
+            view.descLabel.text = user?.bio
+            view.nameLabel.attributedText = user?.profileName
             view.repositoriesButton.setAttributedTitle(user?.repositoriesAttrString, for: .normal)
             view.followersButton.setAttributedTitle(user?.followersAttrString, for: .normal)
             view.followingButton.setAttributedTitle(user?.followingAttrString, for: .normal)

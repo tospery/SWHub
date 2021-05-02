@@ -8,5 +8,4 @@
 import Foundation
 
 class SupplementaryReactor: SWFrame.BaseSupplementaryReactor {
-    
 }

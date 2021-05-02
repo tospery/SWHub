@@ -32,7 +32,6 @@ ${BUILT_PRODUCTS_DIR}/SWFrame/SWFrame.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework
 ${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework
-${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework
 ${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework
 ${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework
 ${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework

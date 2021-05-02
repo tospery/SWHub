@@ -38,24 +38,19 @@ class SimpleCell: CollectionCell, ReactorKit.View {
         return imageView
     }()
 
-    lazy var mainView: UIView = {
-        let view = UIView()
-        view.cornerRadius = 8
-        return view
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(self.mainView)
+        self.borderLayer?.borders = .bottom
+        self.borderLayer?.borderColors = [BorderLayer.Border.bottom: UIColor.border]
+        self.borderLayer?.borderWidths = [BorderLayer.Border.bottom: 1]
+        self.borderLayer?.borderInsets = [BorderLayer.Border.bottom: (15, 0)]
 
-        self.mainView.addSubview(self.iconImageView)
-        self.mainView.addSubview(self.titleLabel)
-        self.mainView.addSubview(self.detailLabel)
-        self.mainView.addSubview(self.indicatorImageView)
+        self.contentView.addSubview(self.iconImageView)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.detailLabel)
+        self.contentView.addSubview(self.indicatorImageView)
 
         themeService.rx
-            .bind({ $0.backgroundColor }, to: self.mainView.rx.backgroundColor)
-            .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.headerColor }, to: self.detailLabel.rx.textColor)
             .bind({ $0.indicatorColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
@@ -66,6 +61,15 @@ class SimpleCell: CollectionCell, ReactorKit.View {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override class var layerClass: AnyClass {
+        return BorderLayer.self
+    }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        self.layer.frame.size = self.bounds.size
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.titleLabel.text = nil
@@ -76,20 +80,16 @@ class SimpleCell: CollectionCell, ReactorKit.View {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.mainView.width = self.contentView.width - 20 * 2
-        self.mainView.height = self.contentView.height - 5 * 2
-        self.mainView.left = self.mainView.leftWhenCenter
-        self.mainView.top = self.mainView.topWhenCenter
 
         self.iconImageView.sizeToFit()
-        self.iconImageView.left = 10
+        self.iconImageView.left = 15
         self.iconImageView.top = self.iconImageView.topWhenCenter
 
         self.titleLabel.sizeToFit()
         self.titleLabel.left = self.iconImageView.right + 10
         self.titleLabel.top = self.titleLabel.topWhenCenter
 
-        self.indicatorImageView.right = self.mainView.width - 10
+        self.indicatorImageView.right = self.contentView.width - 10
         self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
 
         self.detailLabel.sizeToFit()
@@ -113,9 +113,7 @@ class SimpleCell: CollectionCell, ReactorKit.View {
             .bind(to: self.detailLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.icon }
-            .distinctUntilChanged({ (left, right) -> Bool in
-                compare(left, right)
-            })
+            .distinctUntilChanged { SWHub.compare($0, $1) }
             .bind(to: self.iconImageView.rx.imageSource)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.icon == nil }
@@ -130,7 +128,7 @@ class SimpleCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        return CGSize(width: width, height: metric(60))
+        return CGSize(width: width, height: 50)
     }
 
 }

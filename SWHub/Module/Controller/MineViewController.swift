@@ -57,10 +57,10 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         .bind(to: reactor.action)
         .disposed(by: self.disposeBag)
         // state
-        reactor.state.map { $0.title }
-            .distinctUntilChanged()
-            .bind(to: self.navigationBar.titleLabel.rx.text)
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.title }
+//            .distinctUntilChanged()
+//            .bind(to: self.navigationBar.titleLabel.rx.text)
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
@@ -133,7 +133,7 @@ extension MineViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int
     ) -> CGSize {
-        .init(width: collectionView.sectionWidth(at: section), height: 320)
+        .init(width: collectionView.sectionWidth(at: section), height: 280)
     }
     
 }

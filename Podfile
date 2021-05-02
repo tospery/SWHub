@@ -20,7 +20,7 @@ target 'SWHub' do
   pod 'Umbrella/Core', '0.9.0'
   pod 'Parchment', '3.0.0'
   pod 'SnapKit', '5.0.1'
-  pod 'TTTAttributedLabel', '2.0.0'
+  # pod 'TTTAttributedLabel', '2.0.0'
   
   # pod 'MLeaksFinder', '1.0.0'
   # pod 'FLEX', '3.0.0'

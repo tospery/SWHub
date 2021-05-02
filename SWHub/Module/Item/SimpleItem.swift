@@ -16,9 +16,9 @@ class SimpleItem: CollectionItem, ReactorKit.Reactor {
     }
 
     struct State {
-        var icon: ImageSource?
         var title: String?
         var detail: NSAttributedString?
+        var icon: ImageSource?
         var indicated = true
     }
 
@@ -26,6 +26,13 @@ class SimpleItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
+        guard let simple = model as? Simple else { return }
+        self.initialState = State(
+            title: simple.title,
+            detail: simple.detail,
+            icon: simple.icon,
+            indicated: simple.indicated
+        )
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

@@ -46,3 +46,25 @@ enum Since {
         }
     }
 }
+
+enum Portal: Int {
+    case feedback
+    case about
+    
+    static let allValues = [feedback, about]
+    
+    var title: String {
+        switch self {
+        case .feedback: return R.string.localizable.feedback()
+        case .about: return R.string.localizable.about()
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .feedback: return R.image.feedback()!
+        case .about: return R.image.about()!
+        }
+    }
+    
+}

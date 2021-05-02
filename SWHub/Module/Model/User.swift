@@ -61,6 +61,13 @@ struct User: ModelType, Subjective, Eventable {
             self.login?.isEmpty ?? true == false
     }
     
+    var profileName: NSAttributedString {
+        NSAttributedString.composed(of: [
+            (self.name ?? "").styled(with: .color(.primary)),
+            ("(\(self.login ?? ""))").styled(with: .color(.title))
+        ]).styled(with: .font(.systemFont(ofSize: 20)))
+    }
+    
     var repoAttrString: NSAttributedString {
         NSAttributedString.composed(of: [
             R.image.repo()!.styled(with: .baselineOffset(-3)),

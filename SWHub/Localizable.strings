@@ -22,6 +22,8 @@
 "Repositories" = "Repositories";
 "Followers" = "Followers";
 "Following" = "Following";
+"Feedback" = "反馈";
+"About" = "关于";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";
 "Login.Slogan" = "%@ For GitHub";

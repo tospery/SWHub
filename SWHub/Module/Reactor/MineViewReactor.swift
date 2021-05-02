@@ -18,6 +18,7 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setTitle(String?)
         case setUser(User?)
+        case setSimples([Simple])
     }
 
     struct State {
@@ -25,6 +26,7 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var error: Error?
         var title: String?
         var user: User?
+        var simples = [Simple].init()
         var sections = [Section].init()
     }
 
@@ -40,7 +42,8 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            return .empty()
+            let simples = Portal.allValues.map { Simple.init($0.rawValue, $0.title, $0.image) }
+            return .just(Mutation.setSimples(simples))
         }
     }
     
@@ -50,17 +53,21 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
         case let .setError(error):
-            if error != nil && state.isLoading {
-                newState.isLoading = false
-            }
             newState.error = error
         case let .setTitle(title):
             newState.title = title
         case let .setUser(user):
             newState.user = user
-            newState.sections = [Section.sectionItems(header: "", items: [
-                .simple(.init(BaseModel.init()))
-            ])]
+        case let .setSimples(simples):
+            newState.simples = simples
+            newState.sections = [.sectionItems(
+                header: "",
+                items: simples.map {
+                    SimpleItem.init($0)
+                }.map {
+                    SectionItem.simple($0)
+                }
+            )]
         }
         return newState
     }
