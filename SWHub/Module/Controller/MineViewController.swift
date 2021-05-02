@@ -105,7 +105,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                     fatalError()
                 }
             },
-            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+            configureSupplementaryView: { _, collectionView, kind, indexPath in
                 switch kind {
                 case UICollectionView.elementKindSectionHeader:
                     let header = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)

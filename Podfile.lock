@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.2)
+  - Alamofire (5.4.3)
   - BonMot (5.6.0)
   - Cache (6.0.0)
   - CocoaLumberjack/Core (3.7.0)
@@ -72,7 +72,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (5.0.1)
-  - SWFrame (1.3.7):
+  - SWFrame (1.3.8):
     - BonMot (= 5.6.0)
     - CocoaLumberjack/Swift (= 3.7.0)
     - DZNEmptyDataSet (= 1.8.1)
@@ -134,7 +134,7 @@ DEPENDENCIES:
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
   - SnapKit (= 5.0.1)
-  - SWFrame (from `../SWFrame`)
+  - SWFrame (= 1.3.8)
   - SwiftEntryKit (= 1.2.6)
   - SwiftLint (= 0.41.0)
   - Toast-Swift (= 5.0.1)
@@ -173,6 +173,7 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
+    - SWFrame
     - SwiftEntryKit
     - SwifterSwift
     - SwiftLint
@@ -182,12 +183,8 @@ SPEC REPOS:
     - URLNavigator
     - WeakMapTable
 
-EXTERNAL SOURCES:
-  SWFrame:
-    :path: "../SWFrame"
-
 SPEC CHECKSUMS:
-  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
@@ -218,7 +215,7 @@ SPEC CHECKSUMS:
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: c7afa475629164ec84fe8f78a9e7720c16bcfbe6
+  SWFrame: 70d995bd09767ba8171a4561506325eb09021f96
   SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
@@ -228,6 +225,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 85e1fd49524932173aabcb47e8f8cd4f7f06f651
+PODFILE CHECKSUM: 76c603a16b9db820cab9c4d5b9aed21e8be80c9f
 
 COCOAPODS: 1.10.0
