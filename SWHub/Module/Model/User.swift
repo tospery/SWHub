@@ -55,6 +55,8 @@ struct User: ModelType, Subjective, Eventable {
     var sponsorUrl: String?
     var plan: Plan?
     var repo: Repo?
+    // 扩展属性
+    var token: String?
     
     var isValid: Bool {
         self.id ?? 0 != 0 &&
@@ -152,6 +154,7 @@ struct User: ModelType, Subjective, Eventable {
         avatar                  <- map["avatar"]
         sponsorUrl              <- map["sponsorUrl"]
         repo                    <- map["repo"]
+        token                   <- map["token"]
     }
     // swiftlint:enable function_body_length
     
@@ -177,10 +180,8 @@ struct User: ModelType, Subjective, Eventable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         var leftJSON = lhs.toJSON()
         leftJSON.removeValue(forKey: "token")
-        leftJSON.removeValue(forKey: "nowtime")
         var rightJSON = rhs.toJSON()
         rightJSON.removeValue(forKey: "token")
-        rightJSON.removeValue(forKey: "nowtime")
         let leftValue = leftJSON.jsonString()?.sorted()
         let rightValue = rightJSON.jsonString()?.sorted()
         return leftValue == rightValue

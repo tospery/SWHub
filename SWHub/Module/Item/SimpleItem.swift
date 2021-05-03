@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SimpleItem: CollectionItem, ReactorKit.Reactor {
+class SimpleItem: BaseCollectionItem, ReactorKit.Reactor {
 
     typealias Action = NoAction
 

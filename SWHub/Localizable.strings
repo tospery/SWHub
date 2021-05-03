@@ -17,6 +17,7 @@
 "Token" = "私钥";
 "Unknown" = "未知";
 "Trending" = "趋势";
+"Submit" = "提交";
 "Repository" = "Repository";
 "Developer" = "Developer";
 "Repositories" = "Repositories";
@@ -30,6 +31,10 @@
 "Login.Privacy" = "隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。";
 "Login.Expression" = "登录即表示同意";
 "Login.Placeholder.Token" = "请输入您的个人访问密钥";
+/* 反馈 */
+"Feedback.Placeholder" = "问题内容";
+"Feedback.Successful" = "提交成功";
+"Feedback.Environment" = "运行环境: %@ - iOS%@ - v%@(%@)";
 /* 操作 */
 "Action.FiveMinutes" = "5分钟后";
 "Action.HalfAnHour" = "半小时后";

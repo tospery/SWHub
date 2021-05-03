@@ -6,8 +6,8 @@ inhibit_all_warnings!
 
 target 'SWHub' do
 
-  # pod 'SWFrame', :path => '../SWFrame'
-  pod 'SWFrame', '1.3.8'
+  pod 'SWFrame', :path => '../SWFrame'
+  # pod 'SWFrame', '1.3.8'
 
   pod 'DefaultsKit', '0.2.0'
   pod 'Cache', '6.0.0'

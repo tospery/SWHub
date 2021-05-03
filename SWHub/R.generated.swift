@@ -272,7 +272,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 44 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 48 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -312,6 +312,10 @@ struct R: Rswift.Validatable {
       static let errorNavigationTitle = Rswift.StringResource(key: "Error.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的
       static let mine = Rswift.StringResource(key: "Mine", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 提交
+      static let submit = Rswift.StringResource(key: "Submit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 提交成功
+      static let feedbackSuccessful = Rswift.StringResource(key: "Feedback.Successful", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 数据解析异常
       static let errorDataFormatMessage = Rswift.StringResource(key: "Error.DataFormat.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 数据解析异常
@@ -352,8 +356,12 @@ struct R: Rswift.Validatable {
       static let loginPlaceholderToken = Rswift.StringResource(key: "Login.Placeholder.Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 趋势
       static let trending = Rswift.StringResource(key: "Trending", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 运行环境: %@ - iOS%@ - v%@(%@)
+      static let feedbackEnvironment = Rswift.StringResource(key: "Feedback.Environment", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 重试
       static let errorRetry = Rswift.StringResource(key: "Error.Retry", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 问题内容
+      static let feedbackPlaceholder = Rswift.StringResource(key: "Feedback.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。
       static let loginPrivacy = Rswift.StringResource(key: "Login.Privacy", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 非法操作
@@ -610,6 +618,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Mine", bundle: bundle, comment: "")
+      }
+
+      /// Value: 提交
+      static func submit(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Submit", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Submit"
+        }
+
+        return NSLocalizedString("Submit", bundle: bundle, comment: "")
+      }
+
+      /// Value: 提交成功
+      static func feedbackSuccessful(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Feedback.Successful", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Feedback.Successful"
+        }
+
+        return NSLocalizedString("Feedback.Successful", bundle: bundle, comment: "")
       }
 
       /// Value: 数据解析异常
@@ -872,6 +906,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Trending", bundle: bundle, comment: "")
       }
 
+      /// Value: 运行环境: %@ - iOS%@ - v%@(%@)
+      static func feedbackEnvironment(_ value1: String, _ value2: String, _ value3: String, _ value4: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("Feedback.Environment", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2, value3, value4)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Feedback.Environment"
+        }
+
+        let format = NSLocalizedString("Feedback.Environment", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2, value3, value4)
+      }
+
       /// Value: 重试
       static func errorRetry(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -883,6 +932,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Retry", bundle: bundle, comment: "")
+      }
+
+      /// Value: 问题内容
+      static func feedbackPlaceholder(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Feedback.Placeholder", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Feedback.Placeholder"
+        }
+
+        return NSLocalizedString("Feedback.Placeholder", bundle: bundle, comment: "")
       }
 
       /// Value: 隐私声明: %@不会从您的GitHub账户收集任何信息，我甚至连服务器都没有，请您放心使用。

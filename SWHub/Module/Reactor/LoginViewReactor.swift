@@ -90,7 +90,11 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     }
 
     func login(_ token: String) -> Observable<User> {
-        self.provider.login(token: token).asObservable()
+        self.provider.login(token: token).asObservable().flatMap { user -> Observable<User> in
+            var user = user
+            user.token = token
+            return .just(user)
+        }
     }
     
 }

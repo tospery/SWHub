@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MineHeaderView: SupplementaryView {
+class MineHeaderView: BaseSupplementaryView {
 
     var user: User?
     

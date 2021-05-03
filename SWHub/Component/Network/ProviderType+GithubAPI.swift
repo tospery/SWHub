@@ -20,4 +20,16 @@ extension SWFrame.ProviderType {
         )
     }
     
+    /// 反馈
+    func feedback(title: String, body: String) -> Single<Void> {
+        networking.request(
+            MultiTarget.init(
+                GithubAPI.feedback(title: title, body: body)
+            ),
+            type: FeedbackResponse.self
+        ).flatMap { _ -> Single<Void> in
+            .just(())
+        }
+    }
+    
 }

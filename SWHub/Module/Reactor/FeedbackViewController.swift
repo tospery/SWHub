@@ -8,6 +8,22 @@
 import UIKit
 
 class FeedbackViewController: ScrollViewController, ReactorKit.View {
+
+    lazy var mainView: FeedbackMainView = {
+        let view = FeedbackMainView.init()
+        view.sizeToFit()
+        return view
+    }()
+    
+    lazy var button: SWButton = {
+        let button = SWButton.init(type: .custom)
+        button.cornerRadius = 5
+        button.titleLabel?.font = .systemFont(ofSize: 18)
+        button.setTitle(R.string.localizable.submit(), for: .normal)
+        button.sizeToFit()
+        button.size = .init(width: UIScreen.width - 20 * 2, height: 44)
+        return button
+    }()
     
     init(_ navigator: NavigatorType, _ reactor: FeedbackViewReactor) {
         defer {
@@ -22,94 +38,53 @@ class FeedbackViewController: ScrollViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.scrollView.addSubview(self.sloganLabel)
-//        self.scrollView.addSubview(self.privacyLabel)
-//        self.scrollView.addSubview(self.authLabel)
-//        self.scrollView.addSubview(self.errorLabel)
-//        self.scrollView.addSubview(self.loginButton)
-//        self.scrollView.addSubview(self.authButton)
-//        self.scrollView.addSubview(self.logoImageView)
-//        self.scrollView.addSubview(self.tokenTextField)
-//
-//        self.authButton.rx.tap
-//            .subscribeNext(weak: self, type(of: self).oauth)
-//            .disposed(by: self.disposeBag)
-//
-//        let buttonSize = CGSize.init(
-//            width: UIScreen.width - 20 * 2,
-//            height: 44.f
-//        )
-//        themeService.rx
-//            .bind({ $0.headerColor }, to: [
-//                self.privacyLabel.rx.textColor,
-//                self.authLabel.rx.textColor
-//            ])
-//            .bind({ $0.titleColor }, to: [
-//                self.sloganLabel.rx.textColor,
-//                self.tokenTextField.rx.textColor
-//            ])
-//            .bind({ $0.special1Color }, to: self.errorLabel.rx.textColor)
-//            .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
-//            .bind({ UIImage.init(color: $0.primaryColor, size: buttonSize) },
-//                  to: self.loginButton.rx.backgroundImage(for: .normal))
-//            .bind({ UIImage.init(color: $0.primaryColor.withAlphaComponent(0.8), size: buttonSize) },
-//                  to: self.loginButton.rx.backgroundImage(for: .disabled))
-//            .disposed(by: self.rx.disposeBag)
+        self.scrollView.addSubview(self.mainView)
+        self.scrollView.addSubview(self.button)
+        
+        self.mainView.textView.rx.text.distinctUntilChanged()
+            .map { $0?.isNotEmpty ?? false }
+            .bind(to: self.button.rx.isEnabled)
+            .disposed(by: self.disposeBag)
+        
+        themeService.rx
+            .bind({ $0.brightColor }, to: self.scrollView.rx.backgroundColor)
+            .bind({ $0.backgroundColor }, to: self.button.rx.titleColor(for: .normal))
+            .bind({ UIImage.init(color: $0.primaryColor, size: self.button.size) },
+                  to: self.button.rx.backgroundImage(for: .normal))
+            .bind({ UIImage.init(color: $0.primaryColor.withAlphaComponent(0.8), size: self.button.size) },
+                  to: self.button.rx.backgroundImage(for: .disabled))
+            .disposed(by: self.rx.disposeBag)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        self.sloganLabel.left = self.sloganLabel.leftWhenCenter
-//        self.sloganLabel.top = (self.sloganLabel.topWhenCenter * 0.8).flat
-//        self.logoImageView.left = self.logoImageView.leftWhenCenter
-//        self.logoImageView.bottom = self.sloganLabel.top - 5
-//        self.tokenTextField.height = 44
-//        self.tokenTextField.width = self.scrollView.width - 20 * 2
-//        self.tokenTextField.left = self.tokenTextField.leftWhenCenter
-//        self.tokenTextField.top = self.sloganLabel.bottom + 30
-//        self.errorLabel.width = self.tokenTextField.width
-//        self.errorLabel.left = self.tokenTextField.left
-//        self.errorLabel.top = self.tokenTextField.bottom
-//        self.loginButton.height = 44
-//        self.loginButton.width = self.tokenTextField.width
-//        self.loginButton.left = self.loginButton.leftWhenCenter
-//        self.loginButton.top = self.errorLabel.bottom
-//        self.privacyLabel.left = self.loginButton.left
-//        self.privacyLabel.top = self.loginButton.bottom + 5
-//        self.authLabel.left = self.authLabel.leftWhenCenter
-//        self.authLabel.bottom = (self.scrollView.height - 30 - UIScreen.safeBottom).flat
-//        self.authButton.left = self.authButton.leftWhenCenter
-//        self.authButton.bottom = self.authLabel.top - 15
+        self.mainView.left = 0
+        self.mainView.top = 20
+        self.button.left = 20
+        self.button.top = self.mainView.bottom + 30
     }
-
-//    func handle(user: User) {
-//        User.update(user)
-//    }
-//
-//    func oauth(event: ControlEvent<Void>.Element) {
-//
-//    }
+    
+    func handle(isFinished: Bool) {
+        self.navigator.open(Router.toast.urlString.url!.appendingQueryParameters([
+            Parameter.message: R.string.localizable.feedbackSuccessful()
+        ]))
+        self.navigationController?.popViewController()
+    }
     
 }
 
 extension Reactive where Base: FeedbackViewController {
 
-//    var token: ControlProperty<String?> {
-//        self.base.tokenTextField.rx.text
-//    }
-//
-//    var login: ControlEvent<Void> {
-//        self.base.loginButton.rx.tap
-//    }
-//
-//    var error: Binder<Error?> {
-//        return Binder(self.base) { viewController, error in
-//            viewController.error = error
-//            guard viewController.isViewLoaded else {
-//                return
-//            }
-//            viewController.errorLabel.text = error?.localizedDescription
-//        }
-//    }
+    var subject: Binder<String?> {
+        self.base.mainView.label.rx.text
+    }
+    
+    var feedback: ControlProperty<String?> {
+        self.base.mainView.textView.rx.text
+    }
+    
+    var submit: ControlEvent<Void> {
+        ControlEvent(events: self.base.button.rx.tap.map { _ in })
+    }
     
 }

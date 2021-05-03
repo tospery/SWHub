@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RepoCell: CollectionCell, ReactorKit.View {
+class RepoCell: BaseCollectionCell, ReactorKit.View {
 
     struct Metric {
         static let iconSize = CGSize.init(24)

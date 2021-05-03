@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserCell: CollectionCell, ReactorKit.View {
+class UserCell: BaseCollectionCell, ReactorKit.View {
 
     struct Metric {
         static let cellHeight = 105.f

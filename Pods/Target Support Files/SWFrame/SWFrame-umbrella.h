@@ -14,6 +14,7 @@
 #import "SWHelper.h"
 #import "SWLabel.h"
 #import "UILabel+Ext.h"
+#import "UITextView+Ext.h"
 
 FOUNDATION_EXPORT double SWFrameVersionNumber;
 FOUNDATION_EXPORT const unsigned char SWFrameVersionString[];

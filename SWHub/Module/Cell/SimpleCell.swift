@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimpleCell: CollectionCell, ReactorKit.View {
+class SimpleCell: BaseCollectionCell, ReactorKit.View {
 
     lazy var titleLabel: SWLabel = {
         let label = SWLabel()

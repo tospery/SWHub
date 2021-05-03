@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserItem: CollectionItem, ReactorKit.Reactor {
+class UserItem: BaseCollectionItem, ReactorKit.Reactor {
 
     typealias Action = NoAction
     typealias Mutation = NoMutation

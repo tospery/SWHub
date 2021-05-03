@@ -12,14 +12,14 @@ struct LightTheme: Theme {
     let foregroundColor = UIColor.Material.black
     let lightColor = UIColor(hex: 0xF6F6F6)!
     let darkColor = UIColor.Material.grey900
-    let brightColor = UIColor.Material.grey900
+    let brightColor = UIColor(hex: 0xF2F2F2)!
     let dimColor = UIColor(hex: 0x000000, transparency: 0.2)!
     let primaryColor = UIColor(hex: 0x0277FF)!
     let secondaryColor = UIColor.Material.blue
     let titleColor = UIColor(hex: 0x333333)!
     let contentColor = UIColor(hex: 0x666666)!
     let headerColor = UIColor(hex: 0xD2D2D2)!
-    let footerColor = UIColor(hex: 0xD2D2D2)!
+    let footerColor = UIColor(hex: 0xB2B2B2)!
     let borderColor = UIColor(hex: 0xF4F4F4)!
     let cornerColor = UIColor(hex: 0xF4F4F4)!
     let separatorColor = UIColor(hex: 0xF2F2F2)!

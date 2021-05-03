@@ -17,9 +17,6 @@ class Runtime: SWFrame.Runtime {
         ExchangeImplementations(UIApplication.self,
                                 #selector(getter: UIApplication.baseWebUrl),
                                 #selector(getter: UIApplication.myBaseWebUrl))
-        ExchangeImplementations(BaseViewController.self,
-                                #selector(BaseViewController.viewDidLoad),
-                                #selector(BaseViewController.myViewDidLoad))
     }
 
 }
