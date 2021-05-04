@@ -23,8 +23,10 @@
 "Repositories" = "Repositories";
 "Followers" = "Followers";
 "Following" = "Following";
+"Issues" = "Issues";
 "Feedback" = "反馈";
 "About" = "关于";
+"View" = "查看";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";
 "Login.Slogan" = "%@ For GitHub";

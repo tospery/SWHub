@@ -33,6 +33,12 @@ enum Platform {
     }
 }
 
+enum State: String {
+    case open
+    case closed
+    case all
+}
+
 enum Since {
     case daily
     case weekly

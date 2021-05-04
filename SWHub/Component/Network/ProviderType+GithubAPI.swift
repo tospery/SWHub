@@ -32,4 +32,14 @@ extension SWFrame.ProviderType {
         }
     }
     
+    /// Issues
+    func issues(state: State, page: Int) -> Single<[Issue]> {
+        networking.requestArray(
+            MultiTarget.init(
+                GithubAPI.issues(state: state, page: page)
+            ),
+            type: Issue.self
+        )
+    }
+    
 }

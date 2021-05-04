@@ -35,12 +35,12 @@ enum Router: String {
         }
     }
     
-    enum Topic: String {
+    enum Issue: String {
         case list
         case detail
 
         var urlString: String {
-            "\(UIApplication.shared.scheme)://topic/\(self.rawValue)"
+            "\(UIApplication.shared.scheme)://issue/\(self.rawValue)"
         }
     }
     

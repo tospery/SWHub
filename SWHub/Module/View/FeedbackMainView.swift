@@ -53,10 +53,10 @@ class FeedbackMainView: BaseView {
         self.label.width = self.width
         self.label.left = 0
         self.label.bottom = self.height
-        self.textView.width = self.width
-        self.textView.height = self.height - self.label.height
-        self.textView.left = 0
-        self.textView.top = 0
+        self.textView.width = self.width - 10
+        self.textView.height = self.height - self.label.height - 10
+        self.textView.left = 5
+        self.textView.top = 5
     }
 
 }

@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793954EC26410BA6005C09EA /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793954EB26410BA6005C09EA /* DateExt.swift */; };
 		797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */; };
 		798FED7F263E8B3A0036B073 /* FeedbackMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */; };
 		7992B0FF263F979D004ED0B1 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */; };
+		79A4E980263FD94A00C5C0BE /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E97F263FD94A00C5C0BE /* Issue.swift */; };
+		79A4E983263FDA6500C5C0BE /* IssueListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */; };
+		79A4E986263FDA7200C5C0BE /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E985263FDA7200C5C0BE /* IssueListViewController.swift */; };
+		79A4E989263FF60E00C5C0BE /* IssueListViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E988263FF60E00C5C0BE /* IssueListViewController+Bind.swift */; };
+		79A4E98D263FFAD700C5C0BE /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E98C263FFAD700C5C0BE /* IssueItem.swift */; };
+		79A4E990263FFAE200C5C0BE /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E98F263FFAE200C5C0BE /* IssueCell.swift */; };
 		79B609812631BD9D00F8D087 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B609802631BD9D00F8D087 /* Plan.swift */; };
 		79B7F188263E48A000246B41 /* FeedbackViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */; };
 		79B7F18B263E48AE00246B41 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7F18A263E48AE00246B41 /* FeedbackViewController.swift */; };
@@ -84,9 +91,16 @@
 		1E5D62AC14B493A13BF0D38A /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 		61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F130F17256E2A17D445683C /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		793954EB26410BA6005C09EA /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMainView.swift; sourceTree = "<group>"; };
 		7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
+		79A4E97F263FD94A00C5C0BE /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewReactor.swift; sourceTree = "<group>"; };
+		79A4E985263FDA7200C5C0BE /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IssueListViewController.swift; path = SWHub/Module/Reactor/IssueListViewController.swift; sourceTree = SOURCE_ROOT; };
+		79A4E988263FF60E00C5C0BE /* IssueListViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IssueListViewController+Bind.swift"; sourceTree = "<group>"; };
+		79A4E98C263FFAD700C5C0BE /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
+		79A4E98F263FFAE200C5C0BE /* IssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
 		79B609802631BD9D00F8D087 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		79B609832631C44400F8D087 /* error1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = error1.json; sourceTree = "<group>"; };
 		79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewReactor.swift; sourceTree = "<group>"; };
@@ -275,6 +289,8 @@
 				8C4062B72637EEAB00584750 /* HomeViewController+Bind.swift */,
 				79B7F18A263E48AE00246B41 /* FeedbackViewController.swift */,
 				79B7F18D263E49A800246B41 /* FeedbackViewController+Bind.swift */,
+				79A4E985263FDA7200C5C0BE /* IssueListViewController.swift */,
+				79A4E988263FF60E00C5C0BE /* IssueListViewController+Bind.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,6 +301,7 @@
 				79CE3B61260E402700BB918B /* SimpleCell.swift */,
 				8C531A912635388A00EE101A /* RepoCell.swift */,
 				8C0E8CA92637FBEF0078E09E /* UserCell.swift */,
+				79A4E98F263FFAE200C5C0BE /* IssueCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -295,6 +312,7 @@
 				79CE3B63260E402700BB918B /* SimpleItem.swift */,
 				8C531A8E2635388100EE101A /* RepoItem.swift */,
 				8C0E8CA62637FBDF0078E09E /* UserItem.swift */,
+				79A4E98C263FFAD700C5C0BE /* IssueItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -310,6 +328,7 @@
 				8C531A4B26350ECB00EE101A /* Language.swift */,
 				79E18F1D263D5CE6008A074E /* Simple.swift */,
 				7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */,
+				79A4E97F263FD94A00C5C0BE /* Issue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,6 +344,7 @@
 				8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */,
 				8C4062A62637E94300584750 /* TrendingUsersViewReactor.swift */,
 				79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */,
+				79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -349,6 +369,7 @@
 				79CE3B77260E402700BB918B /* StorableExt.swift */,
 				79CE3B7A260E402700BB918B /* UIApplicationExt.swift */,
 				8CAFA7A82636BE950027FFB5 /* IntExt.swift */,
+				793954EB26410BA6005C09EA /* DateExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -606,6 +627,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CE3BA2260E402800BB918B /* MineViewReactor.swift in Sources */,
+				79A4E990263FFAE200C5C0BE /* IssueCell.swift in Sources */,
+				79A4E983263FDA6500C5C0BE /* IssueListViewReactor.swift in Sources */,
 				79CE3B99260E402800BB918B /* LoginViewController.swift in Sources */,
 				79B7F18B263E48AE00246B41 /* FeedbackViewController.swift in Sources */,
 				79CE3BB0260E402800BB918B /* GithubAPI.swift in Sources */,
@@ -624,12 +647,16 @@
 				79CE3B9C260E402800BB918B /* SimpleItem.swift in Sources */,
 				79CE3B96260E402800BB918B /* HomeViewController.swift in Sources */,
 				8C0E8CAA2637FBEF0078E09E /* UserCell.swift in Sources */,
+				79A4E98D263FFAD700C5C0BE /* IssueItem.swift in Sources */,
+				79A4E986263FDA7200C5C0BE /* IssueListViewController.swift in Sources */,
 				79B7F18E263E49A800246B41 /* FeedbackViewController+Bind.swift in Sources */,
 				79CE3BB9260E402800BB918B /* Appearance.swift in Sources */,
 				79CE3BBC260E402800BB918B /* Router+Web.swift in Sources */,
 				79CE3B9A260E402800BB918B /* TabBarController.swift in Sources */,
+				79A4E980263FD94A00C5C0BE /* Issue.swift in Sources */,
 				8C531A4C26350ECB00EE101A /* Language.swift in Sources */,
 				79CE3BB2260E402800BB918B /* ProviderType+GithubAPI.swift in Sources */,
+				79A4E989263FF60E00C5C0BE /* IssueListViewController+Bind.swift in Sources */,
 				79CE3BB8260E402800BB918B /* Function.swift in Sources */,
 				79E18F1E263D5CE6008A074E /* Simple.swift in Sources */,
 				79CE3B9B260E402800BB918B /* SimpleCell.swift in Sources */,
@@ -670,6 +697,7 @@
 				79CE3B98260E402800BB918B /* MineViewController.swift in Sources */,
 				79CE3BA1260E402800BB918B /* LoginViewReactor.swift in Sources */,
 				8C531A922635388A00EE101A /* RepoCell.swift in Sources */,
+				793954EC26410BA6005C09EA /* DateExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

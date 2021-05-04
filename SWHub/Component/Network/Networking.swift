@@ -36,6 +36,23 @@ struct Networking: NetworkingType {
         }
     }
     
+    func requestArray<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<[Model]> {
+        self.requestJSON(target).flatMap { json -> Single<[Model]> in
+            if let info = json as? [String: Any],
+               let message = info["message"] as? String {
+                return .error(SWError.server(0, message))
+            }
+            guard let json = json as? [[String: Any]] else {
+                return .error(SWError.dataFormat)
+            }
+            let models = [Model].init(JSONArray: json)
+            guard models.count != 0 else {
+                return .error(SWError.listIsEmpty)
+            }
+            return .just(models)
+        }
+    }
+    
 //    static var endpointClosure: MoyaProvider<Target>.EndpointClosure {
 //        return { target in
 //            return Endpoint(

@@ -156,7 +156,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 12 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
@@ -168,8 +168,12 @@ struct R: Rswift.Validatable {
     static let feedback = Rswift.ImageResource(bundle: R.hostingBundle, name: "feedback")
     /// Image `github`.
     static let github = Rswift.ImageResource(bundle: R.hostingBundle, name: "github")
+    /// Image `open`.
+    static let `open` = Rswift.ImageResource(bundle: R.hostingBundle, name: "open")
     /// Image `repo`.
     static let repo = Rswift.ImageResource(bundle: R.hostingBundle, name: "repo")
+    /// Image `resolved`.
+    static let resolved = Rswift.ImageResource(bundle: R.hostingBundle, name: "resolved")
     /// Image `setting`.
     static let setting = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting")
     /// Image `star`.
@@ -219,9 +223,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "open", bundle: ..., traitCollection: ...)`
+    static func `open`(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.`open`, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "repo", bundle: ..., traitCollection: ...)`
     static func repo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.repo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "resolved", bundle: ..., traitCollection: ...)`
+    static func resolved(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.resolved, compatibleWith: traitCollection)
     }
     #endif
 
@@ -272,7 +290,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 48 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 50 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -288,6 +306,8 @@ struct R: Rswift.Validatable {
       static let followers = Rswift.StringResource(key: "Followers", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Following
       static let following = Rswift.StringResource(key: "Following", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Issues
+      static let issues = Rswift.StringResource(key: "Issues", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Repositories
       static let repositories = Rswift.StringResource(key: "Repositories", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Repository
@@ -332,6 +352,8 @@ struct R: Rswift.Validatable {
       static let errorUnknownMessage = Rswift.StringResource(key: "Error.Unknown.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 未知错误
       static let errorUnknownTitle = Rswift.StringResource(key: "Error.Unknown.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 查看
+      static let view = Rswift.StringResource(key: "View", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户未登录
       static let errorNotLoginedInMessage = Rswift.StringResource(key: "Error.NotLoginedIn.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 用户未登录
@@ -462,6 +484,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Following", bundle: bundle, comment: "")
+      }
+
+      /// Value: Issues
+      static func issues(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Issues", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Issues"
+        }
+
+        return NSLocalizedString("Issues", bundle: bundle, comment: "")
       }
 
       /// Value: Repositories
@@ -748,6 +783,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Unknown.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 查看
+      static func view(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("View", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "View"
+        }
+
+        return NSLocalizedString("View", bundle: bundle, comment: "")
       }
 
       /// Value: 用户未登录

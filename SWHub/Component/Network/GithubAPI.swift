@@ -10,6 +10,7 @@ import Foundation
 enum GithubAPI {
     case login(token: String)
     case feedback(title: String, body: String)
+    case issues(state: State, page: Int)
 }
 
 extension GithubAPI: TargetType {
@@ -21,7 +22,7 @@ extension GithubAPI: TargetType {
     var path: String {
         switch self {
         case .login: return "/user"
-        case .feedback: return "/repos/\(User.current?.login ?? "")/SWHub/issues"
+        case .feedback, .issues: return "/repos/tospery/SWHub/issues"
         }
     }
 
@@ -56,6 +57,11 @@ extension GithubAPI: TargetType {
                 bodyEncoding: JSONEncoding.default,
                 urlParameters: basicParameters
             )
+        case let .issues(state, page):
+            var parameters = basicParameters
+            parameters["state"] = state.rawValue
+            parameters["page"] = page
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
