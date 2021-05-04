@@ -290,10 +290,12 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 50 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 51 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: %@回复
+      static let replies = Rswift.StringResource(key: "replies", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: -----GitHub官方授权登录-----
       static let loginAuth = Rswift.StringResource(key: "Login.Auth", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 1小时后
@@ -405,6 +407,21 @@ struct R: Rswift.Validatable {
         }
 
         let format = NSLocalizedString("Login.Slogan", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: %@回复
+      static func replies(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("replies", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "replies"
+        }
+
+        let format = NSLocalizedString("replies", bundle: bundle, comment: "")
         return String(format: format, locale: locale, value1)
       }
 

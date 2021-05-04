@@ -31,8 +31,22 @@ class IssueListViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.issueCell)
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource)
+            .subscribeNext(weak: self, type(of: self).tapCell)
+            .disposed(by: self.disposeBag)
     }
 
+    func tapCell(sectionItem: ControlEvent<SectionItem>.Element) {
+        switch sectionItem {
+        case let .issue(item):
+            guard let issue = item.model as? Issue else { return }
+            guard let urlString = issue.htmlUrl else { return }
+            self.navigator.push(urlString)
+        default:
+            break
+        }
+    }
+    
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: IssueListViewReactor)
         -> RxCollectionViewSectionedReloadDataSource<Section> {
         return .init(

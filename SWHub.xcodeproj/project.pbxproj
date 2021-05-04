@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		793954EC26410BA6005C09EA /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793954EB26410BA6005C09EA /* DateExt.swift */; };
+		794AF52D2641454F0005BB1C /* WebViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF52C2641454F0005BB1C /* WebViewReactor.swift */; };
+		794AF5312641455F0005BB1C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF5302641455F0005BB1C /* WebViewController.swift */; };
 		797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */; };
 		798FED7F263E8B3A0036B073 /* FeedbackMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */; };
 		7992B0FF263F979D004ED0B1 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */; };
@@ -92,6 +94,8 @@
 		61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F130F17256E2A17D445683C /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
 		793954EB26410BA6005C09EA /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		794AF52C2641454F0005BB1C /* WebViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewReactor.swift; sourceTree = "<group>"; };
+		794AF5302641455F0005BB1C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMainView.swift; sourceTree = "<group>"; };
 		7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
@@ -195,6 +199,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		794AF52B2641453D0005BB1C /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				794AF52C2641454F0005BB1C /* WebViewReactor.swift */,
+				794AF5302641455F0005BB1C /* WebViewController.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		797B6F5D263D1E410047CEB5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +365,7 @@
 		79CE3B6E260E402700BB918B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				794AF52B2641453D0005BB1C /* Web */,
 				8C4062B22637EE1200584750 /* Reactive */,
 				79CE3B76260E402700BB918B /* Extension */,
 				79CE3B80260E402700BB918B /* Foundation */,
@@ -652,6 +666,7 @@
 				79B7F18E263E49A800246B41 /* FeedbackViewController+Bind.swift in Sources */,
 				79CE3BB9260E402800BB918B /* Appearance.swift in Sources */,
 				79CE3BBC260E402800BB918B /* Router+Web.swift in Sources */,
+				794AF52D2641454F0005BB1C /* WebViewReactor.swift in Sources */,
 				79CE3B9A260E402800BB918B /* TabBarController.swift in Sources */,
 				79A4E980263FD94A00C5C0BE /* Issue.swift in Sources */,
 				8C531A4C26350ECB00EE101A /* Language.swift in Sources */,
@@ -662,6 +677,7 @@
 				79CE3B9B260E402800BB918B /* SimpleCell.swift in Sources */,
 				79CE3BBD260E402800BB918B /* Router+Page.swift in Sources */,
 				79CE3BBB260E402800BB918B /* QMUIConfigurationTemplate.m in Sources */,
+				794AF5312641455F0005BB1C /* WebViewController.swift in Sources */,
 				79CE3B97260E402800BB918B /* GeneralViewController.swift in Sources */,
 				79B609812631BD9D00F8D087 /* Plan.swift in Sources */,
 				79CE3BAB260E402800BB918B /* StorableExt.swift in Sources */,

@@ -17,6 +17,8 @@ class IssueItem: BaseCollectionItem, ReactorKit.Reactor {
         var avatar: ImageSource?
         var username: String?
         var time: String?
+        var comments: String?
+        var title: String?
     }
 
     var initialState = State()
@@ -28,7 +30,9 @@ class IssueItem: BaseCollectionItem, ReactorKit.Reactor {
             icon: issue.stateIcon,
             avatar: issue.user?.avatarUrl?.url,
             username: issue.user?.login,
-            time: issue.timeAgoSinceNow
+            time: issue.timeAgoSinceNow,
+            comments: R.string.localizable.replies((issue.comments ?? 0).string),
+            title: issue.title
         )
     }
     

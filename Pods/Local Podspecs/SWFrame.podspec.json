@@ -84,6 +84,9 @@
     ],
     "ESPullToRefresh": [
       "2.9.3"
+    ],
+    "WebViewJavascriptBridge": [
+      "6.0.3"
     ]
   },
   "swift_version": "5.0"

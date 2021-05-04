@@ -23,7 +23,7 @@ target 'SWHub' do
   pod 'DateToolsSwift', '5.0.0'
   # pod 'TTTAttributedLabel', '2.0.0'
   
-  # pod 'MLeaksFinder', '1.0.0'
+  pod 'MLeaksFinder', '1.0.0'
   # pod 'FLEX', '3.0.0'
 
 end

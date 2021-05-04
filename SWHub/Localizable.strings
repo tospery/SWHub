@@ -27,6 +27,7 @@
 "Feedback" = "反馈";
 "About" = "关于";
 "View" = "查看";
+"replies" = "%@回复";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";
 "Login.Slogan" = "%@ For GitHub";

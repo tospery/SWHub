@@ -18,7 +18,22 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
     
     lazy var timeLabel: SWLabel = {
         let label = SWLabel()
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 12)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var titleLabel: SWLabel = {
+        let label = SWLabel()
+        label.font = .systemFont(ofSize: 15)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var commentsLabel: SWLabel = {
+        let label = SWLabel()
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 12)
         label.sizeToFit()
         return label
     }()
@@ -48,10 +63,16 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.avatarImageView)
         self.contentView.addSubview(self.iconImageView)
         self.contentView.addSubview(self.timeLabel)
+        self.contentView.addSubview(self.commentsLabel)
+        self.contentView.addSubview(self.titleLabel)
 
         themeService.rx
             .bind({ $0.titleColor }, to: self.usernameLabel.rx.textColor)
-            .bind({ $0.footerColor }, to: self.timeLabel.rx.textColor)
+            .bind({ $0.contentColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.footerColor }, to: [
+                self.timeLabel.rx.textColor,
+                self.commentsLabel.rx.textColor
+            ])
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -63,6 +84,8 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
         super.prepareForReuse()
         self.usernameLabel.text = nil
         self.timeLabel.text = nil
+        self.commentsLabel.text = nil
+        self.titleLabel.text = nil
         self.avatarImageView.image = nil
         self.iconImageView.image = nil
     }
@@ -80,6 +103,14 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
         self.timeLabel.sizeToFit()
         self.timeLabel.left = 10
         self.timeLabel.bottom = self.contentView.height - 5
+        self.commentsLabel.sizeToFit()
+        self.commentsLabel.right = self.contentView.width - 10
+        self.commentsLabel.centerY = self.timeLabel.centerY
+        self.titleLabel.sizeToFit()
+        self.titleLabel.left = self.avatarImageView.left
+        self.titleLabel.extendToRight = self.contentView.width - 10
+        self.titleLabel.top = self.avatarImageView.bottom + 5
+        self.titleLabel.extendToBottom = self.timeLabel.top - 5
     }
 
     func bind(reactor: IssueItem) {
@@ -91,6 +122,14 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
         reactor.state.map { $0.time }
             .distinctUntilChanged()
             .bind(to: self.timeLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.comments }
+            .distinctUntilChanged()
+            .bind(to: self.commentsLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.title }
+            .distinctUntilChanged()
+            .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.avatar }
             .distinctUntilChanged { SWHub.compare($0, $1) }
@@ -106,7 +145,7 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        .init(width: width, height: 100)
+        .init(width: width, height: 90)
     }
 
 }
