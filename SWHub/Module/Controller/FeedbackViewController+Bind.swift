@@ -16,21 +16,12 @@ extension FeedbackViewController {
     }
     
     func toAction(reactor: FeedbackViewReactor) {
-//        Observable.merge([
-//            self.rx.viewDidLoad.map { Reactor.Action.load },
-//            self.rx.emptyDataSet.map { Reactor.Action.load }
-//        ])
-//        .bind(to: reactor.action)
-//        .disposed(by: self.disposeBag)
         self.rx.feedback.map { Reactor.Action.feedback($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.rx.submit.map { Reactor.Action.submit }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-//        self.mainView.rx.submit.subscribe(onNext: { _ in
-//            log("abc")
-//        }).disposed(by: self.disposeBag)
     }
     
     func fromState(reactor: FeedbackViewReactor) {
