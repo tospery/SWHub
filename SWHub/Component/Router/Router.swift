@@ -14,6 +14,7 @@ enum Router: String {
     case popup
     case login
     case feedback
+    case about
     case test
     
     enum Web: String {

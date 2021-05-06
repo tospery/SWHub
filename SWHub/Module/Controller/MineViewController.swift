@@ -75,12 +75,12 @@ class MineViewController: CollectionViewController, ReactorKit.View {
         switch sectionItem {
         case let .simple(item):
             guard let simple = item.model as? Simple else { return }
-            guard let portal = Portal.init(rawValue: simple.id) else { return }
+            guard let portal = MineViewReactor.Portal.init(rawValue: simple.id) else { return }
             switch portal {
             case .feedback:
                 self.navigator.push(Router.feedback.urlString)
-            default:
-                break
+            case .about:
+                self.navigator.push(Router.about.urlString)
             }
         default:
             break

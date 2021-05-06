@@ -290,7 +290,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 51 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 55 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -314,6 +314,10 @@ struct R: Rswift.Validatable {
       static let repositories = Rswift.StringResource(key: "Repositories", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Repository
       static let repository = Rswift.StringResource(key: "Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: URL Schemes
+      static let urlSchemes = Rswift.StringResource(key: "URL Schemes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 作者
+      static let author = Rswift.StringResource(key: "Author", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 停止
       static let actionStop = Rswift.StringResource(key: "Action.Stop", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 关于
@@ -334,6 +338,8 @@ struct R: Rswift.Validatable {
       static let errorNavigationTitle = Rswift.StringResource(key: "Error.Navigation.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的
       static let mine = Rswift.StringResource(key: "Mine", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 推荐给好友
+      static let shareToFriends = Rswift.StringResource(key: "Share To Friends", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 提交
       static let submit = Rswift.StringResource(key: "Submit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 提交成功
@@ -376,6 +382,8 @@ struct R: Rswift.Validatable {
       static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
       static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 评分鼓励
+      static let scoreToEncourage = Rswift.StringResource(key: "Score To Encourage", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 请输入您的个人访问密钥
       static let loginPlaceholderToken = Rswift.StringResource(key: "Login.Placeholder.Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 趋势
@@ -542,6 +550,32 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Repository", bundle: bundle, comment: "")
       }
 
+      /// Value: URL Schemes
+      static func urlSchemes(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("URL Schemes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "URL Schemes"
+        }
+
+        return NSLocalizedString("URL Schemes", bundle: bundle, comment: "")
+      }
+
+      /// Value: 作者
+      static func author(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Author", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Author"
+        }
+
+        return NSLocalizedString("Author", bundle: bundle, comment: "")
+      }
+
       /// Value: 停止
       static func actionStop(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -670,6 +704,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Mine", bundle: bundle, comment: "")
+      }
+
+      /// Value: 推荐给好友
+      static func shareToFriends(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Share To Friends", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Share To Friends"
+        }
+
+        return NSLocalizedString("Share To Friends", bundle: bundle, comment: "")
       }
 
       /// Value: 提交
@@ -943,6 +990,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Network.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 评分鼓励
+      static func scoreToEncourage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Score To Encourage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Score To Encourage"
+        }
+
+        return NSLocalizedString("Score To Encourage", bundle: bundle, comment: "")
       }
 
       /// Value: 请输入您的个人访问密钥

@@ -27,6 +27,10 @@
 "Feedback" = "反馈";
 "About" = "关于";
 "View" = "查看";
+"Author" = "作者";
+"URL Schemes" = "URL Schemes";
+"Score To Encourage" = "评分鼓励";
+"Share To Friends" = "推荐给好友";
 "replies" = "%@回复";
 /* 登录 */
 "Login.Auth" = "-----GitHub官方授权登录-----";

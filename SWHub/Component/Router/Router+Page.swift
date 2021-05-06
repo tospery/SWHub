@@ -26,6 +26,9 @@ extension Router {
         navigator.register(self.feedback.urlString) { url, values, context in
             FeedbackViewController(navigator, FeedbackViewReactor(provider, parameters(url, values, context)))
         }
+        navigator.register(self.about.urlString) { url, values, context in
+            AboutViewController(navigator, AboutViewReactor(provider, parameters(url, values, context)))
+        }
         navigator.register(Issue.list.urlString) { url, values, context in
             IssueListViewController(navigator, IssueListViewReactor(provider, parameters(url, values, context)))
         }

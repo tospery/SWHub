@@ -19,7 +19,7 @@ struct Simple: ModelType {
     
     init(_ id: Int,
          _ title: String?,
-         _ icon: ImageSource?,
+         _ icon: ImageSource? = nil,
          _ detail: NSAttributedString? = nil,
          _ indicated: Bool = true) {
         self.id = id

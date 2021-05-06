@@ -1,31 +1,28 @@
 //
-//  MineViewReactor.swift
+//  AboutViewReactor.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/11/28.
+//  Created by 杨建祥 on 2021/5/6.
 //
 
 import Foundation
 
-class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class AboutViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Portal: Int {
-        case feedback
-        case about
-        
-        static let allValues = [feedback, about]
-        
+        case author
+        case scheme
+        case grade
+        case share
+    
+        static let allValues = [author, scheme, grade, share]
+    
         var title: String {
             switch self {
-            case .feedback: return R.string.localizable.feedback()
-            case .about: return R.string.localizable.about()
-            }
-        }
-        
-        var image: UIImage {
-            switch self {
-            case .feedback: return R.image.feedback()!
-            case .about: return R.image.about()!
+            case .author: return R.string.localizable.author()
+            case .scheme: return R.string.localizable.urlSchemes()
+            case .grade: return R.string.localizable.scoreToEncourage()
+            case .share: return R.string.localizable.shareToFriends()
             }
         }
         
@@ -37,19 +34,17 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
-        case setError(Error?)
         case setTitle(String?)
-        case setUser(User?)
-        case setSimples([Simple])
+        case setPortals([Portal])
+        case setError(Error?)
     }
 
     struct State {
         var isLoading = false
-        var error: Error?
         var title: String?
-        var user: User?
-        var simples = [Simple].init()
+        var portals = [Portal].init()
         var sections = [Section].init()
+        var error: Error?
     }
 
     var initialState = State()
@@ -57,15 +52,14 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: SWFrame.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: self.title ?? R.string.localizable.mine()
+            title: self.title ?? R.string.localizable.about()
         )
     }
-
+    
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            let simples = Portal.allValues.map { Simple.init($0.rawValue, $0.title, $0.image) }
-            return .just(Mutation.setSimples(simples))
+            return .just(.setPortals(Portal.allValues))
         }
     }
     
@@ -78,13 +72,13 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             newState.error = error
         case let .setTitle(title):
             newState.title = title
-        case let .setUser(user):
-            newState.user = user
-        case let .setSimples(simples):
-            newState.simples = simples
+        case let .setPortals(portals):
+            newState.portals = portals
             newState.sections = [.sectionItems(
                 header: "",
-                items: simples.map {
+                items: portals.map {
+                    Simple.init($0.rawValue, $0.title)
+                }.map {
                     SimpleItem.init($0)
                 }.map {
                     SectionItem.simple($0)
@@ -99,8 +93,7 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let user = Subjection.for(User.self).asObservable().map(Mutation.setUser)
-        return .merge(mutation, user)
+        mutation
     }
     
     func transform(state: Observable<State>) -> Observable<State> {

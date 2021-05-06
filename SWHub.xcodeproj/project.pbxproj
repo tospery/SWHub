@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79179DF32643C9E4001458C6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF22643C9E4001458C6 /* AboutViewController.swift */; };
+		79179DF62643C9EF001458C6 /* AboutViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */; };
+		79179DF92643CA0C001458C6 /* AboutViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF82643CA0C001458C6 /* AboutViewReactor.swift */; };
 		793954EC26410BA6005C09EA /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793954EB26410BA6005C09EA /* DateExt.swift */; };
 		794AF52D2641454F0005BB1C /* WebViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF52C2641454F0005BB1C /* WebViewReactor.swift */; };
 		794AF5312641455F0005BB1C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF5302641455F0005BB1C /* WebViewController.swift */; };
@@ -93,6 +96,9 @@
 		1E5D62AC14B493A13BF0D38A /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 		61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F130F17256E2A17D445683C /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		79179DF22643C9E4001458C6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutViewController+Bind.swift"; sourceTree = "<group>"; };
+		79179DF82643CA0C001458C6 /* AboutViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewReactor.swift; sourceTree = "<group>"; };
 		793954EB26410BA6005C09EA /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		794AF52C2641454F0005BB1C /* WebViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewReactor.swift; sourceTree = "<group>"; };
 		794AF5302641455F0005BB1C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +310,8 @@
 				79B7F18D263E49A800246B41 /* FeedbackViewController+Bind.swift */,
 				79A4E985263FDA7200C5C0BE /* IssueListViewController.swift */,
 				79A4E988263FF60E00C5C0BE /* IssueListViewController+Bind.swift */,
+				79179DF22643C9E4001458C6 /* AboutViewController.swift */,
+				79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				8C4062A62637E94300584750 /* TrendingUsersViewReactor.swift */,
 				79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */,
 				79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */,
+				79179DF82643CA0C001458C6 /* AboutViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -658,6 +667,7 @@
 				79CE3BA3260E402800BB918B /* HomeViewReactor.swift in Sources */,
 				79CE3BB7260E402800BB918B /* Theme.swift in Sources */,
 				79CE3B95260E402800BB918B /* Section.swift in Sources */,
+				79179DF32643C9E4001458C6 /* AboutViewController.swift in Sources */,
 				79CE3B9C260E402800BB918B /* SimpleItem.swift in Sources */,
 				79CE3B96260E402800BB918B /* HomeViewController.swift in Sources */,
 				8C0E8CAA2637FBEF0078E09E /* UserCell.swift in Sources */,
@@ -686,6 +696,7 @@
 				79CE3BA4260E402800BB918B /* TabBarReactor.swift in Sources */,
 				8C531A4826350DBE00EE101A /* Const.swift in Sources */,
 				8C4062B82637EEAB00584750 /* HomeViewController+Bind.swift in Sources */,
+				79179DF62643C9EF001458C6 /* AboutViewController+Bind.swift in Sources */,
 				8C531A3D2635039F00EE101A /* ProviderType+TrendingAPI.swift in Sources */,
 				79CE3BBE260E402800BB918B /* Router.swift in Sources */,
 				8C40629E2637E80B00584750 /* TrendingReposViewController+Bind.swift in Sources */,
@@ -701,6 +712,7 @@
 				8CAFA7AC2637E7A70027FFB5 /* TrendingReposViewReactor.swift in Sources */,
 				79CE3BBA260E402800BB918B /* OCHelper.m in Sources */,
 				8C40629B2637E7D300584750 /* TrendingReposViewController.swift in Sources */,
+				79179DF92643CA0C001458C6 /* AboutViewReactor.swift in Sources */,
 				8C4062AE2637E96500584750 /* TrendingUsersViewController+Bind.swift in Sources */,
 				79CE3B9D260E402800BB918B /* User.swift in Sources */,
 				79CE3B9F260E402800BB918B /* Preference.swift in Sources */,
