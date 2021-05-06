@@ -306,7 +306,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 55 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 52 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -314,10 +314,6 @@ struct R: Rswift.Validatable {
       static let replies = Rswift.StringResource(key: "replies", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: -----GitHub官方授权登录-----
       static let loginAuth = Rswift.StringResource(key: "Login.Auth", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 1小时后
-      static let actionOneHour = Rswift.StringResource(key: "Action.OneHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 5分钟后
-      static let actionFiveMinutes = Rswift.StringResource(key: "Action.FiveMinutes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Developer
       static let developer = Rswift.StringResource(key: "Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Followers
@@ -330,20 +326,18 @@ struct R: Rswift.Validatable {
       static let repositories = Rswift.StringResource(key: "Repositories", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Repository
       static let repository = Rswift.StringResource(key: "Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Swift开发的GitHub iOS客户端
+      static let aboutShareMessage = Rswift.StringResource(key: "About.Share.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: URL Schemes
       static let urlSchemes = Rswift.StringResource(key: "URL Schemes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 作者
       static let author = Rswift.StringResource(key: "Author", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 停止
-      static let actionStop = Rswift.StringResource(key: "Action.Stop", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 关于
       static let about = Rswift.StringResource(key: "About", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
       static let errorListIsEmptyMessage = Rswift.StringResource(key: "Error.ListIsEmpty.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
       static let errorListIsEmptyTitle = Rswift.StringResource(key: "Error.ListIsEmpty.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 半小时后
-      static let actionHalfAnHour = Rswift.StringResource(key: "Action.HalfAnHour", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 反馈
       static let feedback = Rswift.StringResource(key: "Feedback", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
@@ -462,32 +456,6 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Login.Auth", bundle: bundle, comment: "")
       }
 
-      /// Value: 1小时后
-      static func actionOneHour(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Action.OneHour", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Action.OneHour"
-        }
-
-        return NSLocalizedString("Action.OneHour", bundle: bundle, comment: "")
-      }
-
-      /// Value: 5分钟后
-      static func actionFiveMinutes(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Action.FiveMinutes", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Action.FiveMinutes"
-        }
-
-        return NSLocalizedString("Action.FiveMinutes", bundle: bundle, comment: "")
-      }
-
       /// Value: Developer
       static func developer(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -566,6 +534,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Repository", bundle: bundle, comment: "")
       }
 
+      /// Value: Swift开发的GitHub iOS客户端
+      static func aboutShareMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("About.Share.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "About.Share.Message"
+        }
+
+        return NSLocalizedString("About.Share.Message", bundle: bundle, comment: "")
+      }
+
       /// Value: URL Schemes
       static func urlSchemes(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -590,19 +571,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Author", bundle: bundle, comment: "")
-      }
-
-      /// Value: 停止
-      static func actionStop(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Action.Stop", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Action.Stop"
-        }
-
-        return NSLocalizedString("Action.Stop", bundle: bundle, comment: "")
       }
 
       /// Value: 关于
@@ -642,19 +610,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.ListIsEmpty.Title", bundle: bundle, comment: "")
-      }
-
-      /// Value: 半小时后
-      static func actionHalfAnHour(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Action.HalfAnHour", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Action.HalfAnHour"
-        }
-
-        return NSLocalizedString("Action.HalfAnHour", bundle: bundle, comment: "")
       }
 
       /// Value: 反馈

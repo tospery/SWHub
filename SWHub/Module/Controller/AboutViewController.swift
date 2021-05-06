@@ -47,19 +47,41 @@ class AboutViewController: CollectionViewController, ReactorKit.View {
             guard let portal = AboutViewReactor.Portal.init(rawValue: simple.id) else { return }
             switch portal {
             case .share:
-                let messageObject = UMSocialMessageObject.init()
-                let shareObject = UMShareWebpageObject.shareObject(withTitle: "标题", descr: "描述", thumImage: R.image.app_icon())
-                shareObject?.webpageUrl = "https://github.com/tospery/SWHub"
-                messageObject.shareObject = shareObject
-                UMSocialManager.default()?.share(to: .wechatSession, messageObject: messageObject, currentViewController: self, completion: { (data, error) in
-                    log("分享结果: \(data), \(error)")
-                })
+                UMSocialUIManager.setPreDefinePlatforms([
+                    UMSocialPlatformType.wechatSession.rawValue,
+                    UMSocialPlatformType.wechatTimeLine.rawValue
+                ])
+                UMSocialUIManager.showShareMenuViewInWindow { [weak self] (type, _) in
+                    guard let `self` = self else { return }
+                    self.share(to: type)
+                }
             default:
                 break
             }
         default:
             break
         }
+    }
+    
+    func share(to platformType: UMSocialPlatformType) {
+        let messageObject = UMSocialMessageObject.init()
+        let shareObject = UMShareWebpageObject.shareObject(
+            withTitle: UIApplication.shared.name,
+            descr: R.string.localizable.aboutShareMessage(),
+            thumImage: R.image.app_icon()
+        )
+        shareObject?.webpageUrl = Router.Web.homepage.urlString
+        messageObject.shareObject = shareObject
+        UMSocialManager.default()?.share(
+            to: platformType,
+            messageObject: messageObject,
+            currentViewController: self,
+            completion: { (_, error) in
+                if let error = error {
+                    log("分享失败: \(error)")
+                }
+            }
+        )
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: AboutViewReactor)

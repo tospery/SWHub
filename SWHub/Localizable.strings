@@ -42,11 +42,8 @@
 "Feedback.Placeholder" = "问题内容";
 "Feedback.Successful" = "提交成功";
 "Feedback.Environment" = "运行环境: %@ - iOS%@ - v%@(%@)";
-/* 操作 */
-"Action.FiveMinutes" = "5分钟后";
-"Action.HalfAnHour" = "半小时后";
-"Action.OneHour" = "1小时后";
-"Action.Stop" = "停止";
+/* 关于 */
+"About.Share.Message" = "Swift开发的GitHub iOS客户端";
 /* 错误 */
 "Error.Login" = "登录失败，请稍后重试";
 "Error.Retry" = "重试";

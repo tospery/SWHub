@@ -21,6 +21,7 @@ enum Router: String {
         case agreement      = "about"
         case privacy        = "mission"
         case oauth
+        case homepage
         
         var urlString: String {
             switch self {
@@ -30,6 +31,8 @@ enum Router: String {
                     client_id=\(Platform.github.appId)&\
                     scope=user+repo+notifications+read:org
                     """
+            case .homepage:
+                return "https://github.com/tospery/SWHub"
             default:
                 return "\(UIApplication.shared.baseWebUrl)/\(self.rawValue)"
             }
