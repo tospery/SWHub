@@ -15,6 +15,7 @@ class Library: SWFrame.Library {
         self.setupUmbrella()
         self.setupKeyboardManager()
         self.setupToast()
+        self.setupUMeng()
     }
 
     static func setupCocoaLumberjack() {
@@ -38,4 +39,23 @@ class Library: SWFrame.Library {
         ToastManager.shared.isQueueEnabled = true
     }
     
+    static func setupUMeng() {
+//        #if DEBUG
+//        log("调试模式下友盟不启用", module: .library)
+//        #else
+//        #endif
+        // 初始化基础组件库
+        UMConfigure.initWithAppkey(Platform.umeng.appKey, channel: UIApplication.shared.inferredEnvironment.description)
+        // 初始化U-Share及第三方平台
+        UMSocialGlobal.shareInstance()?.universalLinkDic = [
+            UMSocialPlatformType.wechatSession.rawValue: Platform.weixin.appLink
+        ]
+        UMSocialManager.default()?.setPlaform(
+            .wechatSession,
+            appKey: Platform.weixin.appId,
+            appSecret: Platform.weixin.appKey,
+            redirectURL: UIApplication.shared.baseWebUrl
+        )
+    }
+
 }

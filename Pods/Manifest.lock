@@ -128,6 +128,21 @@ PODS:
   - Toast-Swift (5.0.1)
   - UICKeyChainStore (2.1.2)
   - Umbrella/Core (0.9.0)
+  - UMCommon (7.2.8):
+    - UMDevice
+  - UMDevice (1.2.0)
+  - UMShare/Core (6.10.2):
+    - UMCommon
+  - UMShare/Social/ReducedWeChat (6.10.2):
+    - UMCommon
+    - UMShare/Core
+  - UMShare/Social/WeChat (6.10.2):
+    - UMCommon
+    - UMShare/Core
+    - UMShare/Social/ReducedWeChat
+  - UMShare/UI (6.10.2):
+    - UMCommon
+    - UMShare/Core
   - URLNavigator (2.3.0)
   - WeakMapTable (1.2.0)
   - WebViewJavascriptBridge (6.0.3)
@@ -147,6 +162,10 @@ DEPENDENCIES:
   - SwiftLint (= 0.41.0)
   - Toast-Swift (= 5.0.1)
   - Umbrella/Core (= 0.9.0)
+  - UMCommon (= 7.2.8)
+  - UMDevice (= 1.2.0)
+  - UMShare/Social/WeChat
+  - UMShare/UI
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -190,6 +209,9 @@ SPEC REPOS:
     - Toast-Swift
     - UICKeyChainStore
     - Umbrella
+    - UMCommon
+    - UMDevice
+    - UMShare
     - URLNavigator
     - WeakMapTable
     - WebViewJavascriptBridge
@@ -240,10 +262,13 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   Umbrella: d5b508a0efea3c50f4764ad96035d08eafee26bc
+  UMCommon: 87e2bf6a5c44df6f60509219a7279d9f94c31d24
+  UMDevice: da050ba77e5075b1ec08303065722d25f599e483
+  UMShare: ec11ef18fe90e7430466aced74fc305fe5e51618
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 031859a6dc7d71449c4374b0ce7c8ca23f6b6815
+PODFILE CHECKSUM: b79e4300ed61c5ea8a93658250a5bd60a26915e1
 
 COCOAPODS: 1.10.0

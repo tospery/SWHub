@@ -141,7 +141,18 @@ final class AppDependency: AppDependencyType {
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey: Any]
     ) -> Bool {
-        return true
+        let result = UMSocialManager.default()!.handleOpen(url, options: options)
+        if !result {
+            log("未处理的URL: \(url)")
+            switch url.scheme {
+            case Platform.weixin.appId:
+                // return WXApi.handleOpen(url, delegate: WechatManager.shareInstance())
+                return WXApi.handleOpen(url, delegate: PlatformManager.shared)
+            default:
+                break
+            }
+        }
+        return result
     }
 
     // MARK: - userActivity
@@ -150,7 +161,11 @@ final class AppDependency: AppDependencyType {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
     ) -> Bool {
-        return true
+        let result = UMSocialManager.default()!.handleUniversalLink(userActivity, options: nil)
+        if !result {
+            log("未处理的LINK: \(userActivity)")
+        }
+        return result
     }
-    
+
 }

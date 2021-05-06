@@ -122,8 +122,15 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
+  /// This `R.entitlements` struct is generated, and contains static references to 2 properties.
   struct entitlements {
+    struct comAppleDeveloperAssociatedDomains {
+      static let applinksTosperyCom = infoPlistString(path: ["com.apple.developer.associated-domains"], key: "applinks:tospery.com") ?? "applinks:tospery.com"
+      static let webcredentialsTosperyCom = infoPlistString(path: ["com.apple.developer.associated-domains"], key: "webcredentials:tospery.com") ?? "webcredentials:tospery.com"
+
+      fileprivate init() {}
+    }
+
     struct keychainAccessGroups {
       static let appIdentifierPrefixComTosperySwhub = infoPlistString(path: ["keychain-access-groups"], key: "$(AppIdentifierPrefix)com.tospery.swhub") ?? "$(AppIdentifierPrefix)com.tospery.swhub"
       static let appIdentifierPrefixShared = infoPlistString(path: ["keychain-access-groups"], key: "$(AppIdentifierPrefix)shared") ?? "$(AppIdentifierPrefix)shared"
@@ -156,7 +163,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 15 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
@@ -164,6 +171,8 @@ struct R: Rswift.Validatable {
     static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLogo")
     /// Image `about`.
     static let about = Rswift.ImageResource(bundle: R.hostingBundle, name: "about")
+    /// Image `app_icon`.
+    static let app_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_icon")
     /// Image `feedback`.
     static let feedback = Rswift.ImageResource(bundle: R.hostingBundle, name: "feedback")
     /// Image `github`.
@@ -205,6 +214,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "about", bundle: ..., traitCollection: ...)`
     static func about(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.about, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "app_icon", bundle: ..., traitCollection: ...)`
+    static func app_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.app_icon, compatibleWith: traitCollection)
     }
     #endif
 

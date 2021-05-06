@@ -112,14 +112,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                     reactor.state.map { $0.user }
                         .bind(to: header.rx.user)
                         .disposed(by: header.disposeBag)
-//                    header.rx.pay.flatMap { _ -> Observable<Void> in
-//                        return self.loginIfNeed(reactor, navigator, header.disposeBag) ? .empty() : .just(())
-//                    }.subscribe(onNext: { _ in
-//                        navigator.push(Webpage.pay.urlString)
-//                    }).disposed(by: header.disposeBag)
                     return header
-//                case UICollectionView.elementKindSectionFooter:
-//                    return collectionView.emptyView(for: indexPath, kind: kind)
                 default:
                     return collectionView.emptyView(for: indexPath, kind: kind)
                 }

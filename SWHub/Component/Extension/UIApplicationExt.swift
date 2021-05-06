@@ -22,3 +22,13 @@ extension UIApplication {
     }
 
 }
+
+extension UIApplication.Environment: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .debug: return "Debug"
+        case .testFlight: return "TestFlight"
+        case .appStore: return "AppStore"
+        }
+    }
+}

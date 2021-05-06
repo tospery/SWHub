@@ -10,6 +10,8 @@
 		79179DF32643C9E4001458C6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF22643C9E4001458C6 /* AboutViewController.swift */; };
 		79179DF62643C9EF001458C6 /* AboutViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */; };
 		79179DF92643CA0C001458C6 /* AboutViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF82643CA0C001458C6 /* AboutViewReactor.swift */; };
+		79179DFC2643D2ED001458C6 /* AboutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DFB2643D2ED001458C6 /* AboutHeaderView.swift */; };
+		791B4B902644400F00BE88BE /* PlatformManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791B4B8F2644400F00BE88BE /* PlatformManager.swift */; };
 		793954EC26410BA6005C09EA /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793954EB26410BA6005C09EA /* DateExt.swift */; };
 		794AF52D2641454F0005BB1C /* WebViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF52C2641454F0005BB1C /* WebViewReactor.swift */; };
 		794AF5312641455F0005BB1C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF5302641455F0005BB1C /* WebViewController.swift */; };
@@ -99,6 +101,8 @@
 		79179DF22643C9E4001458C6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutViewController+Bind.swift"; sourceTree = "<group>"; };
 		79179DF82643CA0C001458C6 /* AboutViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewReactor.swift; sourceTree = "<group>"; };
+		79179DFB2643D2ED001458C6 /* AboutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHeaderView.swift; sourceTree = "<group>"; };
+		791B4B8F2644400F00BE88BE /* PlatformManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformManager.swift; sourceTree = "<group>"; };
 		793954EB26410BA6005C09EA /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		794AF52C2641454F0005BB1C /* WebViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewReactor.swift; sourceTree = "<group>"; };
 		794AF5302641455F0005BB1C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +209,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		791B4B8E26443FEC00BE88BE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				791B4B8F2644400F00BE88BE /* PlatformManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		794AF52B2641453D0005BB1C /* Web */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +231,7 @@
 			children = (
 				797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */,
 				798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */,
+				79179DFB2643D2ED001458C6 /* AboutHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +387,7 @@
 		79CE3B6E260E402700BB918B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				791B4B8E26443FEC00BE88BE /* Manager */,
 				794AF52B2641453D0005BB1C /* Web */,
 				8C4062B22637EE1200584750 /* Reactive */,
 				79CE3B76260E402700BB918B /* Extension */,
@@ -507,6 +521,7 @@
 				79CD6B21260E3F3500420300 /* Frameworks */,
 				79CD6B22260E3F3500420300 /* Resources */,
 				7BF8115F584BB3068DB4C618 /* [CP] Embed Pods Frameworks */,
+				6BF706E3E4B7D00BA53797A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -587,6 +602,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6BF706E3E4B7D00BA53797A0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		79CE3BFE260E431500BB918B /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -665,7 +697,9 @@
 				8C531A402635085C00EE101A /* Repo.swift in Sources */,
 				8C1869312632748300659FBC /* LoginViewController+Bind.swift in Sources */,
 				79CE3BA3260E402800BB918B /* HomeViewReactor.swift in Sources */,
+				791B4B902644400F00BE88BE /* PlatformManager.swift in Sources */,
 				79CE3BB7260E402800BB918B /* Theme.swift in Sources */,
+				79179DFC2643D2ED001458C6 /* AboutHeaderView.swift in Sources */,
 				79CE3B95260E402800BB918B /* Section.swift in Sources */,
 				79179DF32643C9E4001458C6 /* AboutViewController.swift in Sources */,
 				79CE3B9C260E402800BB918B /* SimpleItem.swift in Sources */,
