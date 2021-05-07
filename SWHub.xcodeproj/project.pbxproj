@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790B69102644B62600A4B6D6 /* Pods-SWHub-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 790B690F2644B62600A4B6D6 /* Pods-SWHub-acknowledgements.plist */; };
 		79179DF32643C9E4001458C6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF22643C9E4001458C6 /* AboutViewController.swift */; };
 		79179DF62643C9EF001458C6 /* AboutViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */; };
 		79179DF92643CA0C001458C6 /* AboutViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79179DF82643CA0C001458C6 /* AboutViewReactor.swift */; };
@@ -98,6 +99,7 @@
 		1E5D62AC14B493A13BF0D38A /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 		61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F130F17256E2A17D445683C /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		790B690F2644B62600A4B6D6 /* Pods-SWHub-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-SWHub-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-SWHub/Pods-SWHub-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		79179DF22643C9E4001458C6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutViewController+Bind.swift"; sourceTree = "<group>"; };
 		79179DF82643CA0C001458C6 /* AboutViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewReactor.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 		79CE3B52260E3FC600BB918B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				790B690F2644B62600A4B6D6 /* Pods-SWHub-acknowledgements.plist */,
 				79E9FF8D2631BAFB0082ECB9 /* SWHub.entitlements */,
 				79CE3BC6260E415800BB918B /* .swiftlint.yml */,
 				79CD6B27260E3F3500420300 /* AppDelegate.swift */,
@@ -574,6 +577,7 @@
 				79CE3BCC260E42B900BB918B /* Localizable.strings in Resources */,
 				79CD6B34260E3F3600420300 /* LaunchScreen.storyboard in Resources */,
 				79CD6B31260E3F3600420300 /* Assets.xcassets in Resources */,
+				790B69102644B62600A4B6D6 /* Pods-SWHub-acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

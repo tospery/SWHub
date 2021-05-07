@@ -20,8 +20,8 @@ target 'SWHub' do
   pod 'Umbrella/Core', '0.9.0'
   pod 'Parchment', '3.0.0'
   pod 'SnapKit', '5.0.1'
+  pod 'AcknowList', '2.0.1'
   pod 'DateToolsSwift', '5.0.0'
-  
   pod 'UMCommon', '7.2.8'
   pod 'UMDevice', '1.2.0'
   pod 'UMShare/UI', '6.10.2'

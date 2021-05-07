@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (2.0.1)
   - Alamofire (5.4.3)
   - BonMot (5.6.0)
   - Cache (6.0.0)
@@ -148,6 +149,7 @@ PODS:
   - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
+  - AcknowList (= 2.0.1)
   - Cache (= 6.0.0)
   - DateToolsSwift (= 5.0.0)
   - DefaultsKit (= 0.2.0)
@@ -164,11 +166,12 @@ DEPENDENCIES:
   - Umbrella/Core (= 0.9.0)
   - UMCommon (= 7.2.8)
   - UMDevice (= 1.2.0)
-  - UMShare/Social/WeChat
-  - UMShare/UI
+  - UMShare/Social/WeChat (= 6.10.2)
+  - UMShare/UI (= 6.10.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AcknowList
     - Alamofire
     - BonMot
     - Cache
@@ -221,6 +224,7 @@ EXTERNAL SOURCES:
     :path: "../SWFrame"
 
 SPEC CHECKSUMS:
+  AcknowList: d5476fd33f5c4614c676933ab79d05775e5e20b7
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
@@ -269,6 +273,6 @@ SPEC CHECKSUMS:
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: b79e4300ed61c5ea8a93658250a5bd60a26915e1
+PODFILE CHECKSUM: c3a2047d95c1b4b7d0c29470b6e8bd26a474bcbe
 
 COCOAPODS: 1.10.0

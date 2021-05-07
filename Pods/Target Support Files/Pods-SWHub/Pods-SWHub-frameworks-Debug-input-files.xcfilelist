@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework
 ${BUILT_PRODUCTS_DIR}/Cache/Cache.framework

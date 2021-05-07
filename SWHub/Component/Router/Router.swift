@@ -15,6 +15,7 @@ enum Router: String {
     case login
     case feedback
     case about
+    case acknowList
     case test
     
     enum Web: String {

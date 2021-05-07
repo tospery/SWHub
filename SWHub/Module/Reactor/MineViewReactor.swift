@@ -10,13 +10,15 @@ import Foundation
 class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Portal: Int {
+        case acknowlist
         case feedback
         case about
         
-        static let allValues = [feedback, about]
+        static let allValues = [acknowlist, feedback, about]
         
         var title: String {
             switch self {
+            case .acknowlist: return R.string.localizable.minePortalAcknowlist()
             case .feedback: return R.string.localizable.feedback()
             case .about: return R.string.localizable.about()
             }
@@ -24,6 +26,7 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         
         var image: UIImage {
             switch self {
+            case .acknowlist: return R.image.acknowlist()!
             case .feedback: return R.image.feedback()!
             case .about: return R.image.about()!
             }

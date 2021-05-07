@@ -14,7 +14,7 @@ struct LightTheme: Theme {
     let darkColor = UIColor.Material.grey900
     let brightColor = UIColor(hex: 0xF2F2F2)!
     let dimColor = UIColor(hex: 0x000000, transparency: 0.2)!
-    let primaryColor = UIColor(hex: 0x0277FF)!
+    var primaryColor = UIColor(hex: 0x0277FF)!
     let secondaryColor = UIColor.Material.blue
     let titleColor = UIColor(hex: 0x333333)!
     let contentColor = UIColor(hex: 0x666666)!
@@ -37,6 +37,10 @@ struct LightTheme: Theme {
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
+    
+    init(color: UIColor) {
+        self.primaryColor = color
+    }
 }
 
 struct DarkTheme: Theme {
@@ -46,7 +50,7 @@ struct DarkTheme: Theme {
     let darkColor = UIColor.Material.grey100
     let brightColor = UIColor.Material.grey300
     let dimColor = UIColor.Material.grey700
-    let primaryColor = UIColor.Material.red
+    var primaryColor = UIColor.Material.orange
     let secondaryColor = UIColor.Material.red
     let titleColor = UIColor.Material.red
     let contentColor = UIColor.Material.red
@@ -69,13 +73,17 @@ struct DarkTheme: Theme {
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
+    
+    init(color: UIColor) {
+        self.primaryColor = color
+    }
 }
 
 extension ThemeType: ThemeTypeCompatible {
     public var theme: Theme {
         switch self {
-        case .light: return LightTheme.init()
-        case .dark: return DarkTheme.init()
+        case let .light(color): return LightTheme.init(color: color)
+        case let .dark(color): return DarkTheme.init(color: color)
         }
     }
 }

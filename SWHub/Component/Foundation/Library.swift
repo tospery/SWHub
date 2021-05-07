@@ -11,11 +11,16 @@ class Library: SWFrame.Library {
 
     override class func setup() {
         super.setup()
+        self.setupTheme()
         self.setupCocoaLumberjack()
         self.setupUmbrella()
         self.setupKeyboardManager()
         self.setupToast()
         self.setupUMeng()
+    }
+    
+    static func setupTheme() {
+        ThemeType.configIfNeed(UIColor.red)
     }
 
     static func setupCocoaLumberjack() {

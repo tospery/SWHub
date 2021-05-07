@@ -32,7 +32,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.addButtonToRight(R.image.setting()).rx.tap
+        self.navigationBar.addButtonToRight(R.image.dark()).rx.tap
             .subscribeNext(weak: self, type(of: self).tapSetting)
             .disposed(by: self.disposeBag)
         self.collectionView.register(Reusable.simpleCell)
@@ -77,6 +77,8 @@ class MineViewController: CollectionViewController, ReactorKit.View {
             guard let simple = item.model as? Simple else { return }
             guard let portal = MineViewReactor.Portal.init(rawValue: simple.id) else { return }
             switch portal {
+            case .acknowlist:
+                self.navigator.present(Router.acknowList.urlString, wrap: NavigationController.self)
             case .feedback:
                 self.navigator.push(Router.feedback.urlString)
             case .about:
@@ -88,7 +90,7 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     }
     
     func tapSetting(event: ControlEvent<Void>.Element) {
-        themeService.switch(.dark)
+        themeService.type.toggle()
         // self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
     }
 

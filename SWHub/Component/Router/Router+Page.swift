@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AcknowList
 
 extension Router {
     
@@ -28,6 +29,11 @@ extension Router {
         }
         navigator.register(self.about.urlString) { url, values, context in
             AboutViewController(navigator, AboutViewReactor(provider, parameters(url, values, context)))
+        }
+        navigator.register(self.acknowList.urlString) { _, _, _ in
+            let vc = AcknowListViewController.init()
+            vc.hidesBottomBarWhenPushed = true
+            return vc
         }
         navigator.register(Issue.list.urlString) { url, values, context in
             IssueListViewController(navigator, IssueListViewReactor(provider, parameters(url, values, context)))

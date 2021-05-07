@@ -175,6 +175,7 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Cache/Cache.framework"
@@ -219,6 +220,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Cache/Cache.framework"

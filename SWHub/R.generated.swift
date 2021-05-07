@@ -141,16 +141,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
     /// Resource file `Languages.json`.
     static let languagesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Languages", pathExtension: "json")
+    /// Resource file `Pods-SWHub-acknowledgements.plist`.
+    static let podsSWHubAcknowledgementsPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Pods-SWHub-acknowledgements", pathExtension: "plist")
     /// Resource file `user.json`.
     static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
 
     /// `bundle.url(forResource: "Languages", withExtension: "json")`
     static func languagesJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.languagesJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "Pods-SWHub-acknowledgements", withExtension: "plist")`
+    static func podsSWHubAcknowledgementsPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.podsSWHubAcknowledgementsPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -163,7 +171,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
@@ -171,8 +179,12 @@ struct R: Rswift.Validatable {
     static let appLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLogo")
     /// Image `about`.
     static let about = Rswift.ImageResource(bundle: R.hostingBundle, name: "about")
+    /// Image `acknowlist`.
+    static let acknowlist = Rswift.ImageResource(bundle: R.hostingBundle, name: "acknowlist")
     /// Image `app_icon`.
     static let app_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "app_icon")
+    /// Image `dark`.
+    static let dark = Rswift.ImageResource(bundle: R.hostingBundle, name: "dark")
     /// Image `feedback`.
     static let feedback = Rswift.ImageResource(bundle: R.hostingBundle, name: "feedback")
     /// Image `github`.
@@ -218,9 +230,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "acknowlist", bundle: ..., traitCollection: ...)`
+    static func acknowlist(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.acknowlist, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "app_icon", bundle: ..., traitCollection: ...)`
     static func app_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.app_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "dark", bundle: ..., traitCollection: ...)`
+    static func dark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.dark, compatibleWith: traitCollection)
     }
     #endif
 
@@ -306,7 +332,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 52 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 53 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -392,6 +418,8 @@ struct R: Rswift.Validatable {
       static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
       static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 致谢
+      static let minePortalAcknowlist = Rswift.StringResource(key: "Mine.Portal.Acknowlist", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 评分鼓励
       static let scoreToEncourage = Rswift.StringResource(key: "Score To Encourage", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 请输入您的个人访问密钥
@@ -961,6 +989,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Network.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 致谢
+      static func minePortalAcknowlist(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Mine.Portal.Acknowlist", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Mine.Portal.Acknowlist"
+        }
+
+        return NSLocalizedString("Mine.Portal.Acknowlist", bundle: bundle, comment: "")
       }
 
       /// Value: 评分鼓励
