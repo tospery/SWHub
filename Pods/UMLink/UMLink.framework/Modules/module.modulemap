@@ -1,6 +1,0 @@
-framework module UMLink {
-  umbrella header "UMLink.h"
-
-  export *
-  module * { export * }
-}

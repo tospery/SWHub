@@ -83,6 +83,8 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                 self.navigator.push(Router.feedback.urlString)
             case .about:
                 self.navigator.push(Router.about.urlString)
+            case .theme:
+                self.navigator.push(Router.theme.urlString)
             }
         default:
             break
@@ -91,7 +93,6 @@ class MineViewController: CollectionViewController, ReactorKit.View {
     
     func tapSetting(event: ControlEvent<Void>.Element) {
         themeService.type.toggle()
-        // self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MineViewReactor)

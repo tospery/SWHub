@@ -39,6 +39,7 @@ enum SectionItem: IdentifiableType, Equatable {
     case repo(RepoItem)
     case user(UserItem)
     case issue(IssueItem)
+    case theme(ThemeItem)
 
     var identity: String {
         switch self {
@@ -49,6 +50,8 @@ enum SectionItem: IdentifiableType, Equatable {
         case let .user(item):
             return item.description
         case let .issue(item):
+            return item.description
+        case let .theme(item):
             return item.description
         }
     }
@@ -62,6 +65,8 @@ enum SectionItem: IdentifiableType, Equatable {
         case let (.user(left), .user(right)):
             return left.description == right.description
         case let (.issue(left), .issue(right)):
+            return left.description == right.description
+        case let (.theme(left), .theme(right)):
             return left.description == right.description
         default: return false
         }

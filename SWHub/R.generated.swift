@@ -332,7 +332,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 53 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 54 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -356,6 +356,8 @@ struct R: Rswift.Validatable {
       static let aboutShareMessage = Rswift.StringResource(key: "About.Share.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: URL Schemes
       static let urlSchemes = Rswift.StringResource(key: "URL Schemes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 主题
+      static let minePortalTheme = Rswift.StringResource(key: "Mine.Portal.Theme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 作者
       static let author = Rswift.StringResource(key: "Author", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 关于
@@ -586,6 +588,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("URL Schemes", bundle: bundle, comment: "")
+      }
+
+      /// Value: 主题
+      static func minePortalTheme(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Mine.Portal.Theme", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Mine.Portal.Theme"
+        }
+
+        return NSLocalizedString("Mine.Portal.Theme", bundle: bundle, comment: "")
       }
 
       /// Value: 作者

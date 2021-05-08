@@ -40,6 +40,7 @@
 "Login.Placeholder.Token" = "请输入您的个人访问密钥";
 /* 我的 */
 "Mine.Portal.Acknowlist" = "致谢";
+"Mine.Portal.Theme" = "主题";
 /* 反馈 */
 "Feedback.Placeholder" = "问题内容";
 "Feedback.Successful" = "提交成功";

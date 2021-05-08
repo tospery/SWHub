@@ -85,7 +85,7 @@ struct User: ModelType, Subjective, Eventable {
         return NSAttributedString.composed(of: [
             total.string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
             Special.nextLine,
-            R.string.localizable.repositories().styled(with: .color(.content), .font(.systemFont(ofSize: 14)))
+            R.string.localizable.repositories().styled(with: .color(.body), .font(.systemFont(ofSize: 14)))
         ]).styled(with: .alignment(.center))
     }
     
@@ -93,7 +93,7 @@ struct User: ModelType, Subjective, Eventable {
         NSAttributedString.composed(of: [
             (self.followers ?? 0).string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
             Special.nextLine,
-            R.string.localizable.followers().styled(with: .color(.content), .font(.systemFont(ofSize: 14)))
+            R.string.localizable.followers().styled(with: .color(.body), .font(.systemFont(ofSize: 14)))
         ]).styled(with: .alignment(.center))
     }
     
@@ -101,7 +101,7 @@ struct User: ModelType, Subjective, Eventable {
         NSAttributedString.composed(of: [
             (self.following ?? 0).string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
             Special.nextLine,
-            R.string.localizable.following().styled(with: .color(.content), .font(.systemFont(ofSize: 14)))
+            R.string.localizable.following().styled(with: .color(.body), .font(.systemFont(ofSize: 14)))
         ]).styled(with: .alignment(.center))
     }
     

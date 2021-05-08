@@ -68,7 +68,7 @@ class IssueCell: BaseCollectionCell, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.titleColor }, to: self.usernameLabel.rx.textColor)
-            .bind({ $0.contentColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.bodyColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.footerColor }, to: [
                 self.timeLabel.rx.textColor,
                 self.commentsLabel.rx.textColor

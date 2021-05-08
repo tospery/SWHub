@@ -83,7 +83,7 @@ class MineHeaderView: BaseSupplementaryView {
         self.bottomView.addSubview(self.followingButton)
         themeService.rx
             .bind({ $0.borderColor }, to: self.bottomView.rx.qmui_borderColor)
-            .bind({ $0.contentColor }, to: self.descLabel.rx.textColor)
+            .bind({ $0.bodyColor }, to: self.descLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 

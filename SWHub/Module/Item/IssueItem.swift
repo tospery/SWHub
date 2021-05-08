@@ -36,10 +36,6 @@ class IssueItem: BaseCollectionItem, ReactorKit.Reactor {
         )
     }
     
-    func reduce(state: State, mutation: Mutation) -> State {
-        state
-    }
-    
     func transform(action: Observable<NoAction>) -> Observable<NoAction> {
         action
     }

@@ -35,7 +35,7 @@ class FeedbackMainView: BaseView {
         
         themeService.rx
             .bind({ $0.borderColor }, to: self.label.rx.qmui_borderColor)
-            .bind({ $0.contentColor }, to: self.textView.rx.textColor)
+            .bind({ $0.bodyColor }, to: self.textView.rx.textColor)
             .bind({ $0.footerColor }, to: self.textView.rx.placeholderColor)
             .disposed(by: self.rx.disposeBag)
     }

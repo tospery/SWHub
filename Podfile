@@ -28,8 +28,7 @@ target 'SWHub' do
   pod 'UMShare/Social/WeChat', '6.10.2'
   
   # pod 'TTTAttributedLabel', '2.0.0'
-  
-  pod 'MLeaksFinder', '1.0.0'
+  # pod 'MLeaksFinder', '1.0.0'
   # pod 'FLEX', '3.0.0'
 
 end

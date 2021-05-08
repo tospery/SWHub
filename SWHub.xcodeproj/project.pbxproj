@@ -90,6 +90,11 @@
 		8C531A4C26350ECB00EE101A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A4B26350ECB00EE101A /* Language.swift */; };
 		8C531A8F2635388100EE101A /* RepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A8E2635388100EE101A /* RepoItem.swift */; };
 		8C531A922635388A00EE101A /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C531A912635388A00EE101A /* RepoCell.swift */; };
+		8C577AF62646878C00B5961E /* ThemeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C577AF52646878C00B5961E /* ThemeViewReactor.swift */; };
+		8C577AF8264687A100B5961E /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C577AF7264687A100B5961E /* ThemeViewController.swift */; };
+		8C577AFA264688C000B5961E /* ThemeViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C577AF9264688C000B5961E /* ThemeViewController+Bind.swift */; };
+		8C577AFC26468A3000B5961E /* ThemeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C577AFB26468A3000B5961E /* ThemeItem.swift */; };
+		8C577AFE26468A7E00B5961E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C577AFD26468A7E00B5961E /* ThemeCell.swift */; };
 		8CAFA7A92636BE950027FFB5 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA7A82636BE950027FFB5 /* IntExt.swift */; };
 		8CAFA7AC2637E7A70027FFB5 /* TrendingReposViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */; };
 		D866100FCC4AF37A08B70089 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D8F2CD3433BAF01499313E /* Pods_SWHub.framework */; };
@@ -193,6 +198,11 @@
 		8C531A4B26350ECB00EE101A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		8C531A8E2635388100EE101A /* RepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItem.swift; sourceTree = "<group>"; };
 		8C531A912635388A00EE101A /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		8C577AF52646878C00B5961E /* ThemeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewReactor.swift; sourceTree = "<group>"; };
+		8C577AF7264687A100B5961E /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		8C577AF9264688C000B5961E /* ThemeViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeViewController+Bind.swift"; sourceTree = "<group>"; };
+		8C577AFB26468A3000B5961E /* ThemeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeItem.swift; sourceTree = "<group>"; };
+		8C577AFD26468A7E00B5961E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		8CAFA7A82636BE950027FFB5 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
 		8CAFA7AB2637E7A70027FFB5 /* TrendingReposViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposViewReactor.swift; sourceTree = "<group>"; };
 		9ED09F55CD7A6A69F5C89F53 /* Pods-SwiftPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPT.release.xcconfig"; path = "Target Support Files/Pods-SwiftPT/Pods-SwiftPT.release.xcconfig"; sourceTree = "<group>"; };
@@ -328,6 +338,8 @@
 				79A4E988263FF60E00C5C0BE /* IssueListViewController+Bind.swift */,
 				79179DF22643C9E4001458C6 /* AboutViewController.swift */,
 				79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */,
+				8C577AF7264687A100B5961E /* ThemeViewController.swift */,
+				8C577AF9264688C000B5961E /* ThemeViewController+Bind.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -339,6 +351,7 @@
 				8C531A912635388A00EE101A /* RepoCell.swift */,
 				8C0E8CA92637FBEF0078E09E /* UserCell.swift */,
 				79A4E98F263FFAE200C5C0BE /* IssueCell.swift */,
+				8C577AFD26468A7E00B5961E /* ThemeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -350,6 +363,7 @@
 				8C531A8E2635388100EE101A /* RepoItem.swift */,
 				8C0E8CA62637FBDF0078E09E /* UserItem.swift */,
 				79A4E98C263FFAD700C5C0BE /* IssueItem.swift */,
+				8C577AFB26468A3000B5961E /* ThemeItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -383,6 +397,7 @@
 				79B7F187263E48A000246B41 /* FeedbackViewReactor.swift */,
 				79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */,
 				79179DF82643CA0C001458C6 /* AboutViewReactor.swift */,
+				8C577AF52646878C00B5961E /* ThemeViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -686,6 +701,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CE3BA2260E402800BB918B /* MineViewReactor.swift in Sources */,
+				8C577AFC26468A3000B5961E /* ThemeItem.swift in Sources */,
 				79A4E990263FFAE200C5C0BE /* IssueCell.swift in Sources */,
 				79A4E983263FDA6500C5C0BE /* IssueListViewReactor.swift in Sources */,
 				79CE3B99260E402800BB918B /* LoginViewController.swift in Sources */,
@@ -709,6 +725,7 @@
 				79CE3B9C260E402800BB918B /* SimpleItem.swift in Sources */,
 				79CE3B96260E402800BB918B /* HomeViewController.swift in Sources */,
 				8C0E8CAA2637FBEF0078E09E /* UserCell.swift in Sources */,
+				8C577AF8264687A100B5961E /* ThemeViewController.swift in Sources */,
 				79A4E98D263FFAD700C5C0BE /* IssueItem.swift in Sources */,
 				79A4E986263FDA7200C5C0BE /* IssueListViewController.swift in Sources */,
 				79B7F18E263E49A800246B41 /* FeedbackViewController+Bind.swift in Sources */,
@@ -724,7 +741,9 @@
 				79E18F1E263D5CE6008A074E /* Simple.swift in Sources */,
 				79CE3B9B260E402800BB918B /* SimpleCell.swift in Sources */,
 				79CE3BBD260E402800BB918B /* Router+Page.swift in Sources */,
+				8C577AFE26468A7E00B5961E /* ThemeCell.swift in Sources */,
 				79CE3BBB260E402800BB918B /* QMUIConfigurationTemplate.m in Sources */,
+				8C577AFA264688C000B5961E /* ThemeViewController+Bind.swift in Sources */,
 				794AF5312641455F0005BB1C /* WebViewController.swift in Sources */,
 				79CE3B97260E402800BB918B /* GeneralViewController.swift in Sources */,
 				79B609812631BD9D00F8D087 /* Plan.swift in Sources */,
@@ -764,6 +783,7 @@
 				79CE3BA1260E402800BB918B /* LoginViewReactor.swift in Sources */,
 				8C531A922635388A00EE101A /* RepoCell.swift in Sources */,
 				793954EC26410BA6005C09EA /* DateExt.swift in Sources */,
+				8C577AF62646878C00B5961E /* ThemeViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
