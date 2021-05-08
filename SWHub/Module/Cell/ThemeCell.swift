@@ -8,10 +8,10 @@
 import UIKit
 
 class ThemeCell: BaseTableCell, ReactorKit.View {
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.backgroundColor = .random
+        // self.imageView?.cornerRadius = 20
     }
     
     required init?(coder: NSCoder) {
@@ -24,18 +24,23 @@ class ThemeCell: BaseTableCell, ReactorKit.View {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.imageView?.size = .init(40)
+        self.imageView?.left = 20
+        self.imageView?.top = self.imageView!.topWhenCenter
+        self.textLabel!.left = self.imageView!.right
+        self.textLabel?.top = self.textLabel!.topWhenCenter
     }
 
     func bind(reactor: ThemeItem) {
         super.bind(item: reactor)
-//        reactor.state.map { $0.username }
-//            .distinctUntilChanged()
-//            .bind(to: self.usernameLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.time }
-//            .distinctUntilChanged()
-//            .bind(to: self.timeLabel.rx.text)
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.color }
+            .distinctUntilChanged()
+            .bind(to: self.imageView!.rx.tintColor)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.name }
+            .distinctUntilChanged()
+            .bind(to: self.textLabel!.rx.text)
+            .disposed(by: self.disposeBag)
 //        reactor.state.map { $0.comments }
 //            .distinctUntilChanged()
 //            .bind(to: self.commentsLabel.rx.text)

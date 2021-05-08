@@ -13,6 +13,7 @@ class ThemeItem: BaseTableItem, ReactorKit.Reactor {
     typealias Mutation = NoMutation
 
     struct State {
+        var name: String?
         var color: UIColor?
     }
 
@@ -20,15 +21,11 @@ class ThemeItem: BaseTableItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-//        guard let issue = model as? Issue else { return }
-//        self.initialState = State(
-//            icon: issue.stateIcon,
-//            avatar: issue.user?.avatarUrl?.url,
-//            username: issue.user?.login,
-//            time: issue.timeAgoSinceNow,
-//            comments: R.string.localizable.replies((issue.comments ?? 0).string),
-//            title: issue.title
-//        )
+        guard let colorTheme = (model as? BaseModel)?.value as? ColorTheme else { return }
+        self.initialState = State(
+            name: colorTheme.title,
+            color: UIColor.random
+        )
     }
     
     func transform(action: Observable<NoAction>) -> Observable<NoAction> {
