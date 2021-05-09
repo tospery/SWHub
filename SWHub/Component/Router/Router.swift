@@ -17,6 +17,7 @@ enum Router: String {
     case about
     case acknowList
     case theme
+    case profile
     case test
     
     enum Web: String {

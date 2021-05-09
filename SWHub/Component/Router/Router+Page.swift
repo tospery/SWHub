@@ -33,6 +33,9 @@ extension Router {
         navigator.register(self.theme.urlString) { url, values, context in
             ThemeViewController(navigator, ThemeViewReactor(provider, parameters(url, values, context)))
         }
+        navigator.register(self.profile.urlString) { url, values, context in
+            ProfileViewController(navigator, ProfileViewReactor(provider, parameters(url, values, context)))
+        }
         navigator.register(self.acknowList.urlString) { _, _, _ in
             AcknowListViewController.init()
         }

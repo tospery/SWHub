@@ -28,7 +28,7 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         
         var image: UIImage {
             switch self {
-            case .theme: return R.image.acknowlist()!
+            case .theme: return R.image.theme()!
             case .acknowlist: return R.image.acknowlist()!
             case .feedback: return R.image.feedback()!
             case .about: return R.image.about()!
@@ -70,7 +70,11 @@ class MineViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            let simples = Portal.allValues.map { Simple.init($0.rawValue, $0.title, $0.image) }
+            let simples = Portal.allValues.map { Simple.init(
+                id: $0.rawValue,
+                title: $0.title,
+                icon: $0.image
+            )}
             return .just(Mutation.setSimples(simples))
         }
     }

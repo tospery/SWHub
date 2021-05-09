@@ -17,16 +17,17 @@ struct Simple: ModelType {
 
     init() { }
     
-    init(_ id: Int,
-         _ title: String?,
-         _ icon: ImageSource? = nil,
-         _ detail: NSAttributedString? = nil,
-         _ indicated: Bool = true) {
+    init(id: Int,
+         title: String?,
+         detail: NSAttributedString? = nil,
+         icon: ImageSource? = nil,
+         indicated: Bool = true
+    ) {
         self.id = id
         self.title = title
-        self.icon = icon
         self.detail = detail
         self.indicated = indicated
+        self.icon = icon
     }
 
     init?(map: Map) { }

@@ -9,9 +9,20 @@ import UIKit
 
 class ThemeCell: BaseTableCell, ReactorKit.View {
     
+    lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView.init()
+        imageView.size = .init(60)
+        imageView.cornerRadius = imageView.width / 2.0
+        return imageView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // self.imageView?.cornerRadius = 20
+        self.contentView.addSubview(self.iconImageView)
+        themeService.rx
+            .bind({ $0.titleColor }, to: self.textLabel!.rx.textColor)
+            .bind({ $0.primaryColor }, to: self.rx.tintColor)
+            .disposed(by: self.rx.disposeBag)
     }
     
     required init?(coder: NSCoder) {
@@ -24,46 +35,43 @@ class ThemeCell: BaseTableCell, ReactorKit.View {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imageView?.size = .init(40)
-        self.imageView?.left = 20
-        self.imageView?.top = self.imageView!.topWhenCenter
-        self.textLabel!.left = self.imageView!.right
-        self.textLabel?.top = self.textLabel!.topWhenCenter
+        self.iconImageView.left = 20
+        self.iconImageView.top = self.iconImageView.topWhenCenter
+        self.textLabel!.left = self.iconImageView.right + 10
+        self.textLabel!.top = self.textLabel!.topWhenCenter
     }
 
     func bind(reactor: ThemeItem) {
         super.bind(item: reactor)
+        reactor.state.map { $0.checked }
+            .distinctUntilChanged()
+            .bind(to: self.rx.checked)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.color }
             .distinctUntilChanged()
-            .bind(to: self.imageView!.rx.tintColor)
+            .bind(to: self.iconImageView.rx.backgroundColor)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.name }
             .distinctUntilChanged()
             .bind(to: self.textLabel!.rx.text)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.comments }
-//            .distinctUntilChanged()
-//            .bind(to: self.commentsLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.title }
-//            .distinctUntilChanged()
-//            .bind(to: self.titleLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.avatar }
-//            .distinctUntilChanged { SWHub.compare($0, $1) }
-//            .bind(to: self.avatarImageView.rx.imageSource)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.icon }
-//            .distinctUntilChanged { SWHub.compare($0, $1) }
-//            .bind(to: self.iconImageView.rx.imageSource)
-//            .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
     
     override class func height(item: BaseTableItem) -> CGFloat {
-        50
+        70
+    }
+
+}
+
+extension Reactive where Base: ThemeCell {
+
+    var checked: Binder<Bool> {
+        return Binder(self.base) { cell, checked in
+            cell.accessoryType = checked ? .checkmark : .none
+        }
     }
 
 }

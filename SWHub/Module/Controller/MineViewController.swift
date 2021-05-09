@@ -112,6 +112,9 @@ class MineViewController: CollectionViewController, ReactorKit.View {
                 switch kind {
                 case UICollectionView.elementKindSectionHeader:
                     let header = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
+                    header.rx.tap.subscribe(onNext: { _ in
+                        navigator.push(Router.profile.urlString)
+                    }).disposed(by: header.disposeBag)
                     reactor.state.map { $0.user }
                         .bind(to: header.rx.user)
                         .disposed(by: header.disposeBag)

@@ -13,6 +13,7 @@ class ThemeItem: BaseTableItem, ReactorKit.Reactor {
     typealias Mutation = NoMutation
 
     struct State {
+        var checked = false
         var name: String?
         var color: UIColor?
     }
@@ -23,8 +24,9 @@ class ThemeItem: BaseTableItem, ReactorKit.Reactor {
         super.init(model)
         guard let colorTheme = (model as? BaseModel)?.value as? ColorTheme else { return }
         self.initialState = State(
+            checked: colorTheme.color == UIColor.primary,
             name: colorTheme.title,
-            color: UIColor.random
+            color: colorTheme.color
         )
     }
     
@@ -41,4 +43,3 @@ class ThemeItem: BaseTableItem, ReactorKit.Reactor {
     }
 
 }
-

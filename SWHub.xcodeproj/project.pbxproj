@@ -18,6 +18,10 @@
 		794AF5312641455F0005BB1C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794AF5302641455F0005BB1C /* WebViewController.swift */; };
 		797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */; };
 		798FED7F263E8B3A0036B073 /* FeedbackMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */; };
+		79917FC22647E0F40057E0F7 /* ProfileViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79917FC12647E0F40057E0F7 /* ProfileViewReactor.swift */; };
+		79917FC62647E10D0057E0F7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79917FC52647E10D0057E0F7 /* ProfileViewController.swift */; };
+		79917FC92647E1190057E0F7 /* ProfileViewController+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79917FC82647E1190057E0F7 /* ProfileViewController+Bind.swift */; };
+		79917FCC2647E61B0057E0F7 /* ProfileViewReactor+Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79917FCB2647E61B0057E0F7 /* ProfileViewReactor+Portal.swift */; };
 		7992B0FF263F979D004ED0B1 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */; };
 		79A4E980263FD94A00C5C0BE /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E97F263FD94A00C5C0BE /* Issue.swift */; };
 		79A4E983263FDA6500C5C0BE /* IssueListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */; };
@@ -115,6 +119,10 @@
 		794AF5302641455F0005BB1C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		797B6F5E263D1E500047CEB5 /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		798FED7E263E8B3A0036B073 /* FeedbackMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMainView.swift; sourceTree = "<group>"; };
+		79917FC12647E0F40057E0F7 /* ProfileViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewReactor.swift; sourceTree = "<group>"; };
+		79917FC52647E10D0057E0F7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		79917FC82647E1190057E0F7 /* ProfileViewController+Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Bind.swift"; sourceTree = "<group>"; };
+		79917FCB2647E61B0057E0F7 /* ProfileViewReactor+Portal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewReactor+Portal.swift"; sourceTree = "<group>"; };
 		7992B0FE263F979D004ED0B1 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
 		79A4E97F263FD94A00C5C0BE /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewReactor.swift; sourceTree = "<group>"; };
@@ -340,6 +348,8 @@
 				79179DF52643C9EF001458C6 /* AboutViewController+Bind.swift */,
 				8C577AF7264687A100B5961E /* ThemeViewController.swift */,
 				8C577AF9264688C000B5961E /* ThemeViewController+Bind.swift */,
+				79917FC52647E10D0057E0F7 /* ProfileViewController.swift */,
+				79917FC82647E1190057E0F7 /* ProfileViewController+Bind.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,6 +408,8 @@
 				79A4E982263FDA6500C5C0BE /* IssueListViewReactor.swift */,
 				79179DF82643CA0C001458C6 /* AboutViewReactor.swift */,
 				8C577AF52646878C00B5961E /* ThemeViewReactor.swift */,
+				79917FC12647E0F40057E0F7 /* ProfileViewReactor.swift */,
+				79917FCB2647E61B0057E0F7 /* ProfileViewReactor+Portal.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -727,6 +739,7 @@
 				8C0E8CAA2637FBEF0078E09E /* UserCell.swift in Sources */,
 				8C577AF8264687A100B5961E /* ThemeViewController.swift in Sources */,
 				79A4E98D263FFAD700C5C0BE /* IssueItem.swift in Sources */,
+				79917FCC2647E61B0057E0F7 /* ProfileViewReactor+Portal.swift in Sources */,
 				79A4E986263FDA7200C5C0BE /* IssueListViewController.swift in Sources */,
 				79B7F18E263E49A800246B41 /* FeedbackViewController+Bind.swift in Sources */,
 				79CE3BB9260E402800BB918B /* Appearance.swift in Sources */,
@@ -737,8 +750,10 @@
 				8C531A4C26350ECB00EE101A /* Language.swift in Sources */,
 				79CE3BB2260E402800BB918B /* ProviderType+GithubAPI.swift in Sources */,
 				79A4E989263FF60E00C5C0BE /* IssueListViewController+Bind.swift in Sources */,
+				79917FC22647E0F40057E0F7 /* ProfileViewReactor.swift in Sources */,
 				79CE3BB8260E402800BB918B /* Function.swift in Sources */,
 				79E18F1E263D5CE6008A074E /* Simple.swift in Sources */,
+				79917FC62647E10D0057E0F7 /* ProfileViewController.swift in Sources */,
 				79CE3B9B260E402800BB918B /* SimpleCell.swift in Sources */,
 				79CE3BBD260E402800BB918B /* Router+Page.swift in Sources */,
 				8C577AFE26468A7E00B5961E /* ThemeCell.swift in Sources */,
@@ -761,6 +776,7 @@
 				798FED7F263E8B3A0036B073 /* FeedbackMainView.swift in Sources */,
 				79CE3BB6260E402800BB918B /* Type.swift in Sources */,
 				79CE3BB4260E402800BB918B /* Error.swift in Sources */,
+				79917FC92647E1190057E0F7 /* ProfileViewController+Bind.swift in Sources */,
 				797B6F5F263D1E500047CEB5 /* MineHeaderView.swift in Sources */,
 				79CE3C2F260E443600BB918B /* R.generated.swift in Sources */,
 				8C4062A72637E94300584750 /* TrendingUsersViewReactor.swift in Sources */,

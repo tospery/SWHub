@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxGesture
 
 class MineHeaderView: BaseSupplementaryView {
 
@@ -32,6 +33,13 @@ class MineHeaderView: BaseSupplementaryView {
         imageView.sizeToFit()
         imageView.size = .init(80)
         imageView.cornerRadius = imageView.width / 2.0
+        return imageView
+    }()
+    
+    lazy var indicatorImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.indicator.template
+        imageView.sizeToFit()
         return imageView
     }()
     
@@ -76,12 +84,14 @@ class MineHeaderView: BaseSupplementaryView {
         self.addSubview(self.topView)
         self.addSubview(self.bottomView)
         self.topView.addSubview(self.avatarImageView)
+        self.topView.addSubview(self.indicatorImageView)
         self.topView.addSubview(self.nameLabel)
         self.topView.addSubview(self.descLabel)
         self.bottomView.addSubview(self.repositoriesButton)
         self.bottomView.addSubview(self.followersButton)
         self.bottomView.addSubview(self.followingButton)
         themeService.rx
+            .bind({ $0.primaryColor }, to: self.indicatorImageView.rx.tintColor)
             .bind({ $0.borderColor }, to: self.bottomView.rx.qmui_borderColor)
             .bind({ $0.bodyColor }, to: self.descLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
@@ -111,6 +121,8 @@ class MineHeaderView: BaseSupplementaryView {
         self.followingButton.top = self.followingButton.topWhenCenter
         self.avatarImageView.left = 30
         self.avatarImageView.top = UINavigationBar.contentHeightConstant + 10
+        self.indicatorImageView.right = self.topView.right - 20
+        self.indicatorImageView.centerY = self.avatarImageView.centerY
         self.nameLabel.sizeToFit()
         self.nameLabel.left = self.avatarImageView.right + 10
         self.nameLabel.bottom = self.avatarImageView.centerY - 1
@@ -147,10 +159,10 @@ extension Reactive where Base: MineHeaderView {
             view.setNeedsLayout()
         }
     }
-
-//    var pay: ControlEvent<Void> {
-//        let source = base.payButton.rx.tap.map { _ in }
-//        return ControlEvent(events: source)
-//    }
+    
+    var tap: ControlEvent<Void> {
+        let source = self.base.topView.rx.tapGesture().when(.recognized).map { _ in }
+        return ControlEvent.init(events: source)
+    }
 
 }

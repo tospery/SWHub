@@ -41,6 +41,13 @@
 /* 我的 */
 "Mine.Portal.Acknowlist" = "致谢";
 "Mine.Portal.Theme" = "主题";
+/* 个人 */
+"Profile.Title" = "个人资料";
+"Profile.Portal.Name" = "姓名";
+"Profile.Portal.Intro" = "简介";
+"Profile.Portal.Team" = "团队";
+"Profile.Portal.Address" = "地址";
+"Profile.Portal.Homepage" = "个人主页";
 /* 反馈 */
 "Feedback.Placeholder" = "问题内容";
 "Feedback.Successful" = "提交成功";

@@ -29,40 +29,24 @@ class ThemeViewController: TableViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.separatorStyle = .singleLine
+        self.tableView.separatorColor = .separator
         self.tableView.register(Reusable.themeCell)
-//        self.collectionView.register(Reusable.simpleCell)
-//        self.collectionView.register(Reusable.headerView, kind: .header)
-//        self.collectionView.rx.itemSelected(dataSource: self.dataSource)
-//            .subscribeNext(weak: self, type(of: self).tapCell)
-//            .disposed(by: self.disposeBag)
-//        themeService.rx
-//            .bind({ $0.brightColor }, to: self.collectionView.rx.backgroundColor)
-//            .disposed(by: self.rx.disposeBag)
+        self.tableView.rx.itemSelected
+            .subscribeNext(weak: self, type(of: self).tapCell)
+            .disposed(by: self.disposeBag)
     }
     
-//    func tapCell(sectionItem: ControlEvent<SectionItem>.Element) {
-//        switch sectionItem {
-//        case let .simple(item):
-//            guard let simple = item.model as? Simple else { return }
-//            guard let portal = AboutViewReactor.Portal.init(rawValue: simple.id) else { return }
-//            switch portal {
-//            case .share:
-////                UMSocialUIManager.setPreDefinePlatforms([
-////                    UMSocialPlatformType.wechatSession.rawValue,
-////                    UMSocialPlatformType.wechatTimeLine.rawValue
-////                ])
-////                UMSocialUIManager.showShareMenuViewInWindow { [weak self] (type, _) in
-////                    guard let `self` = self else { return }
-////                    self.share(to: type)
-////                }
-//            break
-//            default:
-//                break
-//            }
-//        default:
-//            break
-//        }
-//    }
+    func tapCell(indexPath: ControlEvent<IndexPath>.Element) {
+        switch self.dataSource[indexPath] {
+        case let .theme(item):
+            guard let color = ((item.model as? BaseModel)?.value as? ColorTheme)?.color else { return }
+            themeService.type.toggle(color)
+            self.reactor?.action.onNext(.load)
+        default:
+            break
+        }
+    }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ThemeViewReactor)
         -> RxTableViewSectionedReloadDataSource<Section> {
@@ -83,28 +67,15 @@ class ThemeViewController: TableViewController, ReactorKit.View {
     
 }
 
-//extension AboutViewController: UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(
-//        _ collectionView: UICollectionView,
-//        layout collectionViewLayout: UICollectionViewLayout,
-//        sizeForItemAt indexPath: IndexPath
-//    ) -> CGSize {
-//        let width = collectionView.sectionWidth(at: indexPath.section)
-//        switch self.dataSource[indexPath] {
-//        case .simple(let item):
-//            return Reusable.simpleCell.class.size(width: width, item: item)
-//        default:
-//            return .zero
-//        }
-//    }
-//
-//    func collectionView(
-//        _ collectionView: UICollectionView,
-//        layout collectionViewLayout: UICollectionViewLayout,
-//        referenceSizeForHeaderInSection section: Int
-//    ) -> CGSize {
-//        .init(width: collectionView.sectionWidth(at: section), height: 200)
-//    }
-//
-//}
+extension ThemeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch self.dataSource[indexPath] {
+        case let .theme(item):
+            return Reusable.themeCell.class.height(item: item)
+        default:
+            return .zero
+        }
+    }
+    
+}

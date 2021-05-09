@@ -171,7 +171,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 17 images.
+  /// This `R.image` struct is generated, and contains static references to 18 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
@@ -207,6 +207,8 @@ struct R: Rswift.Validatable {
     static let tabbar_mine_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_mine_normal")
     /// Image `tabbar_mine_selected`.
     static let tabbar_mine_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_mine_selected")
+    /// Image `theme`.
+    static let theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "theme")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "AppLaunch", bundle: ..., traitCollection: ...)`
@@ -327,12 +329,19 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "theme", bundle: ..., traitCollection: ...)`
+    static func theme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.theme, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 54 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 60 localization keys.
     struct localizable {
       /// Value: %@ For GitHub
       static let loginSlogan = Rswift.StringResource(key: "Login.Slogan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -356,6 +365,10 @@ struct R: Rswift.Validatable {
       static let aboutShareMessage = Rswift.StringResource(key: "About.Share.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: URL Schemes
       static let urlSchemes = Rswift.StringResource(key: "URL Schemes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 个人主页
+      static let profilePortalHomepage = Rswift.StringResource(key: "Profile.Portal.Homepage", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 个人资料
+      static let profileTitle = Rswift.StringResource(key: "Profile.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 主题
       static let minePortalTheme = Rswift.StringResource(key: "Mine.Portal.Theme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 作者
@@ -370,6 +383,12 @@ struct R: Rswift.Validatable {
       static let feedback = Rswift.StringResource(key: "Feedback", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 团队
+      static let profilePortalTeam = Rswift.StringResource(key: "Profile.Portal.Team", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 地址
+      static let profilePortalAddress = Rswift.StringResource(key: "Profile.Portal.Address", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 姓名
+      static let profilePortalName = Rswift.StringResource(key: "Profile.Portal.Name", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 导航错误
       static let errorNavigationMessage = Rswift.StringResource(key: "Error.Navigation.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 导航错误
@@ -416,6 +435,8 @@ struct R: Rswift.Validatable {
       static let sure = Rswift.StringResource(key: "Sure", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 私钥
       static let token = Rswift.StringResource(key: "Token", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 简介
+      static let profilePortalIntro = Rswift.StringResource(key: "Profile.Portal.Intro", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
       static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
@@ -590,6 +611,32 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("URL Schemes", bundle: bundle, comment: "")
       }
 
+      /// Value: 个人主页
+      static func profilePortalHomepage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Profile.Portal.Homepage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Profile.Portal.Homepage"
+        }
+
+        return NSLocalizedString("Profile.Portal.Homepage", bundle: bundle, comment: "")
+      }
+
+      /// Value: 个人资料
+      static func profileTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Profile.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Profile.Title"
+        }
+
+        return NSLocalizedString("Profile.Title", bundle: bundle, comment: "")
+      }
+
       /// Value: 主题
       static func minePortalTheme(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -679,6 +726,45 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("No", bundle: bundle, comment: "")
+      }
+
+      /// Value: 团队
+      static func profilePortalTeam(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Profile.Portal.Team", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Profile.Portal.Team"
+        }
+
+        return NSLocalizedString("Profile.Portal.Team", bundle: bundle, comment: "")
+      }
+
+      /// Value: 地址
+      static func profilePortalAddress(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Profile.Portal.Address", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Profile.Portal.Address"
+        }
+
+        return NSLocalizedString("Profile.Portal.Address", bundle: bundle, comment: "")
+      }
+
+      /// Value: 姓名
+      static func profilePortalName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Profile.Portal.Name", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Profile.Portal.Name"
+        }
+
+        return NSLocalizedString("Profile.Portal.Name", bundle: bundle, comment: "")
       }
 
       /// Value: 导航错误
@@ -978,6 +1064,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Token", bundle: bundle, comment: "")
+      }
+
+      /// Value: 简介
+      static func profilePortalIntro(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Profile.Portal.Intro", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Profile.Portal.Intro"
+        }
+
+        return NSLocalizedString("Profile.Portal.Intro", bundle: bundle, comment: "")
       }
 
       /// Value: 网络错误

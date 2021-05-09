@@ -22,7 +22,7 @@ struct LightTheme: Theme {
     let footerColor = UIColor(hex: 0xB2B2B2)!
     let borderColor = UIColor(hex: 0xF4F4F4)!
     let cornerColor = UIColor(hex: 0xF4F4F4)!
-    let separatorColor = UIColor(hex: 0xF2F2F2)!
+    let separatorColor = UIColor(hex: 0xE2E2E2)!
     let indicatorColor = UIColor.Material.grey600
     let special1Color = UIColor(hex: 0xE82220)!
     let special2Color = UIColor(hex: 0xFF6161)!
@@ -149,3 +149,4 @@ enum ColorTheme: Int {
         }
     }
 }
+

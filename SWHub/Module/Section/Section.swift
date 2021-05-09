@@ -52,24 +52,27 @@ enum SectionItem: IdentifiableType, Equatable {
         case let .issue(item):
             return item.description
         case let .theme(item):
+            log("aaaa: \(item.description)")
             return item.description
         }
     }
 
     static func == (lhs: SectionItem, rhs: SectionItem) -> Bool {
-        switch (lhs, rhs) {
-        case let (.simple(left), .simple(right)):
-            return left.description == right.description
-        case let (.repo(left), .repo(right)):
-            return left.description == right.description
-        case let (.user(left), .user(right)):
-            return left.description == right.description
-        case let (.issue(left), .issue(right)):
-            return left.description == right.description
-        case let (.theme(left), .theme(right)):
-            return left.description == right.description
-        default: return false
-        }
+        log("bbbb")
+        return lhs.identity == rhs.identity
+//        switch (lhs, rhs) {
+//        case let (.simple(left), .simple(right)):
+//            return left.description == right.description
+//        case let (.repo(left), .repo(right)):
+//            return left.description == right.description
+//        case let (.user(left), .user(right)):
+//            return left.description == right.description
+//        case let (.issue(left), .issue(right)):
+//            return left.description == right.description
+//        case let (.theme(left), .theme(right)):
+//            return left.description == right.description
+//        default: return false
+//        }
     }
     
 }
