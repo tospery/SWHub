@@ -74,7 +74,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (5.0.1)
-  - SWFrame (1.3.8):
+  - SWFrame (1.3.9):
     - BonMot (= 5.6.0)
     - CocoaLumberjack/Swift (= 3.7.0)
     - DZNEmptyDataSet (= 1.8.1)
@@ -155,7 +155,7 @@ DEPENDENCIES:
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
   - SnapKit (= 5.0.1)
-  - SWFrame (from `../SWFrame`)
+  - SWFrame (= 1.3.9)
   - SwiftEntryKit (= 1.2.6)
   - SwiftLint (= 0.41.0)
   - Toast-Swift (= 5.0.1)
@@ -200,6 +200,7 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
+    - SWFrame
     - SwiftEntryKit
     - SwifterSwift
     - SwiftLint
@@ -212,10 +213,6 @@ SPEC REPOS:
     - URLNavigator
     - WeakMapTable
     - WebViewJavascriptBridge
-
-EXTERNAL SOURCES:
-  SWFrame:
-    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   AcknowList: d5476fd33f5c4614c676933ab79d05775e5e20b7
@@ -251,7 +248,7 @@ SPEC CHECKSUMS:
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: bc74494b03fc524fdb01240b4c6e1df6d010c0ae
+  SWFrame: 1f63ba8660fbaea3c37bce5a64e62ea61bcf044f
   SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
@@ -265,6 +262,6 @@ SPEC CHECKSUMS:
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: b29ef5c8cd1deed62e7858226ac26ce3feb6f977
+PODFILE CHECKSUM: 6e69f7d620ea0512ac663ebcf101a9124c8b7869
 
 COCOAPODS: 1.10.0

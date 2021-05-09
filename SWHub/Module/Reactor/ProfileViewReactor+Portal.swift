@@ -36,7 +36,7 @@ extension ProfileViewReactor {
             }
             return string?.styled(with: .font(.systemFont(ofSize: 15)), .color(.body))
         }
-        
+
     }
     
 }

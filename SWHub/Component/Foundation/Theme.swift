@@ -149,4 +149,3 @@ enum ColorTheme: Int {
         }
     }
 }
-
