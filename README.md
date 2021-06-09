@@ -6,9 +6,10 @@
   GitHub iOS client in ReactorKit architecture.
 </p>
 
-SWHub will be updated regularly and open source, you can download the latest version from App Store
+SWHub will be updated regularly and open source.
+You can download the latest version from App Store
 <p align="left">
-  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/qrcode.png" alt="App Store" height="60" >
+  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/qrcode.png" alt="App Store" height="120" >
 </p>
 
 ## Content
