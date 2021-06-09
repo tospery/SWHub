@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/appicon.png" alt="SWHub logo" height="80" >
+  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/appicon.png" alt="SWHub logo" height="80">
 </p>
 
 <p align="center">
@@ -9,7 +9,7 @@
 SWHub will be updated regularly and open source.
 You can download the latest version from App Store
 <p align="left">
-  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/qrcode.png" alt="App Store" height="120" >
+  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/qrcode.png" alt="App Store" height="240" >
 </p>
 
 ## Content
