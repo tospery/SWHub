@@ -6,16 +6,25 @@
   GitHub iOS client in ReactorKit architecture.
 </p>
 
+SWHub will be updated regularly and open source, you can download the latest version from App Store
+<p align="left">
+  <img src="https://github.com/tospery/SWHub/blob/main/screenshots/qrcode.png" alt="App Store" height="60" >
+</p>
+
 ## Content
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 
 ## Screenshots
 
-<img alt="login" src="https://github.com/tospery/SWHub/blob/main/screenshots/login.jpg?raw=true" width="260">&nbsp;
-<img alt="repos" src="https://github.com/tospery/SWHub/blob/main/screenshots/repos.jpg?raw=true" width="260">&nbsp;
-<img alt="devs" src="https://github.com/tospery/SWHub/blob/main/screenshots/devs.jpg?raw=true" width="260">&nbsp;
-<img alt="mine" src="https://github.com/tospery/SWHub/blob/main/screenshots/mine.jpg?raw=true" width="260">&nbsp;
+<img alt="login" src="https://github.com/tospery/SWHub/blob/main/screenshots/login.png?raw=true" width="240">&nbsp;
+<img alt="repos" src="https://github.com/tospery/SWHub/blob/main/screenshots/trending.png?raw=true" width="240">&nbsp;
+<img alt="devs" src="https://github.com/tospery/SWHub/blob/main/screenshots/stars.png?raw=true" width="240">&nbsp;
+<img alt="mine" src="https://github.com/tospery/SWHub/blob/main/screenshots/me.png?raw=true" width="240">&nbsp;
+<img alt="login" src="https://github.com/tospery/SWHub/blob/main/screenshots/repo.png?raw=true" width="240">&nbsp;
+<img alt="repos" src="https://github.com/tospery/SWHub/blob/main/screenshots/user.png?raw=true" width="240">&nbsp;
+<img alt="devs" src="https://github.com/tospery/SWHub/blob/main/screenshots/search_history.png?raw=true" width="240">&nbsp;
+<img alt="mine" src="https://github.com/tospery/SWHub/blob/main/screenshots/search_result.png?raw=true" width="240">&nbsp;
 
 ## Technologies
 - [x] iOS App Frame ([SWFrame](https://github.com/tospery/SWFrame))
