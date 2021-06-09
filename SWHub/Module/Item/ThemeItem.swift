@@ -20,13 +20,13 @@ class ThemeItem: BaseTableItem, ReactorKit.Reactor {
 
     var initialState = State()
 
-    required init(_ model: ModelType) {
+    required public init(_ model: ModelType) {
         super.init(model)
-        guard let colorTheme = (model as? BaseModel)?.value as? ColorTheme else { return }
+        guard let tuple = (model as? BaseModel)?.data as? KVTuple else { return }
         self.initialState = State(
-            checked: colorTheme.color == UIColor.primary,
-            name: colorTheme.title,
-            color: colorTheme.color
+            checked: tuple.value as? Bool ?? false,
+            name: (tuple.key as? ColorTheme)?.title,
+            color: (tuple.key as? ColorTheme)?.color
         )
     }
     

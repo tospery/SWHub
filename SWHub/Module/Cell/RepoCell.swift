@@ -2,83 +2,93 @@
 //  RepoCell.swift
 //  SWHub
 //
-//  Created by liaoya on 2021/4/25.
+//  Created by liaoya on 2021/5/21.
 //
 
 import UIKit
 
 class RepoCell: BaseCollectionCell, ReactorKit.View {
 
-    struct Metric {
-        static let iconSize = CGSize.init(24)
-        static let rankingSize = CGSize.init(20)
-    }
+    let usernameSubject = PublishSubject<String>()
     
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = R.image.repo()
         imageView.sizeToFit()
-        imageView.size = Metric.iconSize
-        imageView.cornerRadius = imageView.height / 2.0
+        imageView.size = Metric.Trending.iconSize
         return imageView
     }()
     
-    lazy var titleLabel: SWLabel = {
-        let label = SWLabel()
-        label.font = .systemFont(ofSize: 17)
-        label.sizeToFit()
-        return label
-    }()
-    
-    lazy var rankingLabel: SWLabel = {
-        let label = SWLabel()
+    lazy var rankingLabel: UILabel = {
+        let label = UILabel.init()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 11)
+        label.font = .normal(11)
         label.sizeToFit()
-        label.size = Metric.rankingSize
-        label.cornerRadius = label.height / 2.0
-        return label
-    }()
-
-    lazy var langLabel: SWLabel = {
-        let label = SWLabel()
-        label.sizeToFit()
+        label.size = .init(18)
+        label.cornerRadius = label.height / 2
         return label
     }()
     
-    lazy var starLabel: SWLabel = {
-        let label = SWLabel()
-        label.sizeToFit()
-        label.size = .init(width: 60, height: 25)
-        return label
-    }()
-    
-    lazy var descLabel: SWLabel = {
-        let label = SWLabel()
+    lazy var reponameLabel: SWFLabel = {
+        let label = SWFLabel.init(frame: .zero)
+        label.delegate = self
+        label.verticalAlignment = .center
         label.numberOfLines = 2
+        label.font = .normal(16)
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var starsLabel: UILabel = {
+        let label = UILabel.init()
+        label.sizeToFit()
+        label.size = Metric.Trending.starsSize
+        return label
+    }()
+    
+    lazy var statusLabel: UILabel = {
+        let label = UILabel.init()
+        label.font = .normal(13)
+        label.sizeToFit()
+        label.height = Metric.repoStatusHeight
+        return label
+    }()
+    
+    lazy var languageLabel: UILabel = {
+        let label = UILabel()
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var descLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = Metric.trendingMaxLines
         label.sizeToFit()
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.qmui_borderWidth = 1
+        self.contentView.qmui_borderWidth = pixelOne
         self.contentView.qmui_borderPosition = .bottom
-
+        
         self.contentView.addSubview(self.iconImageView)
         self.contentView.addSubview(self.rankingLabel)
-        self.contentView.addSubview(self.titleLabel)
-        self.contentView.addSubview(self.langLabel)
-        self.contentView.addSubview(self.starLabel)
+        self.contentView.addSubview(self.reponameLabel)
+        self.contentView.addSubview(self.starsLabel)
+        self.contentView.addSubview(self.languageLabel)
         self.contentView.addSubview(self.descLabel)
+        self.contentView.addSubview(self.statusLabel)
 
         themeService.rx
             .bind({ $0.borderColor }, to: self.contentView.rx.qmui_borderColor)
-            .bind({ $0.backgroundColor }, to: self.rankingLabel.rx.textColor)
-            .bind({ $0.titleColor }, to: self.descLabel.rx.textColor)
-            .bind({ $0.primaryColor }, to: [
-                self.titleLabel.rx.textColor,
-                self.rankingLabel.rx.backgroundColor
+            .bind({ $0.titleColor }, to: [
+                self.descLabel.rx.textColor,
+                self.reponameLabel.rx.textColor
             ])
+            .bind({ $0.foregroundColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.backgroundColor }, to: self.rankingLabel.rx.textColor)
+            .bind({ $0.primaryColor }, to: self.rankingLabel.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -88,61 +98,71 @@ class RepoCell: BaseCollectionCell, ReactorKit.View {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.titleLabel.text = nil
         self.rankingLabel.text = nil
-        self.langLabel.attributedText = nil
-        self.starLabel.attributedText = nil
+        self.reponameLabel.text = nil
+        self.starsLabel.attributedText = nil
+        self.languageLabel.attributedText = nil
         self.descLabel.attributedText = nil
-        self.iconImageView.image = nil
+        self.statusLabel.text = nil
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.iconImageView.left = 15
-        self.iconImageView.top = 10
-        self.rankingLabel.right = self.contentView.width - 10
+        self.iconImageView.left = Metric.margin.left
+        self.iconImageView.top = Metric.margin.top
+        self.rankingLabel.right = self.contentView.width - Metric.margin.right
         self.rankingLabel.centerY = self.iconImageView.centerY
-        self.titleLabel.sizeToFit()
-        self.titleLabel.left = self.iconImageView.right + 5
-        self.titleLabel.extendToRight = self.rankingLabel.left - 10
-        self.titleLabel.centerY = self.iconImageView.centerY
-        self.langLabel.sizeToFit()
-        self.langLabel.left = self.iconImageView.left
-        self.langLabel.bottom = self.contentView.height - 5
-        self.starLabel.right = self.contentView.width - 5
-        self.starLabel.centerY = self.langLabel.centerY
+        self.reponameLabel.sizeToFit()
+        self.reponameLabel.height = Metric.Trending.nameHeight
+        self.reponameLabel.width = self.rankingLabel.left - Metric.padding
+            - self.iconImageView.right - Metric.padding
+        self.reponameLabel.left = self.iconImageView.right + Metric.padding
+        self.reponameLabel.centerY = self.iconImageView.centerY
+        self.starsLabel.right = self.contentView.width
+        self.starsLabel.bottom = self.contentView.height
+        self.languageLabel.sizeToFit()
+        self.languageLabel.left = self.iconImageView.left
+        self.languageLabel.centerY = self.starsLabel.centerY
+        self.statusLabel.sizeToFit()
+        self.statusLabel.height = Metric.repoStatusHeight
+        self.statusLabel.left = self.iconImageView.left
+        self.statusLabel.bottom = self.languageLabel.top - Metric.padding / 2.f
         self.descLabel.sizeToFit()
-        self.descLabel.width = self.contentView.width - 15 - 10
-        self.descLabel.height = self.langLabel.top - self.iconImageView.bottom - 10
+        self.descLabel.width = self.contentView.width - self.iconImageView.left - Metric.margin.right
+        self.descLabel.height = self.statusLabel.top - self.iconImageView.bottom - Metric.padding
         self.descLabel.left = self.iconImageView.left
-        self.descLabel.top = self.iconImageView.bottom + 5
+        self.descLabel.top = self.iconImageView.bottom + Metric.padding / 2.f
     }
 
     func bind(reactor: RepoItem) {
         super.bind(item: reactor)
-        reactor.state.map { $0.title }
+        reactor.state.map { $0.ranking?.string }
             .distinctUntilChanged()
-            .bind(to: self.titleLabel.rx.text)
+            .bind(to: self.rx.ranking)
             .disposed(by: self.disposeBag)
-        reactor.state.map { ($0.ranking + 1).string }
+        reactor.state.map { $0.ranking == nil }
             .distinctUntilChanged()
-            .bind(to: self.rankingLabel.rx.text)
+            .bind(to: self.rankingLabel.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.lang }
+        reactor.state.map { $0.reponame }
             .distinctUntilChanged()
-            .bind(to: self.langLabel.rx.attributedText)
+            .bind(to: self.rx.reponame)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.status }
+            .distinctUntilChanged()
+            .bind(to: self.rx.status)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.stars }
+            .distinctUntilChanged()
+            .bind(to: self.starsLabel.rx.attributedText)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.language }
+            .distinctUntilChanged()
+            .bind(to: self.languageLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.desc }
             .distinctUntilChanged()
             .bind(to: self.descLabel.rx.attributedText)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.star }
-            .distinctUntilChanged()
-            .bind(to: self.starLabel.rx.attributedText)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.icon }
-            .distinctUntilChanged { SWHub.compare($0, $1) }
-            .bind(to: self.iconImageView.rx.imageSource)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
@@ -151,18 +171,32 @@ class RepoCell: BaseCollectionCell, ReactorKit.View {
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let item = item as? RepoItem else { return .zero }
-        var height = UILabel.size(
+        var height = 0.f
+        height += Metric.margin.top
+        height += Metric.Trending.iconSize.height
+        height += Metric.padding
+        height += Metric.Trending.starsSize.height
+        let descHeight = UILabel.size(
             attributedString: item.currentState.desc,
-            withConstraints: .init(width: UIScreen.width - 15 - 10, height: .greatestFiniteMagnitude),
-            limitedToNumberOfLines: 2
+            withConstraints: .init(
+                width: UIScreen.width - Metric.margin.left - Metric.margin.right,
+                height: .greatestFiniteMagnitude
+            ),
+            limitedToNumberOfLines: UInt(Metric.trendingMaxLines)
         ).height
-        height += 10
-        height += Metric.iconSize.height
-        height += 5
-        height += 5
-        height += Metric.rankingSize.height
+        height += descHeight
+        height += Metric.repoStatusHeight
         height += 5
         return CGSize(width: width, height: height.flat)
+    }
+
+}
+
+extension RepoCell: SWFLabelDelegate {
+
+    func attributedLabel(_ label: SWFLabel!, didSelectLinkWith result: NSTextCheckingResult!) {
+        guard let repo = self.model as? Repo else { return }
+        self.usernameSubject.onNext(repo.owner.username)
     }
 
 }

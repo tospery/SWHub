@@ -4,12 +4,12 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>webcredentials:tospery.com</string>
-		<string>applinks:tospery.com</string>
+		<string>webcredentials:jianxiang.com</string>
+		<string>applinks:jianxiang.com</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.tospery.swhub</string>
+		<string>$(AppIdentifierPrefix)com.jianxiang.swhub</string>
 		<string>$(AppIdentifierPrefix)shared</string>
 	</array>
 </dict>

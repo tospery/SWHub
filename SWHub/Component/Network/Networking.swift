@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Moya
 
 let networking = Networking(
     provider: MoyaProvider<MultiTarget>(
@@ -27,10 +28,10 @@ struct Networking: NetworkingType {
     func request<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<Model> {
         self.requestJSON(target).flatMap { json -> Single<Model> in
             guard let json = json as? [String: Any] else {
-                return .error(SWError.dataFormat)
+                return .error(SWFError.dataFormat)
             }
             guard let model = Model.init(JSON: json), model.isValid else {
-                return .error(SWError.server(0, json["message"] as? String))
+                return .error(SWFError.server(0, json["message"] as? String))
             }
             return .just(model)
         }
@@ -40,16 +41,25 @@ struct Networking: NetworkingType {
         self.requestJSON(target).flatMap { json -> Single<[Model]> in
             if let info = json as? [String: Any],
                let message = info["message"] as? String {
-                return .error(SWError.server(0, message))
+                return .error(SWFError.server(0, message))
             }
             guard let json = json as? [[String: Any]] else {
-                return .error(SWError.dataFormat)
+                return .error(SWFError.dataFormat)
             }
             let models = [Model].init(JSONArray: json)
-            guard models.count != 0 else {
-                return .error(SWError.listIsEmpty)
-            }
             return .just(models)
+        }
+    }
+    
+    func requestList<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<List<Model>> {
+        self.requestJSON(target).flatMap { json -> Single<List<Model>> in
+            guard let json = json as? [String: Any] else {
+                return .error(SWFError.dataFormat)
+            }
+            guard let list = List<Model>.init(JSON: json) else {
+                return .error(SWFError.server(0, json["message"] as? String))
+            }
+            return .just(list)
         }
     }
     

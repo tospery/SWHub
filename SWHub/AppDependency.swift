@@ -14,8 +14,6 @@ import UIKit
 @_exported import RxDataSources
 @_exported import RxViewController
 @_exported import RxTheme
-@_exported import Moya
-@_exported import Cache
 @_exported import BonMot
 @_exported import QMUIKit
 @_exported import ReactorKit
@@ -23,15 +21,6 @@ import UIKit
 @_exported import ObjectMapper
 @_exported import URLNavigator
 @_exported import Rswift
-@_exported import Alamofire
-@_exported import SnapKit
-@_exported import Kingfisher
-@_exported import SwifterSwift
-@_exported import SwiftEntryKit
-@_exported import CocoaLumberjack
-@_exported import IQKeyboardManagerSwift
-@_exported import Toast_Swift
-@_exported import Umbrella
 @_exported import SWFrame
 
 final class AppDependency: AppDependencyType {
@@ -53,39 +42,14 @@ final class AppDependency: AppDependencyType {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         self.window = window
-        var rootViewController: UIViewController?
-        if User.current?.isValid ?? false {
-            let reactor = TabBarReactor(self.provider, nil)
-            rootViewController = TabBarController(self.navigator, reactor)
-        } else {
-            let reactor = LoginViewReactor.init(self.provider, nil)
-            let controller = LoginViewController.init(self.navigator, reactor)
-            rootViewController = NavigationController.init(rootViewController: controller)
-        }
-        self.window.rootViewController = rootViewController
+        let reactor = TabBarReactor(self.provider, nil)
+        let controller = TabBarController(self.navigator, reactor)
+        self.window.rootViewController = controller
         self.window.makeKeyAndVisible()
-    }
-    
-    func handle(user: User?) {
-        var rootViewController: UIViewController?
-        if user?.isValid ?? false {
-            let reactor = TabBarReactor(self.provider, nil)
-            rootViewController = TabBarController(self.navigator, reactor)
-        } else {
-            let reactor = LoginViewReactor.init(self.provider, nil)
-            let controller = LoginViewController.init(self.navigator, reactor)
-            rootViewController = NavigationController.init(rootViewController: controller)
-        }
-        let transtition = CATransition.init()
-        transtition.duration = 0.5
-        transtition.timingFunction = .init(name: .easeOut)
-        self.window.layer.add(transtition, forKey: "animation")
-        self.window.rootViewController = rootViewController
     }
     
     // MARK: - Test
     func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        
     }
     
     // MARK: - Lifecycle
@@ -100,12 +64,6 @@ final class AppDependency: AppDependencyType {
         Router.initialize(self.provider, self.navigator)
         // 主题
         // 绑定
-        Subjection.for(User.self).asObservable()
-            .skip(1)
-            .distinctUntilChanged { $0?.isValid ?? false != $1?.isValid ?? false }
-            .observeOn(MainScheduler.instance)
-            .subscribeNext(weak: self, type(of: self).handle)
-            .disposed(by: self.disposeBag)
     }
 
     func application(
@@ -141,18 +99,11 @@ final class AppDependency: AppDependencyType {
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey: Any]
     ) -> Bool {
-        let result = UMSocialManager.default()!.handleOpen(url, options: options)
-        if !result {
-            log("未处理的URL: \(url)")
-            switch url.scheme {
-            case Platform.weixin.appId:
-                // return WXApi.handleOpen(url, delegate: WechatManager.shareInstance())
-                return WXApi.handleOpen(url, delegate: PlatformManager.shared)
-            default:
-                break
-            }
+        let patterns = Router.exportedURLSchemes().map { $0.pattern }
+        if self.navigator.matcher.match(url, from: patterns) != nil {
+            return self.navigator.forward(url) != nil
         }
-        return result
+        return true
     }
 
     // MARK: - userActivity
@@ -161,11 +112,7 @@ final class AppDependency: AppDependencyType {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
     ) -> Bool {
-        let result = UMSocialManager.default()!.handleUniversalLink(userActivity, options: nil)
-        if !result {
-            log("未处理的LINK: \(userActivity)")
-        }
-        return result
+        return true
     }
 
 }

@@ -119,7 +119,7 @@ public class NavigationBar: UIView {
         
         let padding = 8.f
         var left = padding
-        let top = UIApplication.statusBarHeightConstant
+        let top = UIScreen.statusBarHeightConstant
         var width = UINavigationBar.height
         let height = width
         for (_, button) in self.leftButtons.enumerated() {
@@ -142,24 +142,27 @@ public class NavigationBar: UIView {
         let rightDistance = self.width - (self.rightButtons.last?.left ?? self.width)
         left = max(leftDistance, rightDistance)
         width = flat(self.width - left * 2)
-        self.titleLabel.frame = CGRect(x: left, y: UIApplication.statusBarHeightConstant, width: width, height: UINavigationBar.height)
+        self.titleLabel.frame = CGRect(x: left, y: UIScreen.statusBarHeightConstant, width: width, height: UINavigationBar.height)
         
         if let titleView = self.titleView {
             titleView.width = min(titleView.width, self.titleLabel.width)
             titleView.height = min(titleView.height, self.titleLabel.height)
             titleView.center = CGPointGetCenterWithRect(self.titleLabel.frame)
+            self.titleLabel.isHidden = true
+        } else {
+            self.titleLabel.isHidden = false
         }
     }
     
     func addBackButtonToLeft() -> UIButton {
-        return self.addButtonToLeft(UIImage.back)
+        return self.addButtonToLeft(image: UIImage.back)
     }
     
     func addCloseButtonToLeft() -> UIButton {
-        return self.addButtonToLeft(UIImage.close)
+        return self.addButtonToLeft(image: UIImage.close)
     }
     
-    public func addButtonToLeft(_ image: UIImage? = nil, _ title: String? = nil) -> UIButton {
+    public func addButtonToLeft(image: UIImage? = nil, title: String? = nil) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.titleLabel?.font = .systemFont(ofSize: 16)
@@ -177,7 +180,7 @@ public class NavigationBar: UIView {
         return button
     }
     
-    public func addButtonToRight(_ image: UIImage? = nil, _ title: String? = nil) -> UIButton {
+    public func addButtonToRight(image: UIImage? = nil, title: String? = nil) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.titleLabel?.font = .systemFont(ofSize: 16)
@@ -193,6 +196,15 @@ public class NavigationBar: UIView {
         self.layoutIfNeeded()
         
         return button
+    }
+    
+    public func removeAllLeftButtons() {
+        for button in self.leftButtons {
+            button.removeFromSuperview()
+        }
+        self.leftButtons.removeAll()
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
     }
     
     public func transparet() {

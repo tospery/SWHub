@@ -6,32 +6,12 @@
 //
 
 import Foundation
-
-func update<T: Subjective>(_ type: T.Type, _ value: T?) {
-    if let value = value {
-        value.save(ignoreId: true)
-    } else {
-        T.eraseObject()
-    }
-    Subjection.for(type).accept(value)
-}
-
-func compare(_ left: ImageSource?, _ right: ImageSource?) -> Bool {
-    if let lImage = left as? UIImage,
-       let rImage = right as? UIImage {
-        return lImage == rImage
-    }
-    if let lURL = left as? URL,
-       let rURL = right as? URL {
-        return lURL == rURL
-    }
-    return false
-}
+import CocoaLumberjack
 
 func log(
     _ message: @autoclosure () -> Any,
-    module: LogModule = .common,
-    level: DDLogLevel = DDDefaultLogLevel,
+    module: Logger.Module = .common,
+    level: DDLogLevel = .debug,
     flag: DDLogFlag = .debug,
     context: Int = 0,
     file: StaticString = #file,
@@ -43,7 +23,7 @@ func log(
 ) {
     logger.print(
         message(),
-        module: module.rawValue,
+        module: module,
         level: level,
         flag: flag,
         context: context,

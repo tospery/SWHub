@@ -5,22 +5,22 @@
 //  Created by 杨建祥 on 2021/5/6.
 //
 
-import Foundation
-
-class PlatformManager: NSObject {
-    
-    static let shared = PlatformManager()
-    
-    override init() {
-        super.init()
-    }
-    
-}
-
-extension PlatformManager: WXApiDelegate {
-    
-    func onReq(_ req: BaseReq) {
-        log("onReq")
+//import Foundation
+//
+//class PlatformManager: NSObject {
+//
+//    static let shared = PlatformManager()
+//
+//    override init() {
+//        super.init()
+//    }
+//
+//}
+//
+//extension PlatformManager: WXApiDelegate {
+//
+//    func onReq(_ req: BaseReq) {
+//        log("onReq")
 //        if ([req isKindOfClass:[ShowMessageFromWXReq class]]) {
 //            if (_delegate
 //                && [_delegate respondsToSelector:@selector(managerDidRecvShowMessageReq:)]) {
@@ -34,10 +34,10 @@ extension PlatformManager: WXApiDelegate {
 //                [_delegate managerDidRecvLaunchFromWXReq:launchReq];
 //            }
 //        }
-    }
-    
-    func onResp(_ resp: BaseResp) {
-        log("onResp")
+//    }
+//
+//    func onResp(_ resp: BaseResp) {
+//        log("onResp")
 //        if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
 //            if (_delegate
 //                && [_delegate respondsToSelector:@selector(managerDidRecvMessageResponse:)]) {
@@ -94,6 +94,6 @@ extension PlatformManager: WXApiDelegate {
 //                [_delegate managerDidPayResponse:(PayResp *)resp];
 //            }
 //        }
-    }
-
-}
+//    }
+//
+//}

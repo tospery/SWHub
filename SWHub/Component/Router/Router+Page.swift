@@ -11,37 +11,42 @@ import AcknowList
 extension Router {
     
     static func page(_ provider: SWFrame.ProviderType, _ navigator: NavigatorType) {
-        let parameters = { (url: URLNavigator.URLConvertible, values: [String: Any], context: Any?) -> [String: Any]? in
-            var parameters: [String: Any] = url.queryParameters
-            for (key, value) in values {
-                parameters[key] = value
-            }
-            if let context = context {
-                parameters[Parameter.routeContext] = context
-            }
-            return parameters
+        navigator.register(self.urlPattern(host: .login)) { url, values, context in
+            LoginViewController(navigator, LoginViewReactor.init(provider, self.parameters(url, values, context)))
         }
-        navigator.register(self.login.urlString) { url, values, context in
-            LoginViewController(navigator, LoginViewReactor(provider, parameters(url, values, context)))
+        navigator.register(self.urlPattern(host: .theme)) { url, values, context in
+            ThemeViewController(navigator, ThemeViewReactor.init(provider, self.parameters(url, values, context)))
         }
-        navigator.register(self.feedback.urlString) { url, values, context in
-            FeedbackViewController(navigator, FeedbackViewReactor(provider, parameters(url, values, context)))
-        }
-        navigator.register(self.about.urlString) { url, values, context in
-            AboutViewController(navigator, AboutViewReactor(provider, parameters(url, values, context)))
-        }
-        navigator.register(self.theme.urlString) { url, values, context in
-            ThemeViewController(navigator, ThemeViewReactor(provider, parameters(url, values, context)))
-        }
-        navigator.register(self.profile.urlString) { url, values, context in
-            ProfileViewController(navigator, ProfileViewReactor(provider, parameters(url, values, context)))
-        }
-        navigator.register(self.acknowList.urlString) { _, _, _ in
+        navigator.register(self.urlPattern(host: .acknowList)) { _, _, _ in
             AcknowListViewController.init()
         }
-        navigator.register(Issue.list.urlString) { url, values, context in
-            IssueListViewController(navigator, IssueListViewReactor(provider, parameters(url, values, context)))
+        navigator.register(self.urlPattern(host: .search)) { url, values, context in
+            guard let parameters = self.parameters(url, values, context) else { return nil }
+            guard let path = Path.init(rawValue: parameters[Parameter.path] as? String ?? "")
+            else { return nil }
+            switch path {
+            case .result:
+                return SearchResultViewController(navigator, SearchResultViewReactor.init(provider, parameters))
+            default:
+                return ListViewController(navigator, ListViewReactor.init(provider, parameters))
+            }
         }
+        let listFactory: ViewControllerFactory = { url, values, context in
+            guard let parameters = self.parameters(url, values, context) else { return nil }
+            return ListViewController(navigator, ListViewReactor.init(provider, parameters))
+        }
+        navigator.register(self.urlPattern(host: .repo), listFactory)
+        navigator.register(self.urlPattern(host: .repos), listFactory)
+        navigator.register(self.urlPattern(host: .user), listFactory)
+        navigator.register(self.urlPattern(host: .users), listFactory)
+        navigator.register(self.urlPattern(host: .issues), listFactory)
+        navigator.register(self.urlPattern(host: .center), listFactory)
+        navigator.register(self.urlPattern(host: .profile), listFactory)
+        navigator.register(self.urlPattern(host: .about), listFactory)
+        navigator.register(self.urlPattern(host: .scheme), listFactory)
+        navigator.register(self.urlPattern(host: .feedback), listFactory)
+        navigator.register(self.urlPattern(host: .modify), listFactory)
+        navigator.register(self.urlPattern(host: .settings), listFactory)
     }
-    
+
 }

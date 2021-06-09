@@ -2,73 +2,57 @@
 //  GithubAPI.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/11/28.
+//  Created by liaoya on 2021/5/10.
 //
 
 import Foundation
+import Moya
 
 enum GithubAPI {
-    case login(token: String)
-    case feedback(title: String, body: String)
-    case issues(state: State, page: Int)
+    case token(code: String)
 }
 
 extension GithubAPI: TargetType {
 
     var baseURL: URL {
-        return UIApplication.shared.baseApiUrl.url!
+        return UIApplication.shared.baseGithubUrl.url!
     }
 
     var path: String {
         switch self {
-        case .login: return "/user"
-        case .feedback, .issues: return "/repos/tospery/SWHub/issues"
+        case .token: return "/login/oauth/access_token"
         }
     }
 
     var method: Moya.Method {
-        switch self {
-        case .feedback: return .post
-        default: return .get
-        }
+        .post
     }
 
     var headers: [String: String]? {
-        switch self {
-        case let .login(token):
-            return ["Authorization": "token \(token)"]
-        default:
-            if let token = User.current?.token {
-                return ["Authorization": "token \(token)"]
-            }
-            return nil
-        }
+        [
+            "Accept": "application/json"
+        ]
     }
 
     var task: Task {
         switch self {
-        case let .feedback(title, body):
+        case let .token(code):
             let parameters = [
-                "title": title,
-                "body": body
+                "client_id": Platform.github.appId,
+                "client_secret": Platform.github.appKey,
+                "code": code
             ]
-            return .requestCompositeParameters(
-                bodyParameters: parameters,
-                bodyEncoding: JSONEncoding.default,
-                urlParameters: basicParameters
-            )
-        case let .issues(state, page):
-            var parameters = basicParameters
-            parameters["state"] = state.rawValue
-            parameters["page"] = page
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
-        default:
-            return .requestPlain
+//            return .requestCompositeParameters(
+//                bodyParameters: parameters,
+//                bodyEncoding: URLEncoding.httpBody,
+//                urlParameters: basicParameters
+//            )
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.httpBody)
         }
     }
 
     var validationType: ValidationType { .none }
 
-    var sampleData: Data { Data.init() } // YJX_TODO 示例
+    var sampleData: Data { Data.init() }
 
 }

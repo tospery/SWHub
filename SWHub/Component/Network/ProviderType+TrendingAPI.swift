@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Moya
 
 extension SWFrame.ProviderType {
     
     // MARK: - TrendingAPI
-    /// 仓库推荐
+    /// 仓库推荐: https://gtrend.yapie.me/repositories
     func repositories(language: Language?, since: Since?) -> Single<[Repo]> {
-        networking.requestArray(
+        return networking.requestArray(
             MultiTarget.init(
                 TrendingAPI.repositories(language: language, since: since)
             ),
@@ -20,7 +21,7 @@ extension SWFrame.ProviderType {
         )
     }
     
-    /// 开发者推荐
+    /// 开发者推荐: https://gtrend.yapie.me/developers
     func developers(language: Language?, since: Since?) -> Single<[User]> {
         networking.requestArray(
             MultiTarget.init(

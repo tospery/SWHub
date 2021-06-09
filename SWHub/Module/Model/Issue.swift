@@ -6,26 +6,23 @@
 //
 
 import Foundation
-import DateToolsSwift
 
 struct Issue: ModelType, Subjective, Eventable {
     
     enum Event {
     }
     
-    var id: Int?
+    var id = 0
     var activeLockReason: String?
     var assignee: String?
     var assignees: [String]?
     var authorAssociation: String?
-    var body: String?
     var closedAt: String?
-    var comments: Int?
+    var comments = 0
     var commentsUrl: String?
     var createdAt: String?
     var eventsUrl: String?
     var htmlUrl: String?
-    var labels: [String]?
     var labelsUrl: String?
     var locked: Bool?
     var milestone: String?
@@ -33,27 +30,16 @@ struct Issue: ModelType, Subjective, Eventable {
     var number: Int?
     var performedViaGithubApp: String?
     var repositoryUrl: String?
-    var state: String?
-    var title: String?
+    var state = State.open
     var updatedAt: String?
     var url: String?
     var user: User?
+    var labels = [Label].init()
+    var title = ""
+    var body: String?
     
-    var stateIcon: UIImage? {
-        guard let state = State.init(rawValue: self.state ?? "") else {
-            return nil
-        }
-        switch state {
-        case .open: return R.image.open()
-        case .closed: return R.image.resolved()
-        default: return nil
-        }
-    }
-    
-    var timeAgoSinceNow: String {
-        guard let string = self.updatedAt else { return "" }
-        guard let date = Date.init(iso8601: string) else { return "" }
-        return date.timeAgoSinceNow
+    var isValid: Bool {
+        self.id != 0 && self.title.isEmpty == false
     }
     
     init() { }
@@ -61,6 +47,7 @@ struct Issue: ModelType, Subjective, Eventable {
     init?(map: Map) { }
 
     mutating func mapping(map: Map) {
+        id                      <- map["id"]
         activeLockReason        <- map["active_lock_reason"]
         assignee                <- map["assignee"]
         assignees               <- map["assignees"]
@@ -72,7 +59,6 @@ struct Issue: ModelType, Subjective, Eventable {
         createdAt               <- map["created_at"]
         eventsUrl               <- map["events_url"]
         htmlUrl                 <- map["html_url"]
-        id                      <- map["id"]
         labels                  <- map["labels"]
         labelsUrl               <- map["labels_url"]
         locked                  <- map["locked"]

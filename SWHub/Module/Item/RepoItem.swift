@@ -2,7 +2,7 @@
 //  RepoItem.swift
 //  SWHub
 //
-//  Created by liaoya on 2021/4/25.
+//  Created by liaoya on 2021/5/21.
 //
 
 import Foundation
@@ -13,43 +13,27 @@ class RepoItem: BaseCollectionItem, ReactorKit.Reactor {
     typealias Mutation = NoMutation
 
     struct State {
-        var ranking = 0
-        var icon: ImageSource?
-        var title: String?
+        var ranking: Int?
+        var reponame: String?
+        var status: String?
+        var stars: NSAttributedString?
+        var language: NSAttributedString?
         var desc: NSAttributedString?
-        var lang: NSAttributedString?
-        var star: NSAttributedString?
     }
 
     var initialState = State()
 
-    required init(_ model: ModelType) {
-        super.init(model)
-    }
-    
-    init(_ model: ModelType, _ ranking: Int) {
+    required public init(_ model: ModelType) {
         super.init(model)
         guard let repo = model as? Repo else { return }
         self.initialState = State(
-            ranking: ranking,
-            icon: repo.avatar?.url,
-            title: "\(repo.author ?? "")/\(repo.name ?? "")",
-            desc: repo.desc?.styled(with: .font(.systemFont(ofSize: 15)),
-                                    .lineHeightMultiple(1.1),
-                                    .lineBreakMode(.byTruncatingTail)),
-            lang: repo.languageAttrString,
-            star: repo.starsAttrString
+            ranking: repo.ranking != nil ? repo.ranking! + 1 : nil,
+            reponame: repo.fullname,
+            status: repo.statusText,
+            stars: repo.starsStyle1,
+            language: repo.languageStyle,
+            desc: repo.descStyle
         )
-    }
-    
-    func reduce(state: State, mutation: Mutation) -> State {
-//        var newState = state
-//        switch mutation {
-//        case let .setDetail(detail):
-//            newState.detail = detail
-//        }
-//        return newState
-        state
     }
     
     func transform(action: Observable<NoAction>) -> Observable<NoAction> {

@@ -9,7 +9,7 @@ import UIKit
 import QMUIKit
 import RxSwift
 import RxCocoa
-import RxSwiftExt
+import NSObject_Rx
 import SwifterSwift
 import URLNavigator
 
@@ -20,8 +20,6 @@ open class BaseViewController: UIViewController {
     public var disposeBag = DisposeBag()
     public let navigator: NavigatorType
     
-    // public let resultSubject = PublishSubject<Any?>()
-    
     public var hidesNavigationBar   = false
     public var hidesNavBottomLine   = false
     public var transparetNavBar     = false {
@@ -30,8 +28,7 @@ open class BaseViewController: UIViewController {
         }
     }
     
-    public var loading = false
-    public var emptying = false
+    public var isActivating = false
     public var error: Error?
     
     public var contentTop: CGFloat {
@@ -51,6 +48,7 @@ open class BaseViewController: UIViewController {
             tabBar.isHidden == false,
             self.qmui_previous == nil {
             height += tabBar.height
+            // height += UITabBar.height
         }
         return height
     }
@@ -72,13 +70,19 @@ open class BaseViewController: UIViewController {
         self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
         self.hidesBottomBarWhenPushed = true
-        self.hidesNavigationBar = reactor.parameters[Parameter.hideNavBar] as? Bool ?? false
-        self.hidesNavBottomLine = reactor.parameters[Parameter.hideNavLine] as? Bool ?? false
-        self.transparetNavBar = reactor.parameters[Parameter.transparetNavBar] as? Bool ?? false
+        self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, false)
+        self.hidesNavBottomLine = boolMember(reactor.parameters, Parameter.hideNavLine, false)
+        self.transparetNavBar = boolMember(reactor.parameters, Parameter.transparetNavBar, false)
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        #if DEBUG
+        logger.print("\(self.className)已销毁！！！", module: .swframe)
+        #endif
     }
     
     // MARK: - View
@@ -128,7 +132,7 @@ open class BaseViewController: UIViewController {
             gestureRecognizer.addTarget(self, action: #selector(handleInteractivePopGestureRecognizer(_:)))
         }
         
-        statusBarService.mapTo(()).skip(1).subscribe(onNext: { [weak self] _ in
+        statusBarService.map { _ in () }.skip(1).subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.setNeedsStatusBarAppearanceUpdate()
         }).disposed(by: self.rx.disposeBag)
@@ -178,49 +182,4 @@ open class BaseViewController: UIViewController {
         }
     }
 
-}
-
-public extension Reactive where Base: BaseViewController {
-
-    var emptying: Binder<Bool> {
-        return Binder(self.base) { viewController, emptying in
-            viewController.emptying = emptying
-        }
-    }
-    
-    func loading(active: Bool = false, text: String? = nil) -> Binder<Bool> {
-        return Binder(self.base) { viewController, loading in
-            viewController.loading = loading
-            guard viewController.isViewLoaded else { return }
-            guard !viewController.emptying else { return }
-            var url = "\(UIApplication.shared.scheme)://toast".url!
-            url.appendQueryParameters([
-                Parameter.active: loading.string
-            ])
-            viewController.navigator.open(url)
-        }
-    }
-    
-    var error: Binder<Error?> {
-        return Binder(self.base) { viewController, error in
-            viewController.error = error
-            guard viewController.isViewLoaded else { return }
-            guard let error = error else { return }
-            if (error as? SWError)?.isNotLoginedIn ?? false {
-                if let name = UIViewController.topMost?.className,
-                   name.contains("LoginViewController") {
-                    logger.print("已处于登录页，不需要再次打开", module: swframe)
-                } else {
-                    viewController.navigator.present( "\(UIApplication.shared.scheme)://login", wrap: NavigationController.self)
-                }
-            } else {
-                guard !viewController.emptying else { return }
-                var url = "\(UIApplication.shared.scheme)://toast".url!
-                url.appendQueryParameters([
-                    Parameter.message: error.localizedDescription
-                ])
-                viewController.navigator.open(url)
-            }
-        }
-    }
 }

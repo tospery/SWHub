@@ -10,11 +10,14 @@
 #endif
 #endif
 
-#import "SWButton.h"
-#import "SWHelper.h"
-#import "SWLabel.h"
-#import "UILabel+Ext.h"
-#import "UITextView+Ext.h"
+#import "SWFButton.h"
+#import "SWFHelper.h"
+#import "SWFLabel.h"
+#import "UILabel+Ex.h"
+#import "UITextView+Ex.h"
+#import "WebViewJSBridge.h"
+#import "WebViewJSBridgeBase.h"
+#import "WebViewJSBridge_JS.h"
 
 FOUNDATION_EXPORT double SWFrameVersionNumber;
 FOUNDATION_EXPORT const unsigned char SWFrameVersionString[];

@@ -30,22 +30,17 @@ class ThemeViewController: TableViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = .singleLine
-        self.tableView.separatorColor = .separator
+        self.tableView.separatorColor = UIColor.separator
         self.tableView.register(Reusable.themeCell)
         self.tableView.rx.itemSelected
             .subscribeNext(weak: self, type(of: self).tapCell)
             .disposed(by: self.disposeBag)
     }
     
-    func tapCell(indexPath: ControlEvent<IndexPath>.Element) {
-        switch self.dataSource[indexPath] {
-        case let .theme(item):
-            guard let color = ((item.model as? BaseModel)?.value as? ColorTheme)?.color else { return }
-            themeService.type.toggle(color)
-            self.reactor?.action.onNext(.load)
-        default:
-            break
-        }
+    func bind(reactor: ThemeViewReactor) {
+        super.bind(reactor: reactor)
+        self.toAction(reactor: reactor)
+        self.fromState(reactor: reactor)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ThemeViewReactor)
@@ -55,7 +50,7 @@ class ThemeViewController: TableViewController, ReactorKit.View {
                 switch sectionItem {
                 case .theme(let item):
                     let cell = tableView.dequeue(Reusable.themeCell)!
-                    cell.bind(reactor: item)
+                    cell.reactor = item
                     return cell
                 default:
                     return tableView.emptyCell(for: indexPath)

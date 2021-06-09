@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Moya
 
 enum TrendingAPI {
     case languages
@@ -32,16 +33,16 @@ extension TrendingAPI: TargetType {
     var headers: [String: String]? { nil }
 
     var task: Task {
-        var parameters = basicParameters
+        var parameters = [String: Any].init()
         switch self {
         case .developers(let language, let since),
              .repositories(let language, let since):
             parameters["language"] = language?.urlParam
-            parameters["since"] = since?.paramValue
+            parameters["since"] = since?.rawValue
         default:
             break
         }
-        return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
 
     var validationType: ValidationType { .none }

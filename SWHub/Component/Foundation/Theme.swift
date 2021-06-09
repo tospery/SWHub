@@ -13,16 +13,16 @@ struct LightTheme: Theme {
     let lightColor = UIColor(hex: 0xF6F6F6)!
     let darkColor = UIColor.Material.grey900
     let brightColor = UIColor(hex: 0xF2F2F2)!
-    let dimColor = UIColor(hex: 0x000000, transparency: 0.2)!
-    var primaryColor = ColorTheme.red.color
+    let dimColor = UIColor(hex: 0x000000, transparency: 0.5)!
+    var primaryColor = ColorTheme.indigo.color
     let secondaryColor = UIColor.Material.blue
     let titleColor = UIColor(hex: 0x333333)!
     let bodyColor = UIColor(hex: 0x666666)!
     let headerColor = UIColor(hex: 0xD2D2D2)!
     let footerColor = UIColor(hex: 0xB2B2B2)!
-    let borderColor = UIColor(hex: 0xF4F4F4)!
+    let borderColor = UIColor(hex: 0xE2E2E2)!
     let cornerColor = UIColor(hex: 0xF4F4F4)!
-    let separatorColor = UIColor(hex: 0xE2E2E2)!
+    let separatorColor = UIColor(hex: 0xE0E0E0)!
     let indicatorColor = UIColor.Material.grey600
     let special1Color = UIColor(hex: 0xE82220)!
     let special2Color = UIColor(hex: 0xFF6161)!
@@ -147,5 +147,11 @@ enum ColorTheme: Int {
         case .gray: return "Gray"
         case .blueGray: return "Blue Gray"
         }
+    }
+}
+
+extension ColorTheme: CustomStringConvertible {
+    var description: String {
+        self.rawValue.string
     }
 }

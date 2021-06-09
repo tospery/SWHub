@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SWFrame
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,19 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         self.dependency.applicationDidBecomeActive(application)
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         self.dependency.applicationDidEnterBackground(application)
     }
-    
+
     func applicationWillEnterForeground(_ application: UIApplication) {
         self.dependency.applicationWillEnterForeground(application)
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
         self.dependency.applicationWillTerminate(application)
     }
-    
+
     // MARK: - URL
     func application(
         _ app: UIApplication,
@@ -48,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         self.dependency.application(app, open: url, options: options)
     }
-    
+
     // MARK: - userActivity
     func application(
         _ application: UIApplication,

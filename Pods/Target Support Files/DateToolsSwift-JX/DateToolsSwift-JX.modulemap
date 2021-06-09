@@ -1,0 +1,6 @@
+framework module DateToolsSwift_JX {
+  umbrella header "DateToolsSwift-JX-umbrella.h"
+
+  export *
+  module * { export * }
+}

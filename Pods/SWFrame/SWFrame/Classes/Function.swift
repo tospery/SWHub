@@ -10,7 +10,65 @@ import QMUIKit
 import RxSwift
 import CocoaLumberjack
 
+// MARK: - compare
+public func compareImage(_ left: ImageSource?, _ right: ImageSource?) -> Bool {
+    if let lImage = left as? UIImage,
+       let rImage = right as? UIImage {
+        return lImage == rImage
+    }
+    if let lURL = left as? URL,
+       let rURL = right as? URL {
+        return lURL == rURL
+    }
+    return false
+}
+
+public func compareAny(_ left: Any?, _ right: Any?) -> Bool {
+    let leftType = type(of: left)
+    let rightType = type(of: right)
+    if leftType != rightType {
+        return false
+    }
+    if left == nil && right == nil {
+        return true
+    }
+    if left == nil && right != nil {
+        return false
+    }
+    if left != nil && right == nil {
+        return false
+    }
+    let leftString = String.init(describing: left!)
+    let rightString = String.init(describing: right!)
+    #if DEBUG
+    logger.print("compareAny\n\(leftString)\n\(rightString)", module: .swframe)
+    #endif
+    return leftString == rightString
+}
+
 // MARK: - Dictionary member
+public func boolMember(_ params: [String: Any]?, _ key: String, _ default: Bool) -> Bool {
+    guard let params = params else { return `default` }
+    return (params[key] as? Bool) ??
+    ((params[key] as? String)?.bool) ??
+    ((params[key] as? Int)?.bool) ??
+        `default`
+}
+
+public func stringMember(_ params: [String: Any]?, _ key: String, _ default: String?) -> String? {
+    guard let params = params else { return `default` }
+    return (params[key] as? String) ??
+    ((params[key] as? Int)?.string) ??
+        `default`
+}
+
+public func intMember(_ params: [String: Any]?, _ key: String, _ default: Int?) -> Int? {
+    guard let params = params else { return `default` }
+    return (params[key] as? Int) ??
+    ((params[key] as? String)?.int) ??
+        `default`
+}
+
 public func colorMember(_ params: Dictionary<String, Any>?, _ key: String, _ default: UIColor?) -> UIColor? {
     if let value = params?[key] as? String, let color = UIColor(hexString: value) {
         return color
@@ -34,32 +92,44 @@ public func arrayMember(_ params: Dictionary<String, Any>?, _ key: String, _ def
 
 // value - 375标准
 public func metric(_ value: CGFloat) -> CGFloat {
-    return flat(value / 375.f * UIScreen.width)
+    (value / 375.f * UIScreen.width).flat
+}
+
+public func metric(_ value: CGFloat, notched: CGFloat) -> CGFloat {
+    UIScreen.isNotched ? notched : value
+}
+
+public func metric(_ value: CGFloat, small: CGFloat) -> CGFloat {
+    UIScreen.isSmall ? small : value
+}
+
+public func metric(_ value: CGFloat, large: CGFloat) -> CGFloat {
+    UIScreen.isLarge ? large : value
 }
 
 public func metric(small: CGFloat, middle: CGFloat, large: CGFloat) -> CGFloat {
-    if UIScreen.isSmall {
-        return small
+    switch UIScreen.kind {
+    case .small: return small
+    case .middle: return middle
+    case .large: return large
     }
-    if UIScreen.isLarge {
-        return large
-    }
-    return middle
+}
+
+public func fontSize(_ value: CGFloat) -> CGFloat {
+    (value / 375.f * UIScreen.width).flat
 }
 
 public func fontSize(small: CGFloat, middle: CGFloat, large: CGFloat) -> CGFloat {
-    if UIScreen.isSmall {
-        return small
+    switch UIScreen.kind {
+    case .small: return small
+    case .middle: return middle
+    case .large: return large
     }
-    if UIScreen.isLarge {
-        return large
-    }
-    return middle
 }
 
 public func connectedToInternet() -> Observable<Bool> {
     return reachSubject.asObservable()
-        .ignore(.unknown)
+        .filter { $0 != .unknown }
         .distinctUntilChanged()
         .map { status -> Bool in
             switch status {

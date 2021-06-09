@@ -14,6 +14,10 @@ class WebViewController: SWFrame.WebViewController {
         super.viewDidLoad()
     }
     
+    override func loadPage() {
+        super.loadPage()
+    }
+    
     override func handle(_ handler: String, _ data: Any) {
         log("未处理的JS: \(handler)")
     }

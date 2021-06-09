@@ -11,20 +11,26 @@ struct User: ModelType, Subjective, Eventable {
     
     enum Event {
     }
-
-    var id: Int?
+    
+    // base
+    var id = 0
+    var href: String?
+    // trending
+    var sponsorUrl: String?
+    var url: String?
+    var repo: BaseRepo?
+    // other
     var siteAdmin: Bool?
     var twoFactorAuthentication: Bool?
-    var followers: Int?
-    var following: Int?
-    var diskUsage: Int?
-    var privateGists: Int?
-    var publicGists: Int?
-    var publicRepos: Int?
-    var collaborators: Int?
-    var ownedPrivateRepos: Int?
-    var totalPrivateRepos: Int?
-    var avatarUrl: String?
+    var followers = 0
+    var following = 0
+    var diskUsage = 0
+    var privateGists = 0
+    var publicGists = 0
+    var publicRepos = 0
+    var collaborators = 0
+    var ownedPrivateRepos = 0
+    var totalPrivateRepos = 0
     var bio: String?
     var blog: String?
     var company: String?
@@ -37,8 +43,6 @@ struct User: ModelType, Subjective, Eventable {
     var gravatarId: String?
     var htmlUrl: String?
     var location: String?
-    var login: String?
-    var name: String?
     var nodeId: String?
     var organizationsUrl: String?
     var receivedEventsUrl: String?
@@ -47,72 +51,29 @@ struct User: ModelType, Subjective, Eventable {
     var subscriptionsUrl: String?
     var type: String?
     var updatedAt: String?
-    var url: String?
     var hireable: String?
     var twitterUsername: String?
-    var username: String?
-    var avatar: String?
-    var sponsorUrl: String?
     var plan: Plan?
-    var repo: Repo?
-    // 扩展属性
     var token: String?
-    
-    var isValid: Bool {
-        self.id ?? 0 != 0 &&
-            self.login?.isEmpty ?? true == false
-    }
-    
-    var profileName: NSAttributedString {
-        NSAttributedString.composed(of: [
-            (self.name ?? "").styled(with: .color(.primary)),
-            ("(\(self.login ?? ""))").styled(with: .color(.title))
-        ]).styled(with: .font(.systemFont(ofSize: 20)))
-    }
-    
-    var repoAttrString: NSAttributedString {
-        NSAttributedString.composed(of: [
-            R.image.repo()!.styled(with: .baselineOffset(-3)),
-            Special.space,
-            (self.repo?.name ?? "").styled(with: .color(.title))
-        ]).styled(with: .font(.systemFont(ofSize: 15)))
-    }
-    
-    var repositoriesAttrString: NSAttributedString {
-        let `public` = self.publicRepos ?? 0
-        let `private` = self.totalPrivateRepos ?? 0
-        let total = `public` + `private`
-        return NSAttributedString.composed(of: [
-            total.string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
-            Special.nextLine,
-            R.string.localizable.repositories().styled(with: .color(.body), .font(.systemFont(ofSize: 14)))
-        ]).styled(with: .alignment(.center))
-    }
-    
-    var followersAttrString: NSAttributedString {
-        NSAttributedString.composed(of: [
-            (self.followers ?? 0).string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
-            Special.nextLine,
-            R.string.localizable.followers().styled(with: .color(.body), .font(.systemFont(ofSize: 14)))
-        ]).styled(with: .alignment(.center))
-    }
-    
-    var followingAttrString: NSAttributedString {
-        NSAttributedString.composed(of: [
-            (self.following ?? 0).string.styled(with: .color(.title), .font(.systemFont(ofSize: 20))),
-            Special.nextLine,
-            R.string.localizable.following().styled(with: .color(.body), .font(.systemFont(ofSize: 14)))
-        ]).styled(with: .alignment(.center))
-    }
-    
+    // 合并字段
+    var ranking = 0
+    var username = ""           // username|login
+    var nickname: String?       // name
+    var avatar: String?         // avatar|avatar_url
+
     init() { }
 
     init?(map: Map) { }
-
+    
     // swiftlint:disable function_body_length
     mutating func mapping(map: Map) {
         id                      <- map["id"]
-        avatarUrl               <- map["avatar_url"]
+        href                    <- map["href"]
+        nickname                <- map["name"]
+        ranking                 <- map["ranking"]
+        repo                    <- map["repo"]
+        sponsorUrl              <- map["sponsorUrl"]
+        url                     <- map["url"]
         bio                     <- map["bio"]
         blog                    <- map["blog"]
         collaborators           <- map["collaborators"]
@@ -130,8 +91,6 @@ struct User: ModelType, Subjective, Eventable {
         hireable                <- map["hireable"]
         htmlUrl                 <- map["html_url"]
         location                <- map["location"]
-        login                   <- map["login"]
-        name                    <- map["name"]
         nodeId                  <- map["node_id"]
         organizationsUrl        <- map["organizations_url"]
         ownedPrivateRepos       <- map["owned_private_repos"]
@@ -149,42 +108,49 @@ struct User: ModelType, Subjective, Eventable {
         twoFactorAuthentication <- map["two_factor_authentication"]
         type                    <- map["type"]
         updatedAt               <- map["updated_at"]
-        url                     <- map["url"]
-        username                <- map["username"]
-        avatar                  <- map["avatar"]
-        sponsorUrl              <- map["sponsorUrl"]
-        repo                    <- map["repo"]
         token                   <- map["token"]
+        username                <- map["username"]
+        if username.isEmpty {
+            username            <- map["login"]
+        }
+        avatar                  <- map["avatar"]
+        if avatar?.isEmpty ?? true {
+            avatar              <- map["avatar_url"]
+        }
     }
     // swiftlint:enable function_body_length
     
-    static func update(_ user: User?) {
+    static func update(_ user: User?, reactive: Bool) {
         if let old = Self.current {
             if let new = user {
                 if old != new {
                     log("用户更新: \(new)")
-                    SWHub.update(User.self, new)
+                    Subjection.update(self, new, reactive)
+                } else {
+                    log("相同用户，不需要处理！！！")
                 }
             } else {
                 log("用户退出: \(old)")
-                SWHub.update(User.self, nil)
+                Subjection.update(self, nil, reactive)
             }
         } else {
             if let new = user {
                 log("用户登录: \(new)")
-                SWHub.update(User.self, new)
+                Subjection.update(self, new, reactive)
+            } else {
+                log("用户已经退出，不需要处理！！！")
             }
         }
     }
     
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        var leftJSON = lhs.toJSON()
-        leftJSON.removeValue(forKey: "token")
-        var rightJSON = rhs.toJSON()
-        rightJSON.removeValue(forKey: "token")
-        let leftValue = leftJSON.jsonString()?.sorted()
-        let rightValue = rightJSON.jsonString()?.sorted()
-        return leftValue == rightValue
-    }
-    
+//    static func == (lhs: User, rhs: User) -> Bool {
+//        var leftJSON = lhs.toJSON()
+//        leftJSON.removeValue(forKey: "token")
+//        var rightJSON = rhs.toJSON()
+//        rightJSON.removeValue(forKey: "token")
+//        let leftValue = leftJSON.jsonString()?.sorted()
+//        let rightValue = rightJSON.jsonString()?.sorted()
+//        return leftValue == rightValue
+//    }
+
 }

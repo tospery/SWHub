@@ -11,11 +11,11 @@ enum Section {
     case sectionItems(header: String, items: [SectionItem])
 }
 
-extension Section: AnimatableSectionModelType {
+extension Section: AnimatableSectionModelType, Equatable {
     
     var identity: String {
         switch self {
-        case let .sectionItems(header, _): return header // YJX_TODO header作为identity其实并不合适
+        case let .sectionItems(header, _): return header
         }
     }
 
@@ -32,47 +32,71 @@ extension Section: AnimatableSectionModelType {
         }
     }
     
+    static func == (lhs: Section, rhs: Section) -> Bool {
+        return (lhs.identity == rhs.identity) && (lhs.items == rhs.items)
+    }
+
 }
 
 enum SectionItem: IdentifiableType, Equatable {
-    case simple(SimpleItem)
     case repo(RepoItem)
-    case user(UserItem)
+    case trendingUser(TrendingUserItem)
+    case searchUser(SearchUserItem)
+    case summaryRepo(SummaryRepoItem)
+    case simple(SimpleItem)
     case issue(IssueItem)
     case theme(ThemeItem)
+    case readmeRefresh(ReadmeRefreshItem)
+    case readmeContent(ReadmeContentItem)
+    case since(SinceItem)
+    case language(LanguageItem)
+    case summaryUser(SummaryUserItem)
+    case app(AppItem)
+    case scheme(SchemeItem)
+    case logout(LogoutItem)
+    case textField(TextFieldItem)
+    case textView(TextViewItem)
+    case button(ButtonItem)
+    case feedbackInput(FeedbackInputItem)
+    case feedbackNote(FeedbackNoteItem)
+    case searchHistory(SearchHistoryItem)
+    case empty(EmptyItem)
 
     var identity: String {
+        var string = ""
         switch self {
-        case let .simple(item):
-            return item.description
-        case let .repo(item):
-            return item.description
-        case let .user(item):
-            return item.description
-        case let .issue(item):
-            return item.description
-        case let .theme(item):
-            log("aaaa: \(item.description)")
-            return item.description
+        case .simple(let item): string = item.description
+        case let .repo(item): string = item.description
+        case let .summaryRepo(item): string = item.description
+        case let .trendingUser(item): string = item.description
+        case let .issue(item): string = item.description
+        case let .readmeContent(item): string = item.description
+        case let .readmeRefresh(item): string = item.description
+        case let .since(item): string = item.description
+        case let .language(item): string = item.description
+        case let .summaryUser(item): string = item.description
+        case let .app(item): string = item.description
+        case let .scheme(item): string = item.description
+        case let .logout(item): string = item.description
+        case let .textField(item): string = item.description
+        case let .textView(item): string = item.description
+        case let .button(item): string = item.description
+        case let .empty(item): string = item.description
+        case let .theme(item): string = item.description
+        case let .feedbackInput(item): string = item.description
+        case let .feedbackNote(item): string = item.description
+        case let .searchHistory(item): string = item.description
+        case let .searchUser(item): string = item.description
         }
+        return String.init(string.sorted())
     }
 
     static func == (lhs: SectionItem, rhs: SectionItem) -> Bool {
-        log("bbbb")
-        return lhs.identity == rhs.identity
-//        switch (lhs, rhs) {
-//        case let (.simple(left), .simple(right)):
-//            return left.description == right.description
-//        case let (.repo(left), .repo(right)):
-//            return left.description == right.description
-//        case let (.user(left), .user(right)):
-//            return left.description == right.description
-//        case let (.issue(left), .issue(right)):
-//            return left.description == right.description
-//        case let (.theme(left), .theme(right)):
-//            return left.description == right.description
-//        default: return false
-//        }
+        let result = (lhs.identity == rhs.identity)
+        if result == false {
+            log("item变化:\n\(lhs.identity)\n\(rhs.identity)")
+        }
+        return result
     }
     
 }

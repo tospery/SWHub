@@ -9,28 +9,37 @@ import Foundation
 
 struct Simple: ModelType {
 
+    enum Identifier {
+        case userDetail
+        case userProfile
+        case repoDetail
+    }
+    
     var id = 0
     var title: String?
     var detail: NSAttributedString?
     var icon: ImageSource?
     var indicated = true
+    var identifier: Identifier?
 
     init() { }
+
+    init?(map: Map) { }
     
     init(id: Int,
-         title: String?,
-         detail: NSAttributedString? = nil,
          icon: ImageSource? = nil,
-         indicated: Bool = true
+         title: String? = nil,
+         detail: NSAttributedString? = nil,
+         indicated: Bool = true,
+         identifier: Identifier? = nil
     ) {
         self.id = id
+        self.icon = icon
         self.title = title
         self.detail = detail
         self.indicated = indicated
-        self.icon = icon
+        self.identifier = identifier
     }
-
-    init?(map: Map) { }
 
     mutating func mapping(map: Map) {
         id              <- map["id"]

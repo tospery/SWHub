@@ -17,6 +17,12 @@ class Runtime: SWFrame.Runtime {
         ExchangeImplementations(UIApplication.self,
                                 #selector(getter: UIApplication.baseWebUrl),
                                 #selector(getter: UIApplication.myBaseWebUrl))
+        ExchangeImplementations(ScrollViewController.self,
+                                #selector(ScrollViewController.setupRefresh(should:)),
+                                #selector(ScrollViewController.mySetupRefresh(should:)))
+        ExchangeImplementations(ScrollViewController.self,
+                                #selector(ScrollViewController.setupLoadMore(should:)),
+                                #selector(ScrollViewController.mySetupLoadMore(should:)))
     }
 
 }

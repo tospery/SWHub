@@ -12,7 +12,7 @@ struct Plan: ModelType, Subjective, Eventable {
     enum Event {
     }
     
-    var id: Int?
+    var id = 0
     var space: Int?
     var privateRepos: Int?
     var collaborators: Int?

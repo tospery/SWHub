@@ -7,21 +7,23 @@
 
 import Foundation
 
-struct Preference: ModelType, Identifiable, Subjective, Eventable {
+struct Preference: ModelType, Subjective, Eventable {
     
     enum Event {
     }
     
     var id = ""
+    var since = Since.daily
+    var language: Language?
     
-    init() {
-    }
+    init() { }
 
-    init?(map: Map) {
-    }
+    init?(map: Map) { }
 
     mutating func mapping(map: Map) {
-        id                  <- map["id"]
+        id          <- map["id"]
+        since       <- map["since"]
+        language    <- map["language"]
     }
     
 }

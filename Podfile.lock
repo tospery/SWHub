@@ -6,17 +6,19 @@ PODS:
   - CocoaLumberjack/Core (3.7.0)
   - CocoaLumberjack/Swift (3.7.0):
     - CocoaLumberjack/Core
-  - DateToolsSwift (5.0.0)
-  - DefaultsKit (0.2.0)
+  - DateToolsSwift-JX (5.0.0-jx3)
   - Differentiator (4.0.1)
+  - DynamicBlurView (4.1.0)
   - DZNEmptyDataSet (1.8.1)
-  - ESPullToRefresh (2.9.3)
   - FCUUID (1.3.1):
     - UICKeyChainStore (~> 2.1.0)
+  - Highlightr (2.1.0)
   - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (5.15.7):
     - Kingfisher/Core (= 5.15.7)
   - Kingfisher/Core (5.15.7)
+  - MarkdownView (1.5.0)
+  - MJRefresh (3.6.1)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -26,12 +28,13 @@ PODS:
     - RxSwift (~> 5.1)
   - ObjectMapper (4.2.0)
   - Parchment (3.0.0)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
   - QMUIKit/QMUICore (4.2.3):
     - QMUIKit/QMUILog
     - QMUIKit/QMUIWeakObjectContainer
   - QMUIKit/QMUILog (4.2.3)
   - QMUIKit/QMUIWeakObjectContainer (4.2.3)
-  - QuickLayout (3.0.0)
   - R.swift (5.3.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -73,30 +76,24 @@ PODS:
   - RxViewController (1.0.0):
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - SideMenu (6.5.0)
   - SnapKit (5.0.1)
-  - SWFrame (1.3.9):
+  - SWFrame (1.4.1):
     - BonMot (= 5.6.0)
     - CocoaLumberjack/Swift (= 3.7.0)
     - DZNEmptyDataSet (= 1.8.1)
-    - ESPullToRefresh (= 2.9.3)
     - FCUUID (= 1.3.1)
     - Kingfisher (= 5.15.7)
+    - MJRefresh (= 3.6.1)
     - Moya/RxSwift (= 14.0.0)
     - "NSObject+Rx (= 5.1.0)"
     - ObjectMapper (= 4.2.0)
     - QMUIKit/QMUICore (= 4.2.3)
     - ReactorKit (= 2.1.1)
     - RxDataSources (= 4.0.1)
-    - RxGesture (= 3.0.2)
-    - RxOptional (= 4.1.0)
-    - RxSwiftExt (= 5.2.0)
     - RxTheme (= 4.1.1)
-    - RxViewController (= 1.0.0)
     - SwifterSwift (= 5.2.0)
     - URLNavigator (= 2.3.0)
-    - WebViewJavascriptBridge (= 6.0.3)
-  - SwiftEntryKit (1.2.6):
-    - QuickLayout (= 3.0.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
     - SwifterSwift/CoreAnimation (= 5.2.0)
@@ -124,46 +121,37 @@ PODS:
   - SwifterSwift/UIKit (5.2.0)
   - SwiftLint (0.41.0)
   - Toast-Swift (5.0.1)
+  - TTGTagCollectionView (2.0.1)
   - UICKeyChainStore (2.1.2)
-  - Umbrella/Core (0.9.0)
   - UMCommon (7.2.8):
     - UMDevice
   - UMDevice (1.2.0)
-  - UMShare/Core (6.10.2):
-    - UMCommon
-  - UMShare/Social/ReducedWeChat (6.10.2):
-    - UMCommon
-    - UMShare/Core
-  - UMShare/Social/WeChat (6.10.2):
-    - UMCommon
-    - UMShare/Core
-    - UMShare/Social/ReducedWeChat
-  - UMShare/UI (6.10.2):
-    - UMCommon
-    - UMShare/Core
   - URLNavigator (2.3.0)
   - WeakMapTable (1.2.0)
-  - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
   - AcknowList (= 2.0.1)
   - Cache (= 6.0.0)
-  - DateToolsSwift (= 5.0.0)
-  - DefaultsKit (= 0.2.0)
+  - DateToolsSwift-JX (= 5.0.0-jx3)
+  - Highlightr (= 2.1.0)
   - IQKeyboardManagerSwift (= 6.5.6)
+  - MarkdownView (= 1.5.0)
   - Parchment (= 3.0.0)
+  - PopupDialog (= 1.1.1)
   - R.swift (= 5.3.0)
   - ReusableKit/RxSwift (= 3.0.0)
+  - RxGesture (= 3.0.2)
+  - RxOptional (= 4.1.0)
+  - RxSwiftExt (= 5.2.0)
+  - RxViewController (= 1.0.0)
+  - SideMenu (= 6.5.0)
   - SnapKit (= 5.0.1)
-  - SWFrame (= 1.3.9)
-  - SwiftEntryKit (= 1.2.6)
+  - SWFrame (= 1.4.1)
   - SwiftLint (= 0.41.0)
   - Toast-Swift (= 5.0.1)
-  - Umbrella/Core (= 0.9.0)
+  - TTGTagCollectionView (= 2.0.1)
   - UMCommon (= 7.2.8)
   - UMDevice (= 1.2.0)
-  - UMShare/Social/WeChat (= 6.10.2)
-  - UMShare/UI (= 6.10.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -172,20 +160,22 @@ SPEC REPOS:
     - BonMot
     - Cache
     - CocoaLumberjack
-    - DateToolsSwift
-    - DefaultsKit
+    - DateToolsSwift-JX
     - Differentiator
+    - DynamicBlurView
     - DZNEmptyDataSet
-    - ESPullToRefresh
     - FCUUID
+    - Highlightr
     - IQKeyboardManagerSwift
     - Kingfisher
+    - MarkdownView
+    - MJRefresh
     - Moya
     - "NSObject+Rx"
     - ObjectMapper
     - Parchment
+    - PopupDialog
     - QMUIKit
-    - QuickLayout
     - R.swift
     - R.swift.Library
     - ReactorKit
@@ -199,20 +189,18 @@ SPEC REPOS:
     - RxSwiftExt
     - RxTheme
     - RxViewController
+    - SideMenu
     - SnapKit
     - SWFrame
-    - SwiftEntryKit
     - SwifterSwift
     - SwiftLint
     - Toast-Swift
+    - TTGTagCollectionView
     - UICKeyChainStore
-    - Umbrella
     - UMCommon
     - UMDevice
-    - UMShare
     - URLNavigator
     - WeakMapTable
-    - WebViewJavascriptBridge
 
 SPEC CHECKSUMS:
   AcknowList: d5476fd33f5c4614c676933ab79d05775e5e20b7
@@ -220,20 +208,22 @@ SPEC CHECKSUMS:
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
-  DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
-  DefaultsKit: 6c767941b2c3fe34c4d70e300e6c3b80c94964dd
+  DateToolsSwift-JX: f19493daa8c66a62adeefaaf9c696da44f4eb605
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  ESPullToRefresh: 0d68daa602b343c81753a1b95e09fd0bfcddfd40
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
+  MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
+  MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   Parchment: 5b54e4b271719a0e94e02898ab7c3c0a00525cfa
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   QMUIKit: c047f987b14be9f48df47cb934a2d21ccd7ef4b6
-  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: 4170fb7161c67be3bc1a847040b79367d69c419f
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   ReactorKit: 6d894a20c3d508344320901cd8e386fde92df4b6
@@ -247,21 +237,19 @@ SPEC CHECKSUMS:
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   RxTheme: 7cda2f036363a0b620cf07b3480cbbbbb00c1d25
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SWFrame: 1f63ba8660fbaea3c37bce5a64e62ea61bcf044f
-  SwiftEntryKit: 96a2fa90b2631bbbfac50d18449e9ca3d0635f13
+  SWFrame: f57a214d7c8d557e8100774b1890c408080bd759
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  TTGTagCollectionView: 29d01ece199c257943ba490e9989734382cda5ae
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
-  Umbrella: d5b508a0efea3c50f4764ad96035d08eafee26bc
   UMCommon: 87e2bf6a5c44df6f60509219a7279d9f94c31d24
   UMDevice: da050ba77e5075b1ec08303065722d25f599e483
-  UMShare: ec11ef18fe90e7430466aced74fc305fe5e51618
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
-  WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 6e69f7d620ea0512ac663ebcf101a9124c8b7869
+PODFILE CHECKSUM: b0b29a5ae2aa9d7a26cccbd0a953ec1bfed4c5b4
 
 COCOAPODS: 1.10.0
