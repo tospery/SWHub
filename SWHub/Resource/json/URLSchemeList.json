@@ -1,0 +1,14 @@
+[
+    {
+        "name":"Open User",
+        "url":"swhub://user/{username}"
+    },
+    {
+        "name":"Open Repository",
+        "url":"swhub://repo/{username}/{reponame}"
+    },
+    {
+        "name":"Open Search",
+        "url":"swhub://search?query=[word]"
+    }
+]
