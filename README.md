@@ -6,8 +6,9 @@
   GitHub iOS client in ReactorKit architecture.
 </p>
 
-SWHub will be updated regularly and open source.
-You can download the latest version from App Store
+SWHub project has stopped updating.
+The latest project please scan the code to download for free, it uses:
+- [x] iOS App Frame ([HiIOS](https://github.com/tospery/HiIOS))
 <p align="left">
   <img src="https://github.com/tospery/SWHub/blob/main/screenshots/qrcode.png" alt="App Store" height="240" >
 </p>
